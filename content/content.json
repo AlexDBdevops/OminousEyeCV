@@ -43,8 +43,8 @@
     "EN": "Sysadmin"
    },
    "Period": {
-    "ES": "2021 – 2023",
-    "EN": "2021 – 2023"
+    "ES": "Jul 2021 – actualidad",
+    "EN": "Jul 2021 – present"
    },
    "Summary": {
     "ES": "Administración de un datacenter y del parque de puestos de trabajo.",
@@ -61,13 +61,13 @@
       "EN": "Jr Sys Admin & DevOps"
      },
      "Period": {
-      "ES": "Jul 2021 – 2023",
-      "EN": "Jul 2021 – 2023"
+      "ES": "Jul 2021 – actualidad",
+      "EN": "Jul 2021 – present"
      },
      "Items": [
       {
-       "ES": "Datacenter con más de 20 servidores y más de 10 equipos de red, gestionado primero en solitario y después junto a un compañero: reparaciones, nuevas funcionalidades y estudio de mejoras, del hardware a la nube",
-       "EN": "Datacenter with 20+ servers and 10+ network devices, run first on my own and later alongside a colleague: repairs, new features and improvement studies, from hardware to cloud"
+       "ES": "Datacenter con más de 20 servidores y más de 10 equipos de red, gestionado primero en solitario y después junto a un compañero: reparaciones, nuevas funcionalidades y estudio de mejoras, del hardware a la nube (AWS)",
+       "EN": "Datacenter with 20+ servers and 10+ network devices, run first on my own and later alongside a colleague: repairs, new features and improvement studies, from hardware to the AWS cloud"
       },
       {
        "ES": "25+ sobremesas y 20 portátiles: soporte, inventario y propuestas de compra",
@@ -134,8 +134,8 @@
     "EN": "DevOps"
    },
    "Period": {
-    "ES": "2023 – actualidad",
-    "EN": "2023 – present"
+    "ES": "2021 – actualidad",
+    "EN": "2021 – present"
    },
    "Summary": {
     "ES": "Automatización, entrega continua y plataformas fiables.",
@@ -152,8 +152,8 @@
       "EN": "DevOps Engineer"
      },
      "Period": {
-      "ES": "2023 – actualidad",
-      "EN": "2023 – present"
+      "ES": "2021 – actualidad",
+      "EN": "2021 – present"
      },
      "Items": [
       {
@@ -449,7 +449,7 @@
     "ES": "SonarQube",
     "EN": "SonarQube"
    },
-   "Level": 65,
+   "Level": 70,
    "Group": ""
   },
   {
@@ -458,14 +458,6 @@
     "EN": "Phishing campaigns"
    },
    "Level": 60,
-   "Group": ""
-  },
-  {
-   "Name": {
-    "ES": "Auditorías de seguridad",
-    "EN": "Security audits"
-   },
-   "Level": 55,
    "Group": ""
   }
  ]
