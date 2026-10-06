@@ -1,0 +1,472 @@
+{
+ "Name": "Alejandro Díaz Benjumea",
+ "Email": "alejandro.diaz.benjumea@gmail.com",
+ "Title": {
+  "ES": "Infraestructura · DevOps",
+  "EN": "Infrastructure · DevOps"
+ },
+ "Intro": {
+  "ES": "Administro, automatizo y mantengo plataformas: del datacenter al pipeline.",
+  "EN": "I run, automate and maintain platforms: from the datacenter to the pipeline."
+ },
+ "UI": {
+  "skills": {
+   "ES": "Competencias",
+   "EN": "Skills"
+  },
+  "contact": {
+   "ES": "Contacto",
+   "EN": "Contact"
+  },
+  "hint": {
+   "ES": "Gira el disco o pulsa un sector",
+   "EN": "Spin the disc or pick a sector"
+  },
+  "note": {
+   "ES": "Nivel básico, sin rol de seguridad dedicado",
+   "EN": "Basic level, no dedicated security role"
+  },
+  "footer": {
+   "ES": "Generado con Go · alojado en AWS",
+   "EN": "Built with Go · hosted on AWS"
+  },
+  "certs": {
+   "ES": "Certificaciones",
+   "EN": "Certifications"
+  }
+ },
+ "Sectors": [
+  {
+   "ID": "sysadmin",
+   "Name": {
+    "ES": "Sysadmin",
+    "EN": "Sysadmin"
+   },
+   "Period": {
+    "ES": "2021 – 2023",
+    "EN": "2021 – 2023"
+   },
+   "Summary": {
+    "ES": "Administración de un datacenter y del parque de puestos de trabajo.",
+    "EN": "Administration of a datacenter and the end-user fleet."
+   },
+   "Roles": [
+    {
+     "Company": {
+      "ES": "Kentech S.L.U.",
+      "EN": "Kentech S.L.U."
+     },
+     "Title": {
+      "ES": "Sys Admin & DevOps Jr",
+      "EN": "Jr Sys Admin & DevOps"
+     },
+     "Period": {
+      "ES": "Jul 2021 – 2023",
+      "EN": "Jul 2021 – 2023"
+     },
+     "Items": [
+      {
+       "ES": "Datacenter con más de 20 servidores y más de 10 equipos de red, gestionado primero en solitario y después junto a un compañero: reparaciones, nuevas funcionalidades y estudio de mejoras, del hardware a la nube",
+       "EN": "Datacenter with 20+ servers and 10+ network devices, run first on my own and later alongside a colleague: repairs, new features and improvement studies, from hardware to cloud"
+      },
+      {
+       "ES": "25+ sobremesas y 20 portátiles: soporte, inventario y propuestas de compra",
+       "EN": "25+ desktops and 20 laptops: support, inventory and purchase proposals"
+      },
+      {
+       "ES": "Virtualización VMware / Proxmox, almacenamiento NAS/SAN, Active Directory y Microsoft 365",
+       "EN": "VMware / Proxmox virtualization, NAS/SAN storage, Active Directory and Microsoft 365"
+      },
+      {
+       "ES": "Documentación técnica al día de toda la infraestructura",
+       "EN": "Up-to-date technical documentation of the whole infrastructure"
+      }
+     ]
+    },
+    {
+     "Company": {
+      "ES": "Subsea Mechatronics",
+      "EN": "Subsea Mechatronics"
+     },
+     "Title": {
+      "ES": "Prácticas de SysAdmin",
+      "EN": "SysAdmin Internship"
+     },
+     "Period": {
+      "ES": "Mar – Jun 2021",
+      "EN": "Mar – Jun 2021"
+     },
+     "Items": [
+      {
+       "ES": "Gestión de la infraestructura IT de la empresa",
+       "EN": "Managed the company IT infrastructure"
+      },
+      {
+       "ES": "AWS para soluciones IoT y servidor NAS multiusos",
+       "EN": "AWS for IoT solutions and a multipurpose NAS server"
+      },
+      {
+       "ES": "Desarrollo web: PHP, Python y C++",
+       "EN": "Web development: PHP, Python and C++"
+      }
+     ]
+    }
+   ],
+   "Certs": [
+    {
+     "ES": "CCNA Routing and Switching: Introducción a redes · Cisco · jun 2020",
+     "EN": "CCNA Routing and Switching: Introduction to Networks · Cisco · Jun 2020"
+    },
+    {
+     "ES": "Introduction to Ansible v2.7 · Linux Academy · sep 2021",
+     "EN": "Introduction to Ansible v2.7 · Linux Academy · Sep 2021"
+    },
+    {
+     "ES": "Learning Docker · LinkedIn · jul 2021",
+     "EN": "Learning Docker · LinkedIn · Jul 2021"
+    }
+   ]
+  },
+  {
+   "ID": "devops",
+   "Name": {
+    "ES": "DevOps",
+    "EN": "DevOps"
+   },
+   "Period": {
+    "ES": "2023 – actualidad",
+    "EN": "2023 – present"
+   },
+   "Summary": {
+    "ES": "Automatización, entrega continua y plataformas fiables.",
+    "EN": "Automation, continuous delivery and reliable platforms."
+   },
+   "Roles": [
+    {
+     "Company": {
+      "ES": "Kentech S.L.U.",
+      "EN": "Kentech S.L.U."
+     },
+     "Title": {
+      "ES": "Ingeniero DevOps",
+      "EN": "DevOps Engineer"
+     },
+     "Period": {
+      "ES": "2023 – actualidad",
+      "EN": "2023 – present"
+     },
+     "Items": [
+      {
+       "ES": "Migración de MySQL 5.x a 8.x",
+       "EN": "MySQL 5.x to 8.x migration"
+      },
+      {
+       "ES": "Dirección de la migración y el mantenimiento de clústeres Rancher y Kubernetes, del Rancher legado sobre Docker a una orquestación de contenedores moderna, en desarrollo y producción",
+       "EN": "Led the migration and maintenance of Rancher and Kubernetes clusters, from legacy Docker-based Rancher to modern container orchestration, across development and production"
+      },
+      {
+       "ES": "Pipeline CI/CD con GitLab y GitOps con ArgoCD",
+       "EN": "CI/CD pipeline with GitLab and GitOps with ArgoCD"
+      },
+      {
+       "ES": "Feature flags con Unleash",
+       "EN": "Feature flags with Unleash"
+      },
+      {
+       "ES": "Despliegue de Claude como herramienta de IA de la empresa",
+       "EN": "Rollout of Claude as the company AI tool"
+      },
+      {
+       "ES": "Apoyo a la entrega ágil",
+       "EN": "Agile delivery support"
+      }
+     ]
+    }
+   ],
+   "Sub": {
+    "Name": {
+     "ES": "DevSecOps",
+     "EN": "DevSecOps"
+    },
+    "Note": {
+     "ES": "Nivel básico, sin rol de seguridad dedicado",
+     "EN": "Basic level, no dedicated security role"
+    },
+    "Items": [
+     {
+      "ES": "Despliegue de Microsoft Defender ATP para monitorizar endpoints y detectar amenazas",
+      "EN": "Rollout of Microsoft Defender ATP for endpoint monitoring and threat detection"
+     },
+     {
+      "ES": "Buenas prácticas en pipelines y gestión de accesos",
+      "EN": "Pipeline and access-management good practices"
+     },
+     {
+      "ES": "Participación en las auditorías externas de seguridad de Kentech",
+      "EN": "Took part in Kentech's external security audits"
+     },
+     {
+      "ES": "Exploración de Snyk para detectar vulnerabilidades en código y dependencias",
+      "EN": "Explored Snyk to detect vulnerabilities in code and dependencies"
+     },
+     {
+      "ES": "SonarQube para el control de la seguridad y los bugs del código",
+      "EN": "SonarQube to keep code security and bugs under control"
+     },
+     {
+      "ES": "Elaboración de campañas internas de phishing para concienciar al personal",
+      "EN": "Designed internal phishing campaigns to raise staff awareness"
+     },
+     {
+      "ES": "Contención, de forma manual y automática, de numerosas amenazas de diversa gravedad",
+      "EN": "Contained numerous threats of varying severity, both manually and automatically"
+     }
+    ]
+   },
+   "Certs": [
+    {
+     "ES": "Certificate of Completion: AI Fluency Framework & Foundations · Anthropic · jul 2026",
+     "EN": "Certificate of Completion: AI Fluency Framework & Foundations · Anthropic · Jul 2026"
+    },
+    {
+     "ES": "Certificate of Completion: Claude Code 101 · Anthropic · jul 2026",
+     "EN": "Certificate of Completion: Claude Code 101 · Anthropic · Jul 2026"
+    },
+    {
+     "ES": "Certificate of Completion: Claude 101 · Anthropic · jul 2026",
+     "EN": "Certificate of Completion: Claude 101 · Anthropic · Jul 2026"
+    },
+    {
+     "ES": "Elasticsearch Engineer (On-demand) · Elastic · ago 2025",
+     "EN": "Elasticsearch Engineer (On-demand) · Elastic · Aug 2025"
+    },
+    {
+     "ES": "Kubernetes Quick Start · A Cloud Guru · jun 2022",
+     "EN": "Kubernetes Quick Start · A Cloud Guru · Jun 2022"
+    },
+    {
+     "ES": "Source Control with Git · A Cloud Guru · feb 2022",
+     "EN": "Source Control with Git · A Cloud Guru · Feb 2022"
+    }
+   ]
+  }
+ ],
+ "Skills": [
+  {
+   "Name": {
+    "ES": "Linux",
+    "EN": "Linux"
+   },
+   "Level": 90,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Kubernetes",
+    "EN": "Kubernetes"
+   },
+   "Level": 80,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Docker",
+    "EN": "Docker"
+   },
+   "Level": 85,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "NGINX",
+    "EN": "NGINX"
+   },
+   "Level": 85,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "MySQL / NDB Cluster",
+    "EN": "MySQL / NDB Cluster"
+   },
+   "Level": 85,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "GitLab CI/CD",
+    "EN": "GitLab CI/CD"
+   },
+   "Level": 85,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "ArgoCD",
+    "EN": "ArgoCD"
+   },
+   "Level": 70,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Ansible",
+    "EN": "Ansible"
+   },
+   "Level": 70,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Git",
+    "EN": "Git"
+   },
+   "Level": 85,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Bash",
+    "EN": "Bash"
+   },
+   "Level": 80,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Python",
+    "EN": "Python"
+   },
+   "Level": 65,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "AWS",
+    "EN": "AWS"
+   },
+   "Level": 65,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "VMware / Proxmox",
+    "EN": "VMware / Proxmox"
+   },
+   "Level": 80,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Redes",
+    "EN": "Networking"
+   },
+   "Level": 80,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Elastic Stack",
+    "EN": "Elastic Stack"
+   },
+   "Level": 75,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Prometheus / Grafana",
+    "EN": "Prometheus / Grafana"
+   },
+   "Level": 70,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Zabbix",
+    "EN": "Zabbix"
+   },
+   "Level": 70,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Sonatype Nexus",
+    "EN": "Sonatype Nexus"
+   },
+   "Level": 80,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "RabbitMQ",
+    "EN": "RabbitMQ"
+   },
+   "Level": 60,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Ceph / LVM",
+    "EN": "Ceph / LVM"
+   },
+   "Level": 60,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Windows Server",
+    "EN": "Windows Server"
+   },
+   "Level": 70,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Active Directory / M365",
+    "EN": "Active Directory / M365"
+   },
+   "Level": 75,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Jira / Agile",
+    "EN": "Jira / Agile"
+   },
+   "Level": 85,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Snyk",
+    "EN": "Snyk"
+   },
+   "Level": 50,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "SonarQube",
+    "EN": "SonarQube"
+   },
+   "Level": 65,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Campañas de phishing",
+    "EN": "Phishing campaigns"
+   },
+   "Level": 60,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Auditorías de seguridad",
+    "EN": "Security audits"
+   },
+   "Level": 55,
+   "Group": ""
+  }
+ ]
+}

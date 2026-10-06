@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{.C.Name}} · CV</title>
+<meta name="description" content="{{en .C.Intro}}">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="style.css">
+<script>try{var l=localStorage.getItem('lang')==='es'?'es':'en';document.documentElement.lang=l}catch(e){}</script>
+</head>
+<body>
+<header class="top">
+  <div class="brand">{{.C.Name}}</div>
+  <button id="lang" class="lang" aria-label="Language">
+    <span data-lang="es">EN</span><span data-lang="en">ES</span>
+  </button>
+</header>
+
+<main>
+<section class="hero">
+  <div class="stage">
+  <svg id="art" viewBox="0 0 600 600" role="img" aria-label="Eye and disc">
+    <defs>
+      <radialGradient id="irisg" cx="50%" cy="50%" r="50%">
+        <stop offset="0" style="stop-color:var(--i0)"/><stop offset=".3" style="stop-color:var(--i1)"/>
+        <stop offset=".75" style="stop-color:var(--i2)"/><stop offset="1" style="stop-color:var(--i3)"/>
+      </radialGradient>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" style="stop-color:var(--a)" stop-opacity=".3"/><stop offset="1" style="stop-color:var(--a)" stop-opacity="0"/>
+      </radialGradient>
+      <clipPath id="lidclip"><path d="M110 300 Q300 150 490 300 Q300 450 110 300 Z"/></clipPath>
+    </defs>
+    <circle cx="300" cy="300" r="298" fill="url(#glow)"/>
+
+    <g id="disc">
+      <circle cx="300" cy="300" r="295" class="rim"/>
+      {{range .Ticks}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="tick"/>{{end}}
+      {{range .C.Sectors}}
+      <g class="sector" data-i="{{.Index}}" tabindex="0" role="button" aria-label="{{en .Name}}">
+        <path d="{{.Path}}" class="seg"/>
+        <path id="lp{{.Index}}" d="{{.Label}}" fill="none"/>
+        <text class="seglabel"><textPath href="#lp{{.Index}}" startOffset="50%" text-anchor="middle">{{en .Name}}</textPath></text>
+      </g>{{end}}
+      {{range .Bound}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="bound"/>{{end}}
+    </g>
+    <path d="M300 14 L311 -6 L289 -6 Z" class="marker"/>
+    <circle cx="300" cy="300" r="200" class="inner"/>
+
+    <g id="eyeball">
+      <path d="M110 300 Q300 150 490 300 Q300 450 110 300 Z" class="sclera"/>
+      <g clip-path="url(#lidclip)">
+        <g id="iris">
+          <circle cx="300" cy="300" r="82" fill="url(#irisg)"/>
+          <circle cx="300" cy="300" r="70" class="ring"/>
+          <circle cx="300" cy="300" r="50" class="ring"/>
+          {{range .Spokes}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="spoke"/>{{end}}
+          <polygon points="{{.Hex}}" class="hex"/>
+          <circle cx="300" cy="300" r="26" fill="#000"/>
+          <circle cx="291" cy="291" r="6" fill="#ffe9e6" opacity=".85"/>
+        </g>
+      </g>
+      <path d="M110 300 Q300 150 490 300 Q300 450 110 300 Z" class="lid"/>
+      <path d="M110 300 Q300 120 490 300" class="brow"/>
+      <path d="M110 300 Q300 480 490 300" class="brow"/>
+    </g>
+  </svg>
+  <p class="hint">{{ui "hint"}}</p>
+  </div>
+
+  <div class="panel">
+    <h1>{{.C.Name}}</h1>
+    <p class="role">{{l .C.Title}}</p>
+    <p class="intro">{{l .C.Intro}}</p>
+
+    <nav class="pills" aria-label="Sections">
+      {{range .C.Sectors}}<button class="pill" data-i="{{.Index}}">{{l .Name}}</button>{{end}}
+    </nav>
+
+    {{range .C.Sectors}}
+    <article class="detail" data-i="{{.Index}}" id="d-{{.ID}}">
+      <header><h2>{{l .Name}}</h2></header>
+      <p class="sum">{{l .Summary}}</p>
+      {{range .Roles}}<div class="role-block">
+        <div class="rh"><b>{{l .Company}}</b><span class="period">{{l .Period}}</span></div>
+        <div class="rt">{{l .Title}}</div>
+        <ul>{{range .Items}}<li>{{l .}}</li>{{end}}</ul></div>{{end}}
+      {{with .Sub}}<div class="sub"><h3>{{l .Name}}</h3><p class="badge">{{l .Note}}</p>
+      <ul>{{range .Items}}<li>{{l .}}</li>{{end}}</ul></div>{{end}}
+      {{if .Certs}}<div class="sub"><h3>{{ui "certs"}}</h3><ul>{{range .Certs}}<li>{{l .}}</li>{{end}}</ul></div>{{end}}
+    </article>{{end}}
+  </div>
+</section>
+
+<section class="skills">
+  <h2>{{ui "skills"}}</h2>
+  <div class="grid">
+    {{range .C.Skills}}
+    <div class="skill"><div class="sh"><span>{{l .Name}}</span><b>{{.Level}}%</b></div>
+      <div class="bar"><i style="--w:{{.Level}}%"></i></div></div>{{end}}
+  </div>
+</section>
+
+<section class="contact">
+  <h2>{{ui "contact"}}</h2>
+  <a class="mail" href="mailto:{{.C.Email}}">{{.C.Email}}</a>
+</section>
+</main>
+<footer>{{ui "footer"}}</footer>
+<script src="app.js"></script>
+</body>
+</html>

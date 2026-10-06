@@ -1,0 +1,74 @@
+# Se ejecuta UNA vez, a mano, en tu cuenta de AWS (consola -> CloudFormation -> Create stack).
+# Crea: bucket de estado de Terraform, proveedor OIDC de GitHub y dos roles sin claves:
+#   plan  (solo lectura, para pull requests)
+#   apply (permisos acotados, solo desde la rama main / entorno production)
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  GitHubRepo: { Type: String, Description: "usuario/OmnimousEyeCV" }
+Resources:
+  StateBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      VersioningConfiguration: { Status: Enabled }
+      PublicAccessBlockConfiguration: { BlockPublicAcls: true, BlockPublicPolicy: true, IgnorePublicAcls: true, RestrictPublicBuckets: true }
+  GitHubOIDC:
+    Type: AWS::IAM::OIDCProvider
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList: [sts.amazonaws.com]
+      ThumbprintList: [6938fd4d98bab03faadb97b34396831e3780aea1]
+  PlanRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: omnimous-eye-cv-plan
+      ManagedPolicyArns: [arn:aws:iam::aws:policy/ReadOnlyAccess]
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Federated: !Ref GitHubOIDC }
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals: { 'token.actions.githubusercontent.com:aud': sts.amazonaws.com }
+              StringLike: { 'token.actions.githubusercontent.com:sub': !Sub 'repo:${GitHubRepo}:pull_request' }
+      Policies:
+        - PolicyName: state-lock
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [s3:GetObject, s3:PutObject, s3:DeleteObject, s3:ListBucket]
+                Resource: [!GetAtt StateBucket.Arn, !Sub '${StateBucket.Arn}/*']
+  ApplyRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: omnimous-eye-cv-apply
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Federated: !Ref GitHubOIDC }
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                'token.actions.githubusercontent.com:aud': sts.amazonaws.com
+                'token.actions.githubusercontent.com:sub': !Sub 'repo:${GitHubRepo}:environment:production'
+      Policies:
+        - PolicyName: apply
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: ['s3:*']
+                Resource: ['arn:aws:s3:::omnimous-eye-cv-*', 'arn:aws:s3:::omnimous-eye-cv-*/*', !GetAtt StateBucket.Arn, !Sub '${StateBucket.Arn}/*']
+              - Effect: Allow
+                Action: ['cloudfront:*']
+                Resource: '*'
+              - Effect: Allow
+                Action: [s3:ListAllMyBuckets, s3:GetBucketLocation]
+                Resource: '*'
+Outputs:
+  StateBucket: { Value: !Ref StateBucket }
+  PlanRoleArn: { Value: !GetAtt PlanRole.Arn }
+  ApplyRoleArn: { Value: !GetAtt ApplyRole.Arn }
