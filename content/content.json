@@ -602,6 +602,10 @@
    {
     "ES": "Cabeceras de seguridad (CSP, HSTS, X-Frame-Options), credenciales guardadas fuera de la página con permisos mínimos y coste de alojamiento cero.",
     "EN": "Security headers (CSP, HSTS, X-Frame-Options), credentials kept outside the site with least privilege, and zero hosting cost."
+   },
+   {
+    "ES": "Se sirve desde la red global de Cloudflare Pages, con protección DDoS incluida, así que quien quiera intentar tumbarla está invitado a probar suerte.",
+    "EN": "It is served from Cloudflare Pages' global network with DDoS protection built in, so anyone who wants to try taking it down is welcome to have a go."
    }
   ],
   "Tools": [
