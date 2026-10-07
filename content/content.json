@@ -37,97 +37,6 @@
  },
  "Sectors": [
   {
-   "ID": "sysadmin",
-   "Name": {
-    "ES": "Sysadmin",
-    "EN": "Sysadmin"
-   },
-   "Period": {
-    "ES": "Jul 2021 – actualidad",
-    "EN": "Jul 2021 – present"
-   },
-   "Summary": {
-    "ES": "Administración de un datacenter y del parque de puestos de trabajo.",
-    "EN": "Administration of a datacenter and the end-user fleet."
-   },
-   "Roles": [
-    {
-     "Company": {
-      "ES": "Kentech S.L.U.",
-      "EN": "Kentech S.L.U."
-     },
-     "Title": {
-      "ES": "Administrador de Sistemas y DevOps",
-      "EN": "Sysadmin & DevOps"
-     },
-     "Period": {
-      "ES": "Jul 2021 – actualidad",
-      "EN": "Jul 2021 – present"
-     },
-     "Items": [
-      {
-       "ES": "Datacenter con más de 20 servidores y más de 10 equipos de red, gestionado primero en solitario y después junto a un compañero: reparaciones, nuevas funcionalidades y estudio de mejoras, del hardware a la nube (AWS)",
-       "EN": "Datacenter with 20+ servers and 10+ network devices, run first on my own and later alongside a colleague: repairs, new features and improvement studies, from hardware to the AWS cloud"
-      },
-      {
-       "ES": "25+ sobremesas y 20 portátiles: soporte, inventario y propuestas de compra",
-       "EN": "25+ desktops and 20 laptops: support, inventory and purchase proposals"
-      },
-      {
-       "ES": "Virtualización VMware / Proxmox, almacenamiento NAS/SAN, Active Directory y Microsoft 365",
-       "EN": "VMware / Proxmox virtualization, NAS/SAN storage, Active Directory and Microsoft 365"
-      },
-      {
-       "ES": "Documentación técnica al día de toda la infraestructura",
-       "EN": "Up-to-date technical documentation of the whole infrastructure"
-      }
-     ]
-    },
-    {
-     "Company": {
-      "ES": "Subsea Mechatronics",
-      "EN": "Subsea Mechatronics"
-     },
-     "Title": {
-      "ES": "Prácticas de SysAdmin",
-      "EN": "SysAdmin Internship"
-     },
-     "Period": {
-      "ES": "Mar – Jun 2021",
-      "EN": "Mar – Jun 2021"
-     },
-     "Items": [
-      {
-       "ES": "Gestión de la infraestructura IT de la empresa",
-       "EN": "Managed the company IT infrastructure"
-      },
-      {
-       "ES": "AWS para soluciones IoT y servidor NAS multiusos",
-       "EN": "AWS for IoT solutions and a multipurpose NAS server"
-      },
-      {
-       "ES": "Desarrollo web: PHP, Python y C++",
-       "EN": "Web development: PHP, Python and C++"
-      }
-     ]
-    }
-   ],
-   "Certs": [
-    {
-     "ES": "CCNA Routing and Switching: Introducción a redes · Cisco · jun 2020",
-     "EN": "CCNA Routing and Switching: Introduction to Networks · Cisco · Jun 2020"
-    },
-    {
-     "ES": "Introduction to Ansible v2.7 · Linux Academy · sep 2021",
-     "EN": "Introduction to Ansible v2.7 · Linux Academy · Sep 2021"
-    },
-    {
-     "ES": "Learning Docker · LinkedIn · jul 2021",
-     "EN": "Learning Docker · LinkedIn · Jul 2021"
-    }
-   ]
-  },
-  {
    "ID": "devops",
    "Name": {
     "ES": "DevOps",
@@ -156,6 +65,10 @@
       "EN": "2021 – present"
      },
      "Items": [
+      {
+       "ES": "Despliegue de releases: análisis y corrección, reporte de bugs al equipo de desarrollo para su corrección y coordinación con QA para resolver posibles fallos de infraestructura",
+       "EN": "Release deployment: analysing and fixing releases, reporting bugs to the development team for correction and coordinating with QA to resolve potential infrastructure issues"
+      },
       {
        "ES": "Migración de MySQL 5.x a 8.x",
        "EN": "MySQL 5.x to 8.x migration"
@@ -247,6 +160,97 @@
     {
      "ES": "Source Control with Git · A Cloud Guru · feb 2022",
      "EN": "Source Control with Git · A Cloud Guru · Feb 2022"
+    }
+   ]
+  },
+  {
+   "ID": "sysadmin",
+   "Name": {
+    "ES": "Sysadmin",
+    "EN": "Sysadmin"
+   },
+   "Period": {
+    "ES": "Jul 2021 – actualidad",
+    "EN": "Jul 2021 – present"
+   },
+   "Summary": {
+    "ES": "Administración de un datacenter y del parque de puestos de trabajo.",
+    "EN": "Administration of a datacenter and the end-user fleet."
+   },
+   "Roles": [
+    {
+     "Company": {
+      "ES": "Kentech S.L.U.",
+      "EN": "Kentech S.L.U."
+     },
+     "Title": {
+      "ES": "Administrador de Sistemas y DevOps",
+      "EN": "Sysadmin & DevOps"
+     },
+     "Period": {
+      "ES": "Jul 2021 – actualidad",
+      "EN": "Jul 2021 – present"
+     },
+     "Items": [
+      {
+       "ES": "Datacenter con más de 20 servidores y más de 10 equipos de red, gestionado primero en solitario y después junto a un compañero: reparaciones, nuevas funcionalidades y estudio de mejoras, del hardware a la nube (AWS)",
+       "EN": "Datacenter with 20+ servers and 10+ network devices, run first on my own and later alongside a colleague: repairs, new features and improvement studies, from hardware to the AWS cloud"
+      },
+      {
+       "ES": "25+ sobremesas y 20 portátiles: soporte, inventario y propuestas de compra",
+       "EN": "25+ desktops and 20 laptops: support, inventory and purchase proposals"
+      },
+      {
+       "ES": "Virtualización VMware / Proxmox, almacenamiento NAS/SAN, Active Directory y Microsoft 365",
+       "EN": "VMware / Proxmox virtualization, NAS/SAN storage, Active Directory and Microsoft 365"
+      },
+      {
+       "ES": "Documentación técnica al día de toda la infraestructura",
+       "EN": "Up-to-date technical documentation of the whole infrastructure"
+      }
+     ]
+    },
+    {
+     "Company": {
+      "ES": "Subsea Mechatronics",
+      "EN": "Subsea Mechatronics"
+     },
+     "Title": {
+      "ES": "Prácticas de SysAdmin",
+      "EN": "SysAdmin Internship"
+     },
+     "Period": {
+      "ES": "Mar – Jun 2021",
+      "EN": "Mar – Jun 2021"
+     },
+     "Items": [
+      {
+       "ES": "Gestión de la infraestructura IT de la empresa",
+       "EN": "Managed the company IT infrastructure"
+      },
+      {
+       "ES": "AWS para soluciones IoT y servidor NAS multiusos",
+       "EN": "AWS for IoT solutions and a multipurpose NAS server"
+      },
+      {
+       "ES": "Desarrollo web: PHP, Python y C++",
+       "EN": "Web development: PHP, Python and C++"
+      }
+     ]
+    }
+   ],
+   "Certs": [
+    {
+     "ES": "CCNA Routing and Switching: Introducción a redes · Cisco · jun 2020",
+     "EN": "CCNA Routing and Switching: Introduction to Networks · Cisco · Jun 2020"
+    },
+    {
+     "ES": "Introduction to Ansible v2.7 · Linux Academy · sep 2021",
+     "EN": "Introduction to Ansible v2.7 · Linux Academy · Sep 2021"
+    },
+    {
+     "ES": "Learning Docker · LinkedIn · jul 2021",
+     "EN": "Learning Docker · LinkedIn · Jul 2021"
     }
    ]
   }
