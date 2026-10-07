@@ -79,12 +79,3 @@ Configuración en GitHub (Settings → Secrets and variables → Actions):
 
 Servicio integrado de GitHub configurado en `.github/dependabot.yml`. Cada mes revisa si hay versiones nuevas de las acciones del workflow y del proveedor de Terraform y, si las hay, abre un pull request con la actualización. Ese pull request ejecuta el workflow (compilación, `terraform plan` y vista previa), así que se puede comprobar que todo sigue funcionando antes de fusionarlo. No fusiona nada por sí solo.
 
-## 8. Cómo hacer cambios
-
-- **Rápido:** editar `content/content.json` en GitHub y hacer commit en `main`; en un minuto está publicado.
-- **Con revisión:** rama → pull request → revisar el plan y la URL de vista previa → fusionar.
-- **Local:** `go run .` genera `dist/`; `THEME=red go run .` prueba otro tema.
-
-## 9. Fuera del repositorio
-
-Los CVs en PDF se generan aparte (HTML impreso a PDF con Chromium) y aún no forman parte del repositorio ni del pipeline.
