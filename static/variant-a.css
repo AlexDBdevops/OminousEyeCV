@@ -78,3 +78,15 @@ html.boot .v-a .stage.bt.in #eyeball{animation:eye-open .9s .15s both}
 @media(prefers-reduced-motion:reduce){html.boot .v-a .bt{transform:none}html.boot .v-a .stage.bt.in #eyeball{animation:none}.v-a .bootenter{animation:none}}
 @keyframes eye-open{0%{transform:scaleY(.04)}60%{transform:scaleY(1.05)}100%{transform:scaleY(1)}}
 @keyframes boot-failsafe{to{opacity:1;transform:none}}
+
+/* contacto como salida de consola */
+.v-a .contact-list{border:1px solid var(--line);border-left:2px solid var(--a);background:linear-gradient(90deg,var(--panel),transparent 90%);padding:18px 22px;max-width:720px;gap:14px}
+.v-a .contact-list li{display:grid;grid-template-columns:7.5em minmax(0,1fr) auto;gap:16px;align-items:center}
+.v-a .contact-list .ck{display:block;font-family:var(--mono);font-size:.82rem;color:var(--a)}
+.v-a .contact-list .ck::before{content:"$ ";color:var(--mut)}
+.v-a .contact-list a{font-family:var(--mono);font-size:1rem;border-bottom:1px solid transparent;padding-bottom:1px;transition:border-color .2s,color .2s}
+.v-a .contact-list a:hover,.v-a .contact-list a:focus-visible{color:var(--a);border-bottom-color:var(--a)}
+.v-a .contact-list .ico{color:var(--a3)}
+.v-a .contact-list .arr{color:var(--mut)}
+.v-a .copy{font-family:var(--mono)}
+@media(max-width:560px){.v-a .contact-list{padding:14px 14px}.v-a .contact-list li{grid-template-columns:1fr auto;gap:6px 10px}.v-a .contact-list .ck{grid-column:1/-1}.v-a .contact-list a{font-size:.8rem}}

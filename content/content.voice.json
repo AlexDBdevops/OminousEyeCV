@@ -41,6 +41,14 @@
   "build": {
    "ES": "Cómo está hecha esta web",
    "EN": "How this site is built"
+  },
+  "copy": {
+   "ES": "copiar",
+   "EN": "copy"
+  },
+  "copied": {
+   "ES": "copiado",
+   "EN": "copied"
   }
  },
  "Sectors": [
@@ -757,5 +765,6 @@
     "EN": "Process"
    }
   }
- ]
+ ],
+ "LinkedIn": "https://www.linkedin.com/in/alejandro-d%C3%ADaz-benjumea-b704251a6/"
 }

@@ -54,15 +54,16 @@ type Skill struct {
 	Icons []string
 }
 type Content struct {
-	Name    string
-	Email   string
-	Title   L
-	Intro   L
-	UI      map[string]L
-	Sectors []Sector
-	Skills  []Skill
-	Build   Build
-	Groups  []Group
+	Name     string
+	Email    string
+	LinkedIn string
+	Title    L
+	Intro    L
+	UI       map[string]L
+	Sectors  []Sector
+	Skills   []Skill
+	Build    Build
+	Groups   []Group
 }
 type Group struct {
 	Key  string

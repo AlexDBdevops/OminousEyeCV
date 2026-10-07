@@ -109,3 +109,11 @@ footer{text-align:center;color:#5a4a4a;font-size:.75rem;padding:32px 16px}
 
 .echo{display:none}
 .bootcmd,.bootlog{display:none}
+
+.contact-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.contact-list li{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;min-width:0}
+.contact-list .ck{display:none}
+.contact-list a{display:inline-flex;align-items:center;gap:.5em;color:var(--bone);text-decoration:none;overflow-wrap:anywhere}
+.contact-list .li{font-size:1.05rem}
+.copy{font:inherit;font-size:.75rem;color:var(--mut);background:none;border:1px solid var(--line);border-radius:3px;padding:2px 8px;cursor:pointer}
+.copy:hover{color:var(--a);border-color:var(--a)}

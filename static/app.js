@@ -121,4 +121,13 @@ if('IntersectionObserver' in window){
     autoTimer=setTimeout(run,3200);   // si nadie pulsa Enter, se genera solo
   });
 })();
+
+// Copiar el correo
+[].slice.call(document.querySelectorAll('.copy')).forEach(function(b){
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var done=function(){b.textContent=root.lang==='es'?'copiado':'copied';setTimeout(function(){b.textContent=label},1500)};
+    if(navigator.clipboard)navigator.clipboard.writeText(b.dataset.copy).then(done,function(){});
+  });
+});
 })();
