@@ -27,12 +27,20 @@
    "EN": "Basic level, no dedicated security role"
   },
   "footer": {
-   "ES": "Generado con Go · alojado en AWS",
-   "EN": "Built with Go · hosted on AWS"
+   "ES": "Generado con Go · alojado en Cloudflare Pages",
+   "EN": "Built with Go · hosted on Cloudflare Pages"
   },
   "certs": {
    "ES": "Certificaciones",
    "EN": "Certifications"
+  },
+  "experience": {
+   "ES": "Experiencia",
+   "EN": "Experience"
+  },
+  "build": {
+   "ES": "Cómo está hecha esta web",
+   "EN": "How this site is built"
   }
  },
  "Sectors": [
@@ -475,6 +483,65 @@
    },
    "Level": 60,
    "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Cloudflare",
+    "EN": "Cloudflare"
+   },
+   "Level": 50,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "Terraform",
+    "EN": "Terraform"
+   },
+   "Level": 50,
+   "Group": ""
+  },
+  {
+   "Name": {
+    "ES": "GitHub Actions",
+    "EN": "GitHub Actions"
+   },
+   "Level": 50,
+   "Group": ""
   }
- ]
+ ],
+ "Build": {
+  "Text": [
+   {
+    "ES": "Un generador estático escrito en Go (html/template y embed) convierte un único JSON bilingüe en la página: textos, experiencia, certificaciones y barras de nivel salen de ahí, y el color se elige con un tema.",
+    "EN": "A static generator written in Go (html/template and embed) turns a single bilingual JSON file into this page: copy, experience, certifications and skill bars all come from it, and colours come from a swappable theme."
+   },
+   {
+    "ES": "El ojo y el disco son SVG con JavaScript sin librerías: el iris sigue al puntero con interpolación suave y el disco gira para elegir sección.",
+    "EN": "The eye and the disc are SVG driven by dependency-free JavaScript: the iris follows the pointer with smooth interpolation and the disc spins to pick a section."
+   },
+   {
+    "ES": "La infraestructura es código: Terraform crea el proyecto de Cloudflare Pages y guarda su estado en HCP Terraform. GitHub Actions compila, ejecuta plan en cada pull request con una URL de vista previa y aplica y publica con Wrangler al fusionar en main.",
+    "EN": "Infrastructure is code: Terraform creates the Cloudflare Pages project and keeps its state in HCP Terraform. GitHub Actions builds, runs a plan with a preview URL on every pull request, and applies and publishes with Wrangler on merge to main."
+   },
+   {
+    "ES": "Cabeceras de seguridad (CSP, HSTS, X-Frame-Options), credenciales solo como secretos de GitHub con permisos mínimos y coste de alojamiento cero.",
+    "EN": "Security headers (CSP, HSTS, X-Frame-Options), credentials kept only as least-privilege GitHub secrets, and zero hosting cost."
+   }
+  ],
+  "Tools": [
+   "Go",
+   "html/template",
+   "JavaScript",
+   "SVG",
+   "CSS",
+   "JSON",
+   "Terraform",
+   "HCP Terraform",
+   "Cloudflare Pages",
+   "Wrangler",
+   "GitHub Actions",
+   "GitHub App",
+   "Git"
+  ]
+ }
 }

@@ -1,13 +1,16 @@
 package main
 
 import (
+	"crypto/sha256"
 	"embed"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"html/template"
 	"math"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 )
@@ -54,6 +57,11 @@ type Content struct {
 	UI      map[string]L
 	Sectors []Sector
 	Skills  []Skill
+	Build   Build
+}
+type Build struct {
+	Text  []L
+	Tools []string
 }
 type Spoke struct{ X1, Y1, X2, Y2 float64 }
 type View struct {
@@ -144,8 +152,8 @@ func main() {
 	must(os.MkdirAll("dist", 0o755))
 	f, err := os.Create("dist/index.html")
 	must(err)
-	defer f.Close()
 	must(t.Execute(f, v))
+	must(f.Close())
 	name := strings.TrimSpace(os.Getenv("THEME"))
 	if name == "" {
 		tb, err := fsys.ReadFile("content/theme.txt")
@@ -170,6 +178,15 @@ func main() {
 	must(os.WriteFile("dist/theme.css", []byte(sb.String()), 0o644))
 	hd, err := fsys.ReadFile("static/headers.txt")
 	must(err)
+	// CSP sin 'unsafe-inline' para scripts: se calcula el hash de cada <script> en línea
+	page, err := os.ReadFile("dist/index.html")
+	must(err)
+	var hashes []string
+	for _, mm := range regexp.MustCompile(`(?s)<script>(.*?)</script>`).FindAllSubmatch(page, -1) {
+		sum := sha256.Sum256(mm[1])
+		hashes = append(hashes, "'sha256-"+base64.StdEncoding.EncodeToString(sum[:])+"'")
+	}
+	hd = []byte(strings.ReplaceAll(string(hd), "__SCRIPT_HASHES__", strings.Join(hashes, " ")))
 	must(os.WriteFile("dist/_headers", hd, 0o644)) // cabeceras de seguridad de Cloudflare Pages
 	for _, n := range []string{"style.css", "app.js"} {
 		d, err := fsys.ReadFile("static/" + n)

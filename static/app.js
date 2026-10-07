@@ -4,15 +4,24 @@ disc=document.getElementById('disc'),sectors=[].slice.call(document.querySelecto
 pills=[].slice.call(document.querySelectorAll('.pill')),details=[].slice.call(document.querySelectorAll('.detail'));
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Eye tracking
+// Eye tracking: el iris persigue al puntero con interpolación suave (rAF)
+var tx=0,ty=0,cx0=0,cy0=0,raf=0;
 function look(x,y){
   var r=svg.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
-  var dx=x-cx,dy=y-cy,a=Math.atan2(dy,dx),d=Math.min(Math.hypot(dx,dy)/(r.width*0.5),1);
-  var k=r.width/600,m=34*d;
-  iris.style.transform='translate('+(Math.cos(a)*m)+'px,'+(Math.sin(a)*m*0.55)+'px)';
+  var dx=x-cx,dy=y-cy,dist=Math.hypot(dx,dy),a=Math.atan2(dy,dx);
+  var d=1-Math.exp(-dist/(r.width*0.22));          // satura rápido: responde aunque el ratón esté lejos
+  tx=Math.cos(a)*62*d; ty=Math.sin(a)*34*d;        // en unidades del viewBox (600)
+  if(!raf)raf=requestAnimationFrame(step);
+}
+function step(){
+  cx0+=(tx-cx0)*0.16; cy0+=(ty-cy0)*0.16;
+  iris.setAttribute('transform','translate('+cx0.toFixed(2)+' '+cy0.toFixed(2)+')');
+  raf=(Math.abs(tx-cx0)>0.05||Math.abs(ty-cy0)>0.05)?requestAnimationFrame(step):0;
 }
 if(!reduce){
   addEventListener('pointermove',function(e){look(e.clientX,e.clientY)},{passive:true});
+  addEventListener('pointerdown',function(e){look(e.clientX,e.clientY)},{passive:true});
+  document.addEventListener('mouseleave',function(){tx=0;ty=0;if(!raf)raf=requestAnimationFrame(step)});
 }
 
 // Disc selection

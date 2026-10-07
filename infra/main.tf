@@ -22,7 +22,7 @@ variable "cloudflare_account_id" {
 
 variable "project_name" {
   type    = string
-  default = "devops-alejandro-diaz-benjumea"
+  default = "alejandro-diaz-benjumea"
 }
 
 # Proyecto de Pages en modo "direct upload": GitHub Actions compila con Go y sube dist/.
@@ -34,4 +34,8 @@ resource "cloudflare_pages_project" "cv" {
 
 output "url" {
   value = "https://${cloudflare_pages_project.cv.subdomain}"
+}
+
+output "project_name" {
+  value = cloudflare_pages_project.cv.name
 }

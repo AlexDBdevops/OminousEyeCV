@@ -77,10 +77,16 @@
       {{range .C.Sectors}}<button class="pill" data-i="{{.Index}}">{{l .Name}}</button>{{end}}
     </nav>
 
+
+  </div>
+</section>
+
+<section class="experience" aria-label="Experience">
     {{range .C.Sectors}}
     <article class="detail" data-i="{{.Index}}" id="d-{{.ID}}">
       <header><h2>{{l .Name}}</h2></header>
       <p class="sum">{{l .Summary}}</p>
+      <div class="cols">
       {{range .Roles}}<div class="role-block">
         <div class="rh"><b>{{l .Company}}</b><span class="period">{{l .Period}}</span></div>
         <div class="rt">{{l .Title}}</div>
@@ -88,8 +94,8 @@
       {{with .Sub}}<div class="sub"><h3>{{l .Name}}</h3><p class="badge">{{l .Note}}</p>
       <ul>{{range .Items}}<li>{{l .}}</li>{{end}}</ul></div>{{end}}
       {{if .Certs}}<div class="sub"><h3>{{ui "certs"}}</h3><ul>{{range .Certs}}<li>{{l .}}</li>{{end}}</ul></div>{{end}}
+      </div>
     </article>{{end}}
-  </div>
 </section>
 
 <section class="skills">
@@ -99,6 +105,12 @@
     <div class="skill"><div class="sh"><span>{{l .Name}}</span><b>{{.Level}}%</b></div>
       <div class="bar"><i style="--w:{{.Level}}%"></i></div></div>{{end}}
   </div>
+</section>
+
+<section class="build">
+  <h2>{{ui "build"}}</h2>
+  <div class="build-text">{{range .C.Build.Text}}<p>{{l .}}</p>{{end}}</div>
+  <ul class="tools">{{range .C.Build.Tools}}<li>{{.}}</li>{{end}}</ul>
 </section>
 
 <section class="contact">
