@@ -89,7 +89,7 @@
     <h1>{{.C.Name}}</h1>
     <p class="role">{{l .C.Title}}</p>
     <div class="echo" aria-hidden="true">
-      <div class="cmdline"><span class="prompt">alejandro@ops:~$</span> echo "<span data-lang="es">BIENVENIDOS</span><span data-lang="en">WELCOME</span>"</div>
+      <div class="cmdline"><span class="prompt">alejandro@ops:~$</span> echo "<span data-lang="es">\: I E N V E N | DOS</span><span data-lang="en">WELCOME</span>"</div>
       <pre class="banner" data-lang="es">{{banner "BIENVENIDOS"}}</pre><pre class="banner" data-lang="en">{{banner "WELCOME"}}</pre>
     </div>
     <p class="intro">{{l .C.Intro}}</p>
@@ -130,7 +130,7 @@
       {{range $.C.Skills}}{{if eq .Group $g.Key}}<li><span class="sn">{{icons .Icons}}{{l .Name}}</span><span class="dots" aria-label="{{.Level}}%">{{dots .Level}}</span></li>{{end}}{{end}}
     </ul></div>{{end}}
   </div>
-  <div class="grid">
+  <div class="grid{{if .B.Grouped}} flow-cols{{end}}">
     {{range .C.Skills}}
     <div class="skill"><div class="sh"><span class="sn">{{icons .Icons}}{{l .Name}}</span><b>{{.Level}}%</b></div>
       <div class="bar"><i style="--w:{{.Level}}%"></i></div></div>{{end}}

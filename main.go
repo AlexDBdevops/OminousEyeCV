@@ -79,6 +79,7 @@ type Tool struct {
 type Spoke struct{ X1, Y1, X2, Y2 float64 }
 type BuildInfo struct {
 	SHA, Date, Variant string
+	Grouped            bool
 }
 type View struct {
 	B      BuildInfo
@@ -150,6 +151,21 @@ func main() {
 		sha = sha[:7]
 	}
 	v.B = BuildInfo{SHA: sha, Date: time.Now().UTC().Format("2006-01-02"), Variant: variant}
+	// SKILLSORT=group: competencias juntas por tema (sin títulos), de mayor a menor nivel
+	if os.Getenv("SKILLSORT") == "group" {
+		v.B.Grouped = true
+		order := map[string]int{}
+		for i, g := range c.Groups {
+			order[g.Key] = i
+		}
+		sort.SliceStable(v.C.Skills, func(i, j int) bool {
+			a, b := v.C.Skills[i], v.C.Skills[j]
+			if order[a.Group] != order[b.Group] {
+				return order[a.Group] < order[b.Group]
+			}
+			return a.Level > b.Level
+		})
+	}
 	for i := 0; i < 24; i++ {
 		a := float64(i) * 15
 		x1, y1 := pt(34, a)
