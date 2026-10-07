@@ -108,7 +108,12 @@ func arc(r, a0, a1 float64) string {
 	return fmt.Sprintf("M%.2f %.2f A%.0f %.0f 0 0 1 %.2f %.2f", x0, y0, r, r, x1, y1)
 }
 
-var iconPath = regexp.MustCompile(`<path d="([^"]+)"`)
+var (
+	iconViewBox = regexp.MustCompile(`viewBox="([^"]+)"`)
+	iconInner   = regexp.MustCompile(`(?s)<svg[^>]*>(.*)</svg>`)
+	iconTitle   = regexp.MustCompile(`(?s)<title>.*?</title>`)
+	iconFill    = regexp.MustCompile(`\sfill="#[0-9A-Fa-f]{3,6}"`)
+)
 
 func must(err error) {
 	if err != nil {
@@ -206,7 +211,7 @@ func main() {
 		},
 		"en": func(x L) string { return x.EN },
 		"icons": func(slugs []string) template.HTML {
-			// Iconos de Simple Icons (CC0) en línea, coloreados con currentColor
+			// Iconos en línea (Simple Icons, Devicon o propios), coloreados con currentColor
 			if len(slugs) == 0 {
 				return template.HTML(`<svg class="ico ico-generic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l9 9-9 9-9-9z" fill="none" stroke="currentColor" stroke-width="2"/></svg>`)
 			}
@@ -214,16 +219,23 @@ func main() {
 			for _, s := range slugs {
 				b, err := fsys.ReadFile("static/icons/" + s + ".svg")
 				must(err)
-				d := iconPath.FindSubmatch(b)
-				if d == nil {
-					panic("icono sin path: " + s)
+				vb := "0 0 24 24"
+				if m := iconViewBox.FindSubmatch(b); m != nil {
+					vb = string(m[1])
 				}
-				sb.WriteString(`<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="` + template.HTMLEscapeString(string(d[1])) + `"/></svg>`)
+				inner := iconInner.FindSubmatch(b)
+				if inner == nil {
+					panic("icono no válido: " + s)
+				}
+				body := iconTitle.ReplaceAll(inner[1], nil)
+				body = iconFill.ReplaceAll(body, nil)
+				sb.WriteString(`<svg class="ico" viewBox="` + vb + `" aria-hidden="true" focusable="false">` + string(body) + `</svg>`)
 			}
 			return template.HTML(sb.String())
 		},
 		"es":     func(x L) string { return x.ES },
 		"banner": bannerSVG,
+		"slice1": func(s string) []string { return []string{s} },
 		"dots": func(level int) template.HTML {
 			n := (level + 10) / 20
 			var sb strings.Builder

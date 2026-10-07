@@ -58,7 +58,7 @@ body.v-a{font-family:var(--body);font-size:16.5px}
 html[lang="es"] .v-a .banner[data-lang="es"],html[lang="en"] .v-a .banner[data-lang="en"]{display:block}
 
 /* versión con competencias agrupadas: fluyen por columnas, cada tema queda junto */
-.v-a .grid.flow-cols{display:block;columns:3 260px;column-gap:32px}
+.v-a .grid.flow-cols{display:block;columns:3 260px;column-gap:32px;column-fill:balance}
 .v-a .grid.flow-cols .skill{break-inside:avoid;margin-bottom:14px}
 
 /* --- Arranque: se escribe ./AlexDBdevopsCV.sh y el CV se va generando --- */
