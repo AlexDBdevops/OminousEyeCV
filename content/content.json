@@ -79,7 +79,7 @@
      "Items": [
       {
        "ES": "Despliego releases, primero en desarrollo y ahora también en producción: las analizo y corrijo, paso los bugs a desarrollo y resuelvo con QA los fallos de infraestructura",
-       "EN": "I deploy releases, first to development and now to production too: I analyse and fix them, pass bugs to the developers and work with QA on infrastructure faults"
+       "EN": "I deploy releases, first to development and then to production too: I analyse and fix them, pass bugs to the developers and work with QA on infrastructure faults"
       },
       {
        "ES": "De guardia para Kentech de forma continua. Incidentes típicos: caídas de clústeres Kubernetes y MySQL NDB y switches que fallan",
