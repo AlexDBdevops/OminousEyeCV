@@ -213,7 +213,7 @@ func main() {
 	}
 	hd = []byte(strings.ReplaceAll(string(hd), "__SCRIPT_HASHES__", strings.Join(hashes, " ")))
 	must(os.WriteFile("dist/_headers", hd, 0o644)) // cabeceras de seguridad de Cloudflare Pages
-	for _, n := range []string{"style.css", "app.js"} {
+	for _, n := range []string{"style.css", "app.js", "favicon.svg", "favicon-32.png", "apple-touch-icon.png", "og.png"} {
 		d, err := fsys.ReadFile("static/" + n)
 		must(err)
 		must(os.WriteFile(filepath.Join("dist", n), d, 0o644))
