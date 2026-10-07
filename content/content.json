@@ -685,8 +685,8 @@
     "EN": "Terraform creates the Cloudflare Pages project and keeps its state in HCP Terraform. GitHub Actions builds the site, runs a plan with a preview URL on every pull request and publishes with Wrangler once it reaches main."
    },
    {
-    "ES": "Lo he construido con la asistencia de Claude Code: yo decidí la arquitectura, el diseño, el contenido y cada revisión; el agente escribió y probó buena parte del código. El repositorio es público, con todo su historial.",
-    "EN": "I built it with Claude Code as an assistant: I decided the architecture, design, content and every review; the agent wrote and tested much of the code. The repository is public, with its full history."
+    "ES": "Esta web se ha desarrollado con la asistencia de Claude Code, que escribió buena parte del código bajo mi dirección y revisión.",
+    "EN": "This website was built with the assistance of Claude Code, which wrote much of the code under my direction and review."
    },
    {
     "ES": "Cabeceras de seguridad (CSP, HSTS, X-Frame-Options), credenciales guardadas fuera de la página con permisos mínimos y coste de alojamiento cero.",
