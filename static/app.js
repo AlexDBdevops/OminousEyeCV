@@ -95,7 +95,7 @@ if('IntersectionObserver' in window){
     if(state==='done')return;state='done';timers.forEach(clearTimeout);clearTimeout(autoTimer);btn.hidden=true;
     cmd.textContent=full;typed.forEach(function(s){s.textContent=s.dataset.full});
     items.forEach(function(e){e.classList.add('in')});
-    log.textContent='done '+((performance.now()-(t0||performance.now()))/1000).toFixed(1)+'s';
+    log.textContent='finish in '+((performance.now()-(t0||performance.now()))/1000).toFixed(1)+'s';
     setTimeout(function(){html.classList.remove('boot');log.textContent=''},2200);
     try{sessionStorage.setItem('booted','1')}catch(e){}
   }
@@ -106,7 +106,7 @@ if('IntersectionObserver' in window){
       [1950,'.experience','experience (es/en)'],[2250,'.skills','skills'],[2550,'.build','how it was built'],[2750,'.contact, footer','']];
     steps.forEach(function(s){at(s[0],function(){show(s[1]);if(s[2])log.textContent='> '+s[2]+'…'})});
     typed.forEach(function(s){var f=s.dataset.full;for(var k=1;k<=f.length;k++){(function(n){at(700+n*32,function(){s.textContent=f.slice(0,n)})})(k)}});
-    at(3000,finish);
+    at(3300,finish);
   }
   addEventListener('keydown',function(e){
     if(state==='waiting'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();run()}

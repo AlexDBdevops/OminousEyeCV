@@ -67,7 +67,7 @@ func bannerSVG(text string) template.HTML {
 			for x < len(r) && r[x] == '█' {
 				x++
 			}
-			fmt.Fprintf(&sb, `<rect x="%d" y="%d" width="%d" height="1"/>`, s, y, x-s)
+			fmt.Fprintf(&sb, `<rect x="%d" y="%d" width="%d" height=".78"/>`, s, y, x-s)
 		}
 	}
 	sb.WriteString(`</svg>`)

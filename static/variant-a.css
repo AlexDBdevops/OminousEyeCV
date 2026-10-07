@@ -52,7 +52,7 @@ body.v-a{font-family:var(--body);font-size:16.5px}
 .v-a .cmdline{font-size:.85rem;color:var(--bone);opacity:.9}
 .v-a .cmdline .prompt{color:var(--a)}
 .v-a .banner{margin:10px 0 2px;color:var(--a3)}
-.v-a .banner svg{display:block;width:min(100%,calc(var(--cols) * 6.6px));height:auto;fill:currentColor;filter:drop-shadow(0 0 6px color-mix(in srgb,var(--a3) 45%,transparent))}
+.v-a .banner svg{display:block;width:min(100%,calc(var(--cols) * 6.6px));height:auto;fill:currentColor;filter:blur(.35px) drop-shadow(0 0 3px color-mix(in srgb,var(--a3) 70%,transparent)) drop-shadow(0 0 10px color-mix(in srgb,var(--a3) 40%,transparent))}
 .v-a .cmdline{overflow-wrap:anywhere}
 .v-a .banner[data-lang]{display:none}
 html[lang="es"] .v-a .banner[data-lang="es"],html[lang="en"] .v-a .banner[data-lang="en"]{display:block}
