@@ -78,12 +78,20 @@
        "EN": "Release deployment, first in development and later in production too: analysing and fixing releases, reporting bugs to the development team for correction and coordinating with QA to resolve potential infrastructure issues"
       },
       {
+       "ES": "Guardias continuadas: resolución de caídas de clústeres Kubernetes y MySQL NDB y de switches de red",
+       "EN": "Ongoing on-call duty: resolving outages of Kubernetes and MySQL NDB clusters and network switches"
+      },
+      {
        "ES": "Migración de MySQL 5.x a 8.x",
        "EN": "MySQL 5.x to 8.x migration"
       },
       {
        "ES": "Dirección de la migración y el mantenimiento de clústeres Rancher y Kubernetes, del Rancher legado sobre Docker a una orquestación de contenedores moderna, en desarrollo y producción",
        "EN": "Led the migration and maintenance of Rancher and Kubernetes clusters, from legacy Docker-based Rancher to modern container orchestration, across development and production"
+      },
+      {
+       "ES": "Automatización generalizada con Bash, kapp, Argo CD, Ansible y GitLab CI/CD, y adaptación de charts de Helm",
+       "EN": "Broad automation with Bash, kapp, Argo CD, Ansible and GitLab CI/CD, plus Helm chart customisation"
       },
       {
        "ES": "Pipeline CI/CD con GitLab y GitOps con ArgoCD",
@@ -94,8 +102,8 @@
        "EN": "Feature flags with Unleash"
       },
       {
-       "ES": "Despliegue de Claude como herramienta de IA de la empresa",
-       "EN": "Rollout of Claude as the company AI tool"
+       "ES": "Despliegue de Claude como herramienta de IA de la empresa y uso diario en revisión de código, diagnósticos, documentación y agentes",
+       "EN": "Rolled out Claude as the company AI tool and use it daily for code review, diagnostics, documentation and agents"
       },
       {
        "ES": "Metodología Agile de desarrollo a testing, con soporte en preproducción y producción",
@@ -215,6 +223,10 @@
       {
        "ES": "Datacenter con más de 20 servidores y más de 10 equipos de red, gestionado primero en solitario y después junto a un compañero: reparaciones, nuevas funcionalidades y estudio de mejoras, del hardware a la nube (AWS)",
        "EN": "Datacenter with 20+ servers and 10+ network devices, run first on my own and later alongside a colleague: repairs, new features and improvement studies, from hardware to the AWS cloud"
+      },
+      {
+       "ES": "Copias de seguridad de servidores en NAS y SAN, automatizadas con scripts de Bash",
+       "EN": "Server backups to NAS and SAN, automated with Bash scripts"
       },
       {
        "ES": "25+ sobremesas y 20 portátiles de marcas y sistemas variados: soporte al equipo, inventario coordinado con Administración y propuestas de compra de hardware ajustadas a la empresa",
