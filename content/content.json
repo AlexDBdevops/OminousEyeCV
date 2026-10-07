@@ -6,8 +6,8 @@
   "EN": "Infrastructure · DevOps"
  },
  "Intro": {
-  "ES": "Administro, automatizo y mantengo plataformas: del datacenter al pipeline.",
-  "EN": "I run, automate and maintain platforms: from the datacenter to the pipeline."
+  "ES": "Administro sistemas en producción desde 2021 y automatizo lo que se repite. Del rack al pipeline.",
+  "EN": "I've run production systems since 2021 and automate whatever repeats. From the rack to the pipeline."
  },
  "UI": {
   "skills": {
@@ -63,8 +63,8 @@
     "EN": "2021 – present"
    },
    "Summary": {
-    "ES": "Automatización, entrega continua y plataformas fiables.",
-    "EN": "Automation, continuous delivery and reliable platforms."
+    "ES": "Las releases y los clústeres de Kentech, guardias incluidas.",
+    "EN": "Kentech's releases and clusters, on-call included."
    },
    "Roles": [
     {
@@ -82,52 +82,52 @@
      },
      "Items": [
       {
-       "ES": "Despliegue de releases, primero en desarrollo y después también en producción: análisis y corrección, reporte de bugs al equipo de desarrollo para su corrección y coordinación con QA para resolver posibles fallos de infraestructura",
-       "EN": "Release deployment, first in development and later in production too: analysing and fixing releases, reporting bugs to the development team for correction and coordinating with QA to resolve potential infrastructure issues"
+       "ES": "Despliego releases, primero en desarrollo y ahora también en producción: las analizo y corrijo, paso los bugs a desarrollo y resuelvo con QA los fallos de infraestructura",
+       "EN": "I deploy releases, first to development and now to production too: I analyse and fix them, pass bugs to the developers and work with QA on infrastructure faults"
       },
       {
-       "ES": "Guardias continuadas: resolución de caídas de clústeres Kubernetes y MySQL NDB y de switches de red",
-       "EN": "Ongoing on-call duty: resolving outages of Kubernetes and MySQL NDB clusters and network switches"
+       "ES": "De guardia para Kentech de forma continua. Incidentes típicos: caídas de clústeres Kubernetes y MySQL NDB y switches que fallan",
+       "EN": "On call for Kentech on an ongoing basis. Typical incidents: Kubernetes and MySQL NDB cluster crashes and failing switches"
       },
       {
-       "ES": "Migración de MySQL 5.x a 8.x",
-       "EN": "MySQL 5.x to 8.x migration"
+       "ES": "Migré MySQL de 5.x a 8.x",
+       "EN": "Migrated MySQL from 5.x to 8.x"
       },
       {
-       "ES": "Dirección de la migración y el mantenimiento de clústeres Rancher y Kubernetes, del Rancher legado sobre Docker a una orquestación de contenedores moderna, en desarrollo y producción",
-       "EN": "Led the migration and maintenance of Rancher and Kubernetes clusters, from legacy Docker-based Rancher to modern container orchestration, across development and production"
+       "ES": "Dirigí el paso del Rancher antiguo sobre Docker a clústeres Kubernetes actuales, en desarrollo y producción, y los mantengo",
+       "EN": "Led the move from legacy Docker-based Rancher to current Kubernetes clusters, in development and production, and keep them running"
       },
       {
-       "ES": "Automatización generalizada con Bash, kapp, Argo CD, Ansible y GitLab CI/CD, y adaptación de charts de Helm",
-       "EN": "Broad automation with Bash, kapp, Argo CD, Ansible and GitLab CI/CD, plus Helm chart customisation"
+       "ES": "Automatizo con Bash, kapp, Argo CD, Ansible y GitLab CI/CD, y adapto charts de Helm cuando hace falta",
+       "EN": "I automate with Bash, kapp, Argo CD, Ansible and GitLab CI/CD, and adapt Helm charts when needed"
       },
       {
-       "ES": "Pipeline CI/CD con GitLab y GitOps con ArgoCD",
-       "EN": "CI/CD pipeline with GitLab and GitOps with ArgoCD"
+       "ES": "Monté Argo CD y junté despliegues dispersos en un único flujo GitOps sobre GitLab",
+       "EN": "Set up Argo CD and pulled scattered deployments into one GitOps flow on GitLab"
       },
       {
-       "ES": "Feature flags con Unleash",
-       "EN": "Feature flags with Unleash"
+       "ES": "Introduje feature flags con Unleash para separar la release del despliegue",
+       "EN": "Introduced feature flags with Unleash so a release no longer means a deploy"
       },
       {
-       "ES": "Despliegue de Claude como herramienta de IA de la empresa y uso diario en revisión de código, diagnósticos, documentación y agentes",
-       "EN": "Rolled out Claude as the company AI tool and use it daily for code review, diagnostics, documentation and agents"
+       "ES": "Implanté Claude en la empresa y lo uso a diario para revisar código, diagnosticar, documentar y montar agentes",
+       "EN": "Rolled out Claude across the company; I use it daily for code review, diagnostics, documentation and agents"
       },
       {
-       "ES": "Metodología Agile de desarrollo a testing, con soporte en preproducción y producción",
-       "EN": "Agile methodology from development to testing, with support in pre-production and production"
+       "ES": "Acompaño el ciclo Agile de desarrollo a testing, y después preproducción y producción",
+       "EN": "Support the Agile cycle from development to testing, then pre-production and production"
       },
       {
-       "ES": "Feedback a PMs y desarrolladores sobre nuevos despliegues, buscando incidencias e incompatibilidades entre fases",
-       "EN": "Feedback to PMs and developers on new deployments, hunting for issues and incompatibilities across phases"
+       "ES": "Doy feedback a PMs y desarrolladores sobre cada despliegue y busco incompatibilidades entre fases",
+       "EN": "Give PMs and developers feedback on each deployment and look for incompatibilities between phases"
       },
       {
-       "ES": "Coordinación con un equipo DevOps extranjero, repartiendo y priorizando tareas en Jira",
-       "EN": "Coordination with a foreign DevOps team, splitting and prioritising tasks in Jira"
+       "ES": "Reparto y priorizo tareas en Jira con un equipo DevOps de fuera de España",
+       "EN": "Split and prioritise work in Jira with a DevOps team abroad"
       },
       {
-       "ES": "Mantenimiento, actualización y despliegue de software, probando nuevas tecnologías de forma continua",
-       "EN": "Maintaining, updating and deploying software while constantly testing new technologies"
+       "ES": "Mantengo, actualizo y despliego el software de la empresa, y pruebo herramientas nuevas a medida que salen",
+       "EN": "Maintain, update and deploy the company's software, and try new tools as they appear"
       }
      ]
     }
@@ -143,32 +143,32 @@
     },
     "Items": [
      {
-      "ES": "Despliegue de Microsoft Defender ATP para monitorizar endpoints y detectar amenazas",
-      "EN": "Rollout of Microsoft Defender ATP for endpoint monitoring and threat detection"
+      "ES": "Desplegué Microsoft Defender ATP para vigilar endpoints y detectar amenazas",
+      "EN": "Rolled out Microsoft Defender ATP to watch endpoints and detect threats"
      },
      {
-      "ES": "Buenas prácticas en pipelines y gestión de accesos",
-      "EN": "Pipeline and access-management good practices"
+      "ES": "Buenas prácticas en pipelines y accesos",
+      "EN": "Good practices for pipelines and access"
      },
      {
-      "ES": "Participación en las auditorías externas de seguridad de Kentech",
+      "ES": "Participé en las auditorías externas de seguridad de Kentech",
       "EN": "Took part in Kentech's external security audits"
      },
      {
-      "ES": "Exploración de Snyk para detectar vulnerabilidades en código y dependencias",
-      "EN": "Explored Snyk to detect vulnerabilities in code and dependencies"
+      "ES": "Probé Snyk para encontrar vulnerabilidades en código y dependencias",
+      "EN": "Tried Snyk for vulnerabilities in code and dependencies"
      },
      {
-      "ES": "SonarQube para el control de la seguridad y los bugs del código",
-      "EN": "SonarQube to keep code security and bugs under control"
+      "ES": "Uso SonarQube para seguir fallos de seguridad y bugs en el código",
+      "EN": "Use SonarQube to track security issues and bugs in the code"
      },
      {
-      "ES": "Elaboración de campañas internas de phishing para concienciar al personal",
-      "EN": "Designed internal phishing campaigns to raise staff awareness"
+      "ES": "Preparé campañas internas de phishing para entrenar al personal",
+      "EN": "Ran internal phishing campaigns to train staff"
      },
      {
-      "ES": "Contención, de forma manual y automática, de numerosas amenazas de diversa gravedad",
-      "EN": "Contained numerous threats of varying severity, both manually and automatically"
+      "ES": "He contenido muchas amenazas de distinta gravedad, a mano y con automatización",
+      "EN": "Contained many threats of different severity, by hand and with automation"
      }
     ]
    },
@@ -210,8 +210,8 @@
     "EN": "Jul 2021 – present"
    },
    "Summary": {
-    "ES": "Administración de un datacenter y del parque de puestos de trabajo.",
-    "EN": "Administration of a datacenter and the end-user fleet."
+    "ES": "Un datacenter de más de 20 servidores y todos los equipos de la oficina.",
+    "EN": "A datacenter of 20+ servers and every desktop and laptop in the office."
    },
    "Roles": [
     {
@@ -229,24 +229,24 @@
      },
      "Items": [
       {
-       "ES": "Datacenter con más de 20 servidores y más de 10 equipos de red, gestionado primero en solitario y después junto a un compañero: reparaciones, nuevas funcionalidades y estudio de mejoras, del hardware a la nube (AWS)",
-       "EN": "Datacenter with 20+ servers and 10+ network devices, run first on my own and later alongside a colleague: repairs, new features and improvement studies, from hardware to the AWS cloud"
+       "ES": "Llevé un datacenter de más de 20 servidores y 10 equipos de red, primero solo y después con un compañero: reparaciones, mejoras y nuevas funciones, del hardware a AWS",
+       "EN": "Ran a datacenter of 20+ servers and 10+ network devices, alone at first and later with a colleague: repairs, improvements and new features, from hardware to AWS"
       },
       {
-       "ES": "Copias de seguridad de servidores en NAS y SAN, automatizadas con scripts de Bash",
-       "EN": "Server backups to NAS and SAN, automated with Bash scripts"
+       "ES": "Copias de seguridad de los servidores en NAS y SAN con scripts de Bash",
+       "EN": "Backed up servers to NAS and SAN with Bash scripts"
       },
       {
-       "ES": "25+ sobremesas y 20 portátiles de marcas y sistemas variados: soporte al equipo, inventario coordinado con Administración y propuestas de compra de hardware ajustadas a la empresa",
-       "EN": "25+ desktops and 20 laptops across brands and operating systems: team support, inventory coordinated with Administration and hardware purchase proposals tailored to the company"
+       "ES": "Me ocupé de más de 25 sobremesas y 20 portátiles de marcas y sistemas distintos: soporte, inventario con Administración y propuestas de compra",
+       "EN": "Looked after 25+ desktops and 20 laptops of mixed brands and systems: support, inventory with Administration and purchase proposals"
       },
       {
-       "ES": "Virtualización VMware / Proxmox, almacenamiento NAS/SAN, Active Directory y Microsoft 365",
-       "EN": "VMware / Proxmox virtualization, NAS/SAN storage, Active Directory and Microsoft 365"
+       "ES": "Virtualización con VMware y Proxmox, almacenamiento NAS/SAN, Active Directory y Microsoft 365",
+       "EN": "VMware and Proxmox virtualisation, NAS/SAN storage, Active Directory and Microsoft 365"
       },
       {
-       "ES": "Documentación técnica al día de toda la infraestructura",
-       "EN": "Up-to-date technical documentation of the whole infrastructure"
+       "ES": "Documentación de la infraestructura siempre al día",
+       "EN": "Kept the infrastructure documentation up to date"
       }
      ]
     },
@@ -265,16 +265,16 @@
      },
      "Items": [
       {
-       "ES": "Gestión de la infraestructura IT de la empresa",
-       "EN": "Managed the company IT infrastructure"
+       "ES": "Gestioné la infraestructura IT de la empresa",
+       "EN": "Managed the company's IT infrastructure"
       },
       {
-       "ES": "AWS para soluciones IoT y servidor NAS multiusos",
-       "EN": "AWS for IoT solutions and a multipurpose NAS server"
+       "ES": "AWS para IoT y un servidor NAS para todo",
+       "EN": "AWS for IoT and an all-purpose NAS server"
       },
       {
-       "ES": "Desarrollo web: PHP, Python y C++",
-       "EN": "Web development: PHP, Python and C++"
+       "ES": "Desarrollo web en PHP, Python y C++",
+       "EN": "Web development in PHP, Python and C++"
       }
      ]
     }
@@ -631,16 +631,16 @@
  "Build": {
   "Text": [
    {
-    "ES": "Un generador estático escrito en Go (html/template y embed) convierte un único JSON bilingüe en la página: textos, experiencia, certificaciones y barras de nivel salen de ahí, y el color se elige con un tema.",
-    "EN": "A static generator written in Go (html/template and embed) turns a single bilingual JSON file into this page: copy, experience, certifications and skill bars all come from it, and colours come from a swappable theme."
+    "ES": "Esta página la genera un pequeño programa en Go (html/template y embed) a partir de un único JSON bilingüe. Ahí viven los textos, la experiencia, las certificaciones y los niveles; los colores salen de un tema.",
+    "EN": "This page is generated by a small Go program (html/template and embed) from one bilingual JSON file. Text, experience, certifications and skill levels live there; colours come from a theme."
    },
    {
-    "ES": "El ojo y el disco son SVG con JavaScript sin librerías: el iris sigue al puntero con interpolación suave y el disco gira para elegir sección.",
-    "EN": "The eye and the disc are SVG driven by dependency-free JavaScript: the iris follows the pointer with smooth interpolation and the disc spins to pick a section."
+    "ES": "El ojo y el disco son SVG movidos con JavaScript sin librerías. El iris sigue al puntero y el disco gira para cambiar de sección.",
+    "EN": "The eye and the disc are SVG moved by plain JavaScript, no libraries. The iris follows the pointer and the disc turns to change section."
    },
    {
-    "ES": "La infraestructura es código: Terraform crea el proyecto de Cloudflare Pages y guarda su estado en HCP Terraform. GitHub Actions compila, ejecuta plan en cada pull request con una URL de vista previa y aplica y publica con Wrangler al fusionar en main.",
-    "EN": "Infrastructure is code: Terraform creates the Cloudflare Pages project and keeps its state in HCP Terraform. GitHub Actions builds, runs a plan with a preview URL on every pull request, and applies and publishes with Wrangler on merge to main."
+    "ES": "Terraform crea el proyecto de Cloudflare Pages y guarda su estado en HCP Terraform. GitHub Actions compila la web, lanza un plan con URL de vista previa en cada pull request y publica con Wrangler al llegar a main.",
+    "EN": "Terraform creates the Cloudflare Pages project and keeps its state in HCP Terraform. GitHub Actions builds the site, runs a plan with a preview URL on every pull request and publishes with Wrangler once it reaches main."
    },
    {
     "ES": "Cabeceras de seguridad (CSP, HSTS, X-Frame-Options), credenciales guardadas fuera de la página con permisos mínimos y coste de alojamiento cero.",

@@ -138,7 +138,7 @@ func main() {
 		c.Sectors[i].Label = arc(252, a0+14, a0+span-14)
 	}
 	v := View{C: c}
-	// Variante de diseño (v2: a | b) y datos reales del build para el pie
+	// Variante de diseño (v2: a) y datos reales del build para el pie
 	variant := strings.TrimSpace(os.Getenv("VARIANT"))
 	if variant == "" {
 		vb, err := fsys.ReadFile("content/variant.txt")

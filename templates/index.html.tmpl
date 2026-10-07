@@ -125,11 +125,6 @@
 
 <section class="skills bt">
   <h2>{{ui "skills"}}</h2>
-  <div class="groups">
-    {{range $g := .C.Groups}}<div class="grp"><h3>{{l $g.Name}}</h3><ul>
-      {{range $.C.Skills}}{{if eq .Group $g.Key}}<li><span class="sn">{{icons .Icons}}{{l .Name}}</span><span class="dots" aria-label="{{.Level}}%">{{dots .Level}}</span></li>{{end}}{{end}}
-    </ul></div>{{end}}
-  </div>
   <div class="grid flow-cols">
     {{range .C.Skills}}
     <div class="skill"><div class="sh"><span class="sn">{{icons .Icons}}{{l .Name}}</span><b>{{.Level}}%</b></div>

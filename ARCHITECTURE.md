@@ -14,10 +14,15 @@ templates/index.html.tmpl   ← estructura HTML de la página
 static/style.css            ← diseño
 static/app.js               ← ojo, disco, botón ES/EN, barras animadas
 static/headers.txt          ← cabeceras de seguridad (plantilla de _headers)
-static/icons/*.svg          ← iconos de tecnologías (Simple Icons, CC0)
+static/icons/*.svg          ← iconos de tecnologías (Simple Icons CC0, Devicon MIT y propios)
+static/fonts/               ← fuentes autoalojadas (Syne, IBM Plex Sans/Mono, OFL)
+static/variant-a.css        ← diseño de la v2 (estilo consola)
+banner.go                   ← cartel BIENVENIDOS / WELCOME en SVG de píxeles
+VERSION                     ← versión publicada (v1, v2…)
 main.go                     ← generador: lo junta todo y produce dist/
 infra/main.tf               ← Terraform: proyecto de Cloudflare Pages
 .github/workflows/deploy.yml← CI/CD
+.github/workflows/tag.yml   ← crea la etiqueta de versión cuando cambia VERSION en main
 .github/dependabot.yml      ← actualizaciones automáticas de dependencias
 ```
 
@@ -41,6 +46,9 @@ El resultado es una web estática: archivos fijos, sin servidor ni base de datos
 - **Ojo:** el movimiento del ratón o un toque fija una posición objetivo para el iris; en cada fotograma el iris avanza un 16 % hacia ella (movimiento suave). El párpado recorta el iris. Parpadeo cada 6 s con CSS. Con "reducir movimiento" activado, el iris sigue al puntero sin interpolación.
 - **Disco:** pulsar un sector, un botón o arrastrar el anillo lo gira por el camino más corto hasta dejar arriba la sección elegida y muestra su bloque de experiencia.
 - **Barras:** se rellenan con animación al entrar en pantalla.
+- **Arranque (v2):** la primera visita de cada sesión empieza con solo el prompt; se escribe `./AlexDBdevopsCV.sh`, aparece un botón `↵ Enter` (o arranca solo a los 3 s) y el CV se va mostrando por partes hasta `finish in 3.3s`. Cualquier tecla o clic lo salta; si el JavaScript fallara, todo aparece a los 7 s.
+- **Cartel:** `echo` con BIENVENIDOS / WELCOME dibujado por Go como SVG de píxeles, con líneas de barrido y brillo.
+- **Pie:** commit y fecha reales del build.
 
 ## 4. Infraestructura (`infra/main.tf`)
 
@@ -58,6 +66,8 @@ Se lanza con un push a `main`, al abrir un pull request o a mano (Actions → de
 4. **Terraform init + fmt + validate.**
 5. **Pull request:** `terraform plan` (muestra qué cambiaría, sin tocar nada). **main:** `terraform apply`.
 6. **Wrangler** (CLI de Cloudflare) sube `dist/` al proyecto de Pages: a producción en `main` y a una URL de vista previa propia de la rama en los pull requests.
+
+Versionado: los hitos se marcan cambiando `VERSION` en `main`; el workflow `tag` crea la etiqueta. Cualquier push a `main` despliega, haya o no etiqueta nueva.
 
 Configuración en GitHub (Settings → Secrets and variables → Actions):
 
