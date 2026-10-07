@@ -15,7 +15,7 @@ const root=path.resolve(__dirname,'..');
   .t .u{color:var(--mut);letter-spacing:.02em;text-transform:none;font-size:21px;margin-top:28px;white-space:nowrap}
   .t .k{color:var(--bone);letter-spacing:.02em;text-transform:none;font-size:22px;margin-top:22px;opacity:.85}
   </style></head><body>${svg}<div class="t"><h1>Alejandro<br>Díaz Benjumea</h1><p>Sysadmin · DevOps</p>
-  <p class="k">Kubernetes · CI/CD · GitOps · Terraform</p><p class="u">alejandro-diaz-benjumea.pages.dev</p></div></body></html>`;
+  <p class="k">Linux · Docker · Kubernetes · GitOps</p><p class="u">alejandro-diaz-benjumea.pages.dev</p></div></body></html>`;
   const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});
   const p=await b.newPage({viewport:{width:1200,height:630}});
   await p.setContent(og);
