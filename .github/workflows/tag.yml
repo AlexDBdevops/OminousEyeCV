@@ -1,0 +1,25 @@
+name: tag
+# Crea la etiqueta de versión (v1, v2…) cuando cambia el archivo VERSION en main
+on:
+  push:
+    branches: [main]
+    paths: [VERSION]
+permissions: { contents: write }
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: { fetch-depth: 0 }
+      - name: Crear etiqueta
+        run: |
+          V=$(tr -d '[:space:]' < VERSION)
+          if git rev-parse -q --verify "refs/tags/$V" >/dev/null; then
+            echo "La etiqueta $V ya existe" >> "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "$V" -m "Versión $V del CV web"
+          git push origin "$V"
+          echo "Etiqueta $V creada en $(git rev-parse --short HEAD)" >> "$GITHUB_STEP_SUMMARY"
