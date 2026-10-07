@@ -125,10 +125,11 @@
 
 <section class="skills bt">
   <h2>{{ui "skills"}}</h2>
-  <div class="grid flow-cols">
-    {{range .C.Skills}}
-    <div class="skill"><div class="sh"><span class="sn">{{icons .Icons}}{{l .Name}}</span><b>{{.Level}}%</b></div>
-      <div class="bar"><i style="--w:{{.Level}}%"></i></div></div>{{end}}
+  <div class="grid skill-cols">
+    {{range $c := cols}}<div class="scol">
+    {{range $.C.Skills}}{{if eq .Col $c}}<div class="skill"><div class="sh"><span class="sn">{{icons .Icons}}{{l .Name}}</span><b>{{.Level}}%</b></div>
+      <div class="bar"><i style="--w:{{.Level}}%"></i></div></div>{{end}}{{end}}
+    </div>{{end}}
   </div>
 </section>
 
@@ -146,6 +147,8 @@
       <button type="button" class="copy" data-copy="{{.C.Email}}">{{ui "copy"}}</button></li>
     {{if .C.LinkedIn}}<li><span class="ck">linkedin</span>
       <a class="li" href="{{.C.LinkedIn}}" target="_blank" rel="noopener noreferrer">{{icons (slice1 "linkedin")}}{{.C.Name}} <span class="arr" aria-hidden="true">↗</span></a></li>{{end}}
+    {{if .C.GitHub}}<li><span class="ck">github</span>
+      <a class="gh" href="{{.C.GitHub}}" target="_blank" rel="noopener noreferrer">{{icons (slice1 "github")}}AlexDBdevops/OmnimousEyeCV <span class="arr" aria-hidden="true">↗</span></a></li>{{end}}
   </ul>
 </section>
 </main>

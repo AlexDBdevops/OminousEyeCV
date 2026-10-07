@@ -305,7 +305,8 @@
    "Group": "systems",
    "Icons": [
     "linux"
-   ]
+   ],
+   "Col": 0
   },
   {
    "Name": {
@@ -316,7 +317,8 @@
    "Group": "automation",
    "Icons": [
     "gnubash"
-   ]
+   ],
+   "Col": 0
   },
   {
    "Name": {
@@ -327,7 +329,8 @@
    "Group": "automation",
    "Icons": [
     "python"
-   ]
+   ],
+   "Col": 0
   },
   {
    "Name": {
@@ -338,7 +341,8 @@
    "Group": "systems",
    "Icons": [
     "windows"
-   ]
+   ],
+   "Col": 0
   },
   {
    "Name": {
@@ -349,7 +353,8 @@
    "Group": "systems",
    "Icons": [
     "directory"
-   ]
+   ],
+   "Col": 0
   },
   {
    "Name": {
@@ -360,7 +365,8 @@
    "Group": "systems",
    "Icons": [
     "proxmox"
-   ]
+   ],
+   "Col": 0
   },
   {
    "Name": {
@@ -371,7 +377,8 @@
    "Group": "systems",
    "Icons": [
     "ceph"
-   ]
+   ],
+   "Col": 0
   },
   {
    "Name": {
@@ -382,7 +389,8 @@
    "Group": "systems",
    "Icons": [
     "network"
-   ]
+   ],
+   "Col": 0
   },
   {
    "Name": {
@@ -393,7 +401,8 @@
    "Group": "systems",
    "Icons": [
     "nginx"
-   ]
+   ],
+   "Col": 0
   },
   {
    "Name": {
@@ -404,7 +413,8 @@
    "Group": "observability",
    "Icons": [
     "monitor"
-   ]
+   ],
+   "Col": 0
   },
   {
    "Name": {
@@ -415,7 +425,8 @@
    "Group": "containers",
    "Icons": [
     "docker"
-   ]
+   ],
+   "Col": 1
   },
   {
    "Name": {
@@ -426,7 +437,8 @@
    "Group": "containers",
    "Icons": [
     "kubernetes"
-   ]
+   ],
+   "Col": 1
   },
   {
    "Name": {
@@ -437,7 +449,8 @@
    "Group": "containers",
    "Icons": [
     "argo"
-   ]
+   ],
+   "Col": 1
   },
   {
    "Name": {
@@ -448,7 +461,8 @@
    "Group": "automation",
    "Icons": [
     "gitlab"
-   ]
+   ],
+   "Col": 1
   },
   {
    "Name": {
@@ -459,7 +473,8 @@
    "Group": "automation",
    "Icons": [
     "githubactions"
-   ]
+   ],
+   "Col": 1
   },
   {
    "Name": {
@@ -470,7 +485,8 @@
    "Group": "automation",
    "Icons": [
     "git"
-   ]
+   ],
+   "Col": 1
   },
   {
    "Name": {
@@ -481,7 +497,8 @@
    "Group": "automation",
    "Icons": [
     "ansible"
-   ]
+   ],
+   "Col": 1
   },
   {
    "Name": {
@@ -492,7 +509,8 @@
    "Group": "automation",
    "Icons": [
     "terraform"
-   ]
+   ],
+   "Col": 1
   },
   {
    "Name": {
@@ -503,7 +521,20 @@
    "Group": "automation",
    "Icons": [
     "go"
-   ]
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "Claude Code",
+    "EN": "Claude Code"
+   },
+   "Level": 65,
+   "Group": "automation",
+   "Icons": [
+    "claude"
+   ],
+   "Col": 1
   },
   {
    "Name": {
@@ -514,7 +545,8 @@
    "Group": "process",
    "Icons": [
     "jira"
-   ]
+   ],
+   "Col": 1
   },
   {
    "Name": {
@@ -525,7 +557,8 @@
    "Group": "data",
    "Icons": [
     "mysql"
-   ]
+   ],
+   "Col": 2
   },
   {
    "Name": {
@@ -536,7 +569,8 @@
    "Group": "data",
    "Icons": [
     "rabbitmq"
-   ]
+   ],
+   "Col": 2
   },
   {
    "Name": {
@@ -547,7 +581,8 @@
    "Group": "data",
    "Icons": [
     "sonatype"
-   ]
+   ],
+   "Col": 2
   },
   {
    "Name": {
@@ -558,7 +593,8 @@
    "Group": "observability",
    "Icons": [
     "elasticstack"
-   ]
+   ],
+   "Col": 2
   },
   {
    "Name": {
@@ -570,7 +606,8 @@
    "Icons": [
     "prometheus",
     "grafana"
-   ]
+   ],
+   "Col": 2
   },
   {
    "Name": {
@@ -581,7 +618,8 @@
    "Group": "cloud",
    "Icons": [
     "aws"
-   ]
+   ],
+   "Col": 2
   },
   {
    "Name": {
@@ -592,7 +630,8 @@
    "Group": "cloud",
    "Icons": [
     "cloudflare"
-   ]
+   ],
+   "Col": 2
   },
   {
    "Name": {
@@ -603,7 +642,8 @@
    "Group": "security",
    "Icons": [
     "sonar"
-   ]
+   ],
+   "Col": 2
   },
   {
    "Name": {
@@ -614,7 +654,8 @@
    "Group": "security",
    "Icons": [
     "snyk"
-   ]
+   ],
+   "Col": 2
   },
   {
    "Name": {
@@ -625,7 +666,8 @@
    "Group": "security",
    "Icons": [
     "hook"
-   ]
+   ],
+   "Col": 2
   }
  ],
  "Build": {
@@ -641,6 +683,10 @@
    {
     "ES": "Terraform crea el proyecto de Cloudflare Pages y guarda su estado en HCP Terraform. GitHub Actions compila la web, lanza un plan con URL de vista previa en cada pull request y publica con Wrangler al llegar a main.",
     "EN": "Terraform creates the Cloudflare Pages project and keeps its state in HCP Terraform. GitHub Actions builds the site, runs a plan with a preview URL on every pull request and publishes with Wrangler once it reaches main."
+   },
+   {
+    "ES": "Lo he construido con la asistencia de Claude Code: yo decidí la arquitectura, el diseño, el contenido y cada revisión; el agente escribió y probó buena parte del código. El repositorio es público, con todo su historial.",
+    "EN": "I built it with Claude Code as an assistant: I decided the architecture, design, content and every review; the agent wrote and tested much of the code. The repository is public, with its full history."
    },
    {
     "ES": "Cabeceras de seguridad (CSP, HSTS, X-Frame-Options), credenciales guardadas fuera de la página con permisos mínimos y coste de alojamiento cero.",
@@ -717,6 +763,12 @@
     "Icons": [
      "git"
     ]
+   },
+   {
+    "Name": "Claude Code",
+    "Icons": [
+     "claude"
+    ]
    }
   ]
  },
@@ -778,5 +830,6 @@
    }
   }
  ],
- "LinkedIn": "https://www.linkedin.com/in/alejandro-d%C3%ADaz-benjumea-b704251a6/"
+ "LinkedIn": "https://www.linkedin.com/in/alejandro-d%C3%ADaz-benjumea-b704251a6/",
+ "GitHub": "https://github.com/AlexDBdevops/OmnimousEyeCV"
 }

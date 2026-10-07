@@ -52,11 +52,13 @@ type Skill struct {
 	Level int
 	Group string
 	Icons []string
+	Col   int
 }
 type Content struct {
 	Name     string
 	Email    string
 	LinkedIn string
+	GitHub   string
 	Title    L
 	Intro    L
 	UI       map[string]L
@@ -236,6 +238,7 @@ func main() {
 		"es":     func(x L) string { return x.ES },
 		"banner": bannerSVG,
 		"slice1": func(s string) []string { return []string{s} },
+		"cols":   func() []int { return []int{0, 1, 2} },
 		"dots": func(level int) template.HTML {
 			n := (level + 10) / 20
 			var sb strings.Builder
