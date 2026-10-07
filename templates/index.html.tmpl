@@ -28,7 +28,7 @@
 </head>
 <body class="v-{{.B.Variant}}">
 <header class="top">
-  <div class="brand"><span class="prompt">alejandro@ops:~$ </span><span class="bootcmd">./AlexDBdevopsCV.sh</span><span class="bname">{{.C.Name}}</span><button type="button" class="bootenter" hidden>↵ Enter</button><span class="bootlog" aria-live="polite"></span></div>
+  <div class="brand"><span class="prompt">alejandro@ops:~$ </span><span class="bootcmd">./AlexDBdevopsCV.sh</span><button type="button" class="bootenter" hidden>↵ Enter</button><span class="bootlog" aria-live="polite"></span></div>
   <button id="lang" class="lang bt" aria-label="Language">
     <span data-lang="es">EN</span><span data-lang="en">ES</span>
   </button>
@@ -52,14 +52,14 @@
 
     <g id="disc">
       <circle cx="300" cy="300" r="295" class="rim"/>
-      {{range .Ticks}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="tick"/>{{end}}
+      {{range .Disc.Ticks}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="tick"/>{{end}}
       {{range .C.Sectors}}
       <g class="sector" data-i="{{.Index}}" tabindex="0" role="button" aria-label="{{en .Name}}">
         <path d="{{.Path}}" class="seg"/>
         <path id="lp{{.Index}}" d="{{.Label}}" fill="none"/>
         <text class="seglabel"><textPath href="#lp{{.Index}}" startOffset="50%" text-anchor="middle">{{en .Name}}</textPath></text>
       </g>{{end}}
-      {{range .Bound}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="bound"/>{{end}}
+      {{range .Disc.Bounds}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="bound"/>{{end}}
     </g>
     <path d="M300 14 L311 -6 L289 -6 Z" class="marker"/>
     <circle cx="300" cy="300" r="200" class="inner"/>
@@ -71,8 +71,8 @@
           <circle cx="300" cy="300" r="82" fill="url(#irisg)"/>
           <circle cx="300" cy="300" r="70" class="ring"/>
           <circle cx="300" cy="300" r="50" class="ring"/>
-          {{range .Spokes}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="spoke"/>{{end}}
-          <polygon points="{{.Hex}}" class="hex"/>
+          {{range .Disc.Spokes}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="spoke"/>{{end}}
+          <polygon points="{{.Disc.Hex}}" class="hex"/>
           <circle cx="300" cy="300" r="26" fill="#000"/>
           <circle cx="291" cy="291" r="6" fill="#ffe9e6" opacity=".85"/>
         </g>

@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Letras de 5x5 para el cartel de consola (echo) de la variante A.
+// 5x5 pixel glyphs for the console banner printed by `echo` in the hero.
 var glyphs = map[rune][5]string{
 	'B': {"####.", "#...#", "####.", "#...#", "####."},
 	'I': {"#####", "..#..", "..#..", "..#..", "#####"},
@@ -22,7 +22,7 @@ var glyphs = map[rune][5]string{
 	'M': {"#...#", "##.##", "#.#.#", "#...#", "#...#"},
 }
 
-// banner dibuja el texto con bloques, como lo imprimiría una herramienta tipo figlet.
+// banner draws text with block characters, figlet style. Unknown runes are skipped.
 func banner(text string) string {
 	var rows [5]strings.Builder
 	for i, r := range strings.ToUpper(text) {
@@ -44,8 +44,8 @@ func banner(text string) string {
 	return strings.Join(out, "\n")
 }
 
-// bannerSVG dibuja el mismo cartel como SVG de píxeles: nítido a cualquier tamaño
-// y sin depender de que la fuente tenga el carácter de bloque.
+// bannerSVG draws the same banner as pixel rects: sharp at any size and independent of
+// whether the font has the block glyph. Rows are .78 tall to leave scanline gaps.
 func bannerSVG(text string) template.HTML {
 	lines := strings.Split(banner(text), "\n")
 	w := 0

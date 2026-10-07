@@ -24,7 +24,12 @@ jobs:
         with: { persist-credentials: false }
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
         with: { go-version: '1.24', cache: false }
-      - run: go vet ./... && go run .            # genera dist/ con el tema de content/theme.txt
+      - name: Format, vet and test
+        run: |
+          test -z "$(gofmt -l .)" || { gofmt -l .; echo "gofmt: files need formatting"; exit 1; }
+          go vet ./...
+          go test ./...
+      - run: go run .            # genera dist/ con el tema de content/theme.txt
       - name: Comprobar credenciales
         id: cf
         run: |

@@ -58,10 +58,6 @@
     "ES": "DevOps",
     "EN": "DevOps"
    },
-   "Period": {
-    "ES": "2021 – actualidad",
-    "EN": "2021 – present"
-   },
    "Summary": {
     "ES": "Las releases y los clústeres de Kentech, guardias incluidas.",
     "EN": "Kentech's releases and clusters, on-call included."
@@ -205,10 +201,6 @@
     "ES": "Sysadmin",
     "EN": "Sysadmin"
    },
-   "Period": {
-    "ES": "Jul 2021 – actualidad",
-    "EN": "Jul 2021 – present"
-   },
    "Summary": {
     "ES": "Un datacenter de más de 20 servidores y todos los equipos de la oficina.",
     "EN": "A datacenter of 20+ servers and every desktop and laptop in the office."
@@ -302,7 +294,6 @@
     "EN": "Linux"
    },
    "Level": 90,
-   "Group": "systems",
    "Icons": [
     "linux"
    ],
@@ -314,7 +305,6 @@
     "EN": "Bash"
    },
    "Level": 80,
-   "Group": "automation",
    "Icons": [
     "gnubash"
    ],
@@ -326,7 +316,6 @@
     "EN": "Python"
    },
    "Level": 65,
-   "Group": "automation",
    "Icons": [
     "python"
    ],
@@ -338,7 +327,6 @@
     "EN": "Windows Server"
    },
    "Level": 85,
-   "Group": "systems",
    "Icons": [
     "windows"
    ],
@@ -350,7 +338,6 @@
     "EN": "Active Directory / M365"
    },
    "Level": 75,
-   "Group": "systems",
    "Icons": [
     "directory"
    ],
@@ -362,7 +349,6 @@
     "EN": "VMware / Proxmox"
    },
    "Level": 80,
-   "Group": "systems",
    "Icons": [
     "proxmox"
    ],
@@ -374,7 +360,6 @@
     "EN": "Ceph / LVM"
    },
    "Level": 60,
-   "Group": "systems",
    "Icons": [
     "ceph"
    ],
@@ -386,7 +371,6 @@
     "EN": "Networking"
    },
    "Level": 80,
-   "Group": "systems",
    "Icons": [
     "network"
    ],
@@ -398,7 +382,6 @@
     "EN": "NGINX"
    },
    "Level": 85,
-   "Group": "systems",
    "Icons": [
     "nginx"
    ],
@@ -410,7 +393,6 @@
     "EN": "Zabbix"
    },
    "Level": 70,
-   "Group": "observability",
    "Icons": [
     "monitor"
    ],
@@ -422,7 +404,6 @@
     "EN": "Jira / Agile"
    },
    "Level": 85,
-   "Group": "process",
    "Icons": [
     "jira"
    ],
@@ -434,7 +415,6 @@
     "EN": "Docker"
    },
    "Level": 95,
-   "Group": "containers",
    "Icons": [
     "docker"
    ],
@@ -446,7 +426,6 @@
     "EN": "Kubernetes"
    },
    "Level": 85,
-   "Group": "containers",
    "Icons": [
     "kubernetes"
    ],
@@ -458,7 +437,6 @@
     "EN": "ArgoCD"
    },
    "Level": 70,
-   "Group": "containers",
    "Icons": [
     "argo"
    ],
@@ -470,7 +448,6 @@
     "EN": "GitLab CI/CD"
    },
    "Level": 85,
-   "Group": "automation",
    "Icons": [
     "gitlab"
    ],
@@ -482,7 +459,6 @@
     "EN": "GitHub Actions"
    },
    "Level": 50,
-   "Group": "automation",
    "Icons": [
     "githubactions"
    ],
@@ -494,7 +470,6 @@
     "EN": "Git"
    },
    "Level": 85,
-   "Group": "automation",
    "Icons": [
     "git"
    ],
@@ -506,7 +481,6 @@
     "EN": "Ansible"
    },
    "Level": 70,
-   "Group": "automation",
    "Icons": [
     "ansible"
    ],
@@ -518,7 +492,6 @@
     "EN": "Terraform"
    },
    "Level": 50,
-   "Group": "automation",
    "Icons": [
     "terraform"
    ],
@@ -530,7 +503,6 @@
     "EN": "Go"
    },
    "Level": 50,
-   "Group": "automation",
    "Icons": [
     "go"
    ],
@@ -542,7 +514,6 @@
     "EN": "Claude Code"
    },
    "Level": 65,
-   "Group": "automation",
    "Icons": [
     "claude"
    ],
@@ -554,7 +525,6 @@
     "EN": "MySQL / NDB Cluster"
    },
    "Level": 85,
-   "Group": "data",
    "Icons": [
     "mysql"
    ],
@@ -566,7 +536,6 @@
     "EN": "RabbitMQ"
    },
    "Level": 60,
-   "Group": "data",
    "Icons": [
     "rabbitmq"
    ],
@@ -578,7 +547,6 @@
     "EN": "Sonatype Nexus"
    },
    "Level": 80,
-   "Group": "data",
    "Icons": [
     "sonatype"
    ],
@@ -590,7 +558,6 @@
     "EN": "Elastic Stack"
    },
    "Level": 75,
-   "Group": "observability",
    "Icons": [
     "elasticstack"
    ],
@@ -602,7 +569,6 @@
     "EN": "Prometheus / Grafana"
    },
    "Level": 70,
-   "Group": "observability",
    "Icons": [
     "prometheus",
     "grafana"
@@ -615,7 +581,6 @@
     "EN": "AWS"
    },
    "Level": 65,
-   "Group": "cloud",
    "Icons": [
     "aws"
    ],
@@ -627,7 +592,6 @@
     "EN": "Cloudflare"
    },
    "Level": 50,
-   "Group": "cloud",
    "Icons": [
     "cloudflare"
    ],
@@ -639,7 +603,6 @@
     "EN": "SonarQube"
    },
    "Level": 70,
-   "Group": "security",
    "Icons": [
     "sonar"
    ],
@@ -651,7 +614,6 @@
     "EN": "Snyk"
    },
    "Level": 50,
-   "Group": "security",
    "Icons": [
     "snyk"
    ],
@@ -663,7 +625,6 @@
     "EN": "Phishing campaigns"
    },
    "Level": 60,
-   "Group": "security",
    "Icons": [
     "hook"
    ],
@@ -772,64 +733,6 @@
    }
   ]
  },
- "Groups": [
-  {
-   "Key": "containers",
-   "Name": {
-    "ES": "Contenedores y GitOps",
-    "EN": "Containers & GitOps"
-   }
-  },
-  {
-   "Key": "automation",
-   "Name": {
-    "ES": "CI/CD y automatización",
-    "EN": "CI/CD & automation"
-   }
-  },
-  {
-   "Key": "systems",
-   "Name": {
-    "ES": "Sistemas y redes",
-    "EN": "Systems & networking"
-   }
-  },
-  {
-   "Key": "data",
-   "Name": {
-    "ES": "Datos y mensajería",
-    "EN": "Data & messaging"
-   }
-  },
-  {
-   "Key": "observability",
-   "Name": {
-    "ES": "Observabilidad",
-    "EN": "Observability"
-   }
-  },
-  {
-   "Key": "cloud",
-   "Name": {
-    "ES": "Cloud",
-    "EN": "Cloud"
-   }
-  },
-  {
-   "Key": "security",
-   "Name": {
-    "ES": "Seguridad",
-    "EN": "Security"
-   }
-  },
-  {
-   "Key": "process",
-   "Name": {
-    "ES": "Proceso",
-    "EN": "Process"
-   }
-  }
- ],
  "LinkedIn": "https://www.linkedin.com/in/alejandro-d%C3%ADaz-benjumea-b704251a6/",
  "GitHub": "https://github.com/AlexDBdevops/OmnimousEyeCV"
 }

@@ -17,9 +17,18 @@ static/headers.txt          ← cabeceras de seguridad (plantilla de _headers)
 static/icons/*.svg          ← iconos de tecnologías (Simple Icons CC0, Devicon MIT y propios)
 static/fonts/               ← fuentes autoalojadas (Syne, IBM Plex Sans/Mono, OFL)
 static/variant-a.css        ← diseño de la v2 (estilo consola)
+main.go                     ← generador: orquesta el build y escribe dist/
+content.go                  ← tipos de content.json y su carga
+disc.go                     ← geometría del disco (sectores, arcos, marcas)
+render.go                   ← plantilla HTML, funciones e iconos en línea
+headers.go                  ← hashes CSP de los scripts, _headers y theme.css
 banner.go                   ← cartel BIENVENIDOS / WELCOME en SVG de píxeles
+generator_test.go           ← tests del generador (go test ./...)
+tools/build_single.sh       ← HTML autocontenido para vistas previas
+tools/render-assets.js      ← og.png y favicons
+docs/                       ← GIF y captura del README
 VERSION                     ← versión publicada (v1, v2…)
-main.go                     ← generador: lo junta todo y produce dist/
+LICENSE                     ← MIT (fuentes OFL, iconos CC0/MIT)
 infra/main.tf               ← Terraform: proyecto de Cloudflare Pages
 .github/workflows/deploy.yml← CI/CD
 .github/workflows/tag.yml   ← crea la etiqueta de versión cuando cambia VERSION en main
@@ -28,7 +37,7 @@ infra/main.tf               ← Terraform: proyecto de Cloudflare Pages
 
 El contenido está separado del diseño: para cambiar un texto o un porcentaje solo se toca `content.json`; para cambiar el color, una palabra en `theme.txt`.
 
-## 2. El generador (`main.go`)
+## 2. El generador (`main.go` y compañía)
 
 `go run .` hace lo siguiente:
 
@@ -61,11 +70,12 @@ Terraform gestiona el proyecto de Cloudflare Pages `alejandro-diaz-benjumea` (qu
 Se lanza con un push a `main`, al abrir un pull request o a mano (Actions → deploy → Run workflow):
 
 1. **Checkout y Go.**
-2. **Compilar:** `go vet` y `go run .` generan `dist/`. Si falla, se para y la web no cambia.
-3. **Comprobar credenciales:** si falta algún secreto, solo compila.
-4. **Terraform init + fmt + validate.**
-5. **Pull request:** `terraform plan` (muestra qué cambiaría, sin tocar nada). **main:** `terraform apply`.
-6. **Wrangler** (CLI de Cloudflare) sube `dist/` al proyecto de Pages: a producción en `main` y a una URL de vista previa propia de la rama en los pull requests.
+2. **Calidad:** `gofmt` (formato), `go vet` y `go test`. Si algo falla, se para y la web no cambia.
+3. **Compilar:** `go run .` genera `dist/`.
+4. **Comprobar credenciales:** si falta algún secreto, solo compila.
+5. **Terraform init + fmt + validate.**
+6. **Pull request:** `terraform plan` (muestra qué cambiaría, sin tocar nada). **main:** `terraform apply`.
+7. **Wrangler** (CLI de Cloudflare) sube `dist/` al proyecto de Pages: a producción en `main` y a una URL de vista previa propia de la rama en los pull requests.
 
 Versionado: los hitos se marcan cambiando `VERSION` en `main`; el workflow `tag` crea la etiqueta. Cualquier push a `main` despliega, haya o no etiqueta nueva.
 

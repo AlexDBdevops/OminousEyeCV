@@ -1,7 +1,8 @@
 #!/bin/sh
-# Genera una página única autocontenida (CSS, JS y fuentes en línea) para revisión.
-# uso: ./build_single.sh <tema> <salida.html> [variante]
+# Builds a single self-contained page (CSS, JS and fonts inlined) for review.
+# usage: tools/build_single.sh <theme> <output.html> [variant]   (output path should be absolute)
 set -e
+cd "$(dirname "$0")/.."
 THEME=$1 VARIANT=${3:-$(cat content/variant.txt)} go run . >/dev/null
 python3 - "$2" "${3:-$(cat content/variant.txt)}" <<'PY'
 import re,sys,base64,os
