@@ -51,9 +51,9 @@ body.v-a{font-family:var(--body);font-size:16.5px}
 .v-a .echo{display:block;margin:14px 0 6px;font-family:var(--mono)}
 .v-a .cmdline{font-size:.85rem;color:var(--bone);opacity:.9}
 .v-a .cmdline .prompt{color:var(--a)}
-.v-a .banner{margin:8px 0 0;color:var(--a3);line-height:1.05;letter-spacing:0;white-space:pre;overflow:hidden;
-  font-family:var(--mono);font-size:clamp(5px,calc((100vw - 40px) / 42),10px);text-shadow:0 0 8px color-mix(in srgb,var(--a3) 45%,transparent)}
-@media(min-width:861px){.v-a .banner{font-size:clamp(6px,0.75vw,10.5px)}}
+.v-a .banner{margin:10px 0 2px;color:var(--a3)}
+.v-a .banner svg{display:block;width:min(100%,calc(var(--cols) * 6.6px));height:auto;fill:currentColor;filter:drop-shadow(0 0 6px color-mix(in srgb,var(--a3) 45%,transparent))}
+.v-a .cmdline{overflow-wrap:anywhere}
 .v-a .banner[data-lang]{display:none}
 html[lang="es"] .v-a .banner[data-lang="es"],html[lang="en"] .v-a .banner[data-lang="en"]{display:block}
 
@@ -70,5 +70,11 @@ html.boot .v-a .bt.in{opacity:1;transform:none;animation:none;transition:opacity
 html.boot .v-a .stage.bt{transform:scale(.96)}
 html.boot .v-a .stage.bt.in{transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
 html.boot .v-a .stage.bt.in #eyeball{animation:eye-open .9s .15s both}
+/* botón Enter: invita a ejecutar; si no se pulsa, arranca solo */
+.v-a .bootenter{margin-left:1em;font:500 .8rem var(--mono);color:#000;background:var(--a);border:0;border-radius:3px;padding:3px 10px;cursor:pointer;animation:pulse 1.2s ease-in-out infinite}
+.v-a .bootenter:focus-visible{outline:2px solid var(--a2);outline-offset:2px}
+@keyframes pulse{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--a) 25%,transparent)}}
+/* con "reducir movimiento": misma secuencia, solo fundidos */
+@media(prefers-reduced-motion:reduce){html.boot .v-a .bt{transform:none}html.boot .v-a .stage.bt.in #eyeball{animation:none}.v-a .bootenter{animation:none}}
 @keyframes eye-open{0%{transform:scaleY(.04)}60%{transform:scaleY(1.05)}100%{transform:scaleY(1)}}
 @keyframes boot-failsafe{to{opacity:1;transform:none}}

@@ -222,7 +222,7 @@ func main() {
 			return template.HTML(sb.String())
 		},
 		"es":     func(x L) string { return x.ES },
-		"banner": banner,
+		"banner": bannerSVG,
 		"dots": func(level int) template.HTML {
 			n := (level + 10) / 20
 			var sb strings.Builder
