@@ -596,16 +596,16 @@
     "EN": "The eye and the disc are SVG driven by dependency-free JavaScript: the iris follows the pointer with smooth interpolation and the disc spins to pick a section."
    },
    {
-    "ES": "La infraestructura es código: Terraform crea el proyecto de Cloudflare Pages y guarda su estado en HCP Terraform. GitHub Actions compila, ejecuta plan en cada pull request con una URL de vista previa y aplica y publica con Wrangler al fusionar en main.",
-    "EN": "Infrastructure is code: Terraform creates the Cloudflare Pages project and keeps its state in HCP Terraform. GitHub Actions builds, runs a plan with a preview URL on every pull request, and applies and publishes with Wrangler on merge to main."
+    "ES": "La infraestructura es código: Terraform crea el proyecto de Cloudflare Pages y guarda su estado de forma remota. GitHub Actions compila, ejecuta plan en cada pull request con una URL de vista previa y aplica y publica con Wrangler al fusionar en main.",
+    "EN": "Infrastructure is code: Terraform creates the Cloudflare Pages project and keeps its state remotely. GitHub Actions builds, runs a plan with a preview URL on every pull request, and applies and publishes with Wrangler on merge to main."
    },
    {
     "ES": "Cabeceras de seguridad (CSP, HSTS, X-Frame-Options), credenciales guardadas fuera de la página con permisos mínimos y coste de alojamiento cero.",
     "EN": "Security headers (CSP, HSTS, X-Frame-Options), credentials kept outside the site with least privilege, and zero hosting cost."
    },
    {
-    "ES": "Se sirve desde la red global de Cloudflare Pages, con protección DDoS incluida, así que quien quiera intentar tumbarla está invitado a probar suerte.",
-    "EN": "It is served from Cloudflare Pages' global network with DDoS protection built in, so anyone who wants to try taking it down is welcome to have a go."
+    "ES": "Se sirve desde la red global de Cloudflare Pages, con protección DDoS incluida, así que quien quiera intentar tumbarla está invitado a probar suerte: será un buen entrenamiento para los dos.",
+    "EN": "It is served from the global Cloudflare Pages network with DDoS protection built in, so anyone who wants to try taking it down is welcome to have a go: it will be good training for both of us."
    }
   ],
   "Tools": [
@@ -649,12 +649,6 @@
     "Name": "Terraform",
     "Icons": [
      "terraform"
-    ]
-   },
-   {
-    "Name": "HCP Terraform",
-    "Icons": [
-     "hashicorp"
     ]
    },
    {

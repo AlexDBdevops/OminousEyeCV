@@ -14,12 +14,14 @@ function look(x,y){
   if(!raf)raf=requestAnimationFrame(step);
 }
 function step(){
-  cx0+=(tx-cx0)*0.16; cy0+=(ty-cy0)*0.16;
+  var k=reduce?1:0.16;               // con movimiento reducido: sin interpolación, pero sigue al puntero
+  cx0+=(tx-cx0)*k; cy0+=(ty-cy0)*k;
   iris.setAttribute('transform','translate('+cx0.toFixed(2)+' '+cy0.toFixed(2)+')');
   raf=(Math.abs(tx-cx0)>0.05||Math.abs(ty-cy0)>0.05)?requestAnimationFrame(step):0;
 }
-if(!reduce){
+{
   addEventListener('pointermove',function(e){look(e.clientX,e.clientY)},{passive:true});
+  addEventListener('mousemove',function(e){look(e.clientX,e.clientY)},{passive:true});
   addEventListener('pointerdown',function(e){look(e.clientX,e.clientY)},{passive:true});
   document.addEventListener('mouseleave',function(){tx=0;ty=0;if(!raf)raf=requestAnimationFrame(step)});
 }
