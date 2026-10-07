@@ -48,6 +48,7 @@ type Skill struct {
 	Name  L
 	Level int
 	Group string
+	Icons []string
 }
 type Content struct {
 	Name    string
@@ -61,7 +62,11 @@ type Content struct {
 }
 type Build struct {
 	Text  []L
-	Tools []string
+	Tools []Tool
+}
+type Tool struct {
+	Name  string
+	Icons []string
 }
 type Spoke struct{ X1, Y1, X2, Y2 float64 }
 type View struct {
@@ -88,6 +93,9 @@ func arc(r, a0, a1 float64) string {
 	x1, y1 := pt(r, a1)
 	return fmt.Sprintf("M%.2f %.2f A%.0f %.0f 0 0 1 %.2f %.2f", x0, y0, r, r, x1, y1)
 }
+
+var iconPath = regexp.MustCompile(`<path d="([^"]+)"`)
+
 func must(err error) {
 	if err != nil {
 		panic(err)
@@ -145,6 +153,23 @@ func main() {
 			return template.HTML(`<span data-lang="es">` + template.HTMLEscapeString(x.ES) + `</span><span data-lang="en">` + template.HTMLEscapeString(x.EN) + `</span>`)
 		},
 		"en": func(x L) string { return x.EN },
+		"icons": func(slugs []string) template.HTML {
+			// Iconos de Simple Icons (CC0) en línea, coloreados con currentColor
+			if len(slugs) == 0 {
+				return template.HTML(`<svg class="ico ico-generic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l9 9-9 9-9-9z" fill="none" stroke="currentColor" stroke-width="2"/></svg>`)
+			}
+			var sb strings.Builder
+			for _, s := range slugs {
+				b, err := fsys.ReadFile("static/icons/" + s + ".svg")
+				must(err)
+				d := iconPath.FindSubmatch(b)
+				if d == nil {
+					panic("icono sin path: " + s)
+				}
+				sb.WriteString(`<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="` + template.HTMLEscapeString(string(d[1])) + `"/></svg>`)
+			}
+			return template.HTML(sb.String())
+		},
 		"es": func(x L) string { return x.ES },
 	}
 	t, err := template.New("index.html.tmpl").Funcs(funcs).ParseFS(fsys, "templates/index.html.tmpl")

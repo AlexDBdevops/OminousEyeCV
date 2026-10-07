@@ -70,19 +70,33 @@ footer{text-align:center;color:#5a4a4a;font-size:.75rem;padding:32px 16px}
 .rh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .rt{color:var(--mut);font-size:.9rem}
 
-/* --- Experiencia a todo el ancho, repartida en columnas --- */
+/* --- Experiencia a todo el ancho: trayectoria a la izquierda (2 columnas), seguridad y certificaciones a la derecha --- */
 @media(min-width:861px){.hero{grid-template-columns:minmax(300px,540px) 1fr}}
 .hero{padding-bottom:28px}
 .experience{padding:8px 0 40px}
 .experience .detail{padding:22px clamp(18px,3vw,32px)}
-.cols{columns:3 300px;column-gap:40px;margin-top:8px}
-.cols>*{break-inside:auto}
-.cols li{break-inside:avoid}
-.cols h3,.cols .rh,.cols .rt{break-after:avoid}
-.role-block{margin-top:0}
-.cols .sub{margin-top:0;padding-top:0;border-top:0}
-.cols .sub h3{margin-top:14px}
-.cols>.sub:first-of-type h3{margin-top:0}
+.cols{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:16px 40px;margin-top:8px;align-items:start}
+.col-main ul{columns:2 260px;column-gap:36px}
+.col-main li{break-inside:avoid}
+.col-side{display:grid;gap:18px;align-content:start}
+.col-side .sub{margin:0;padding:0;border:0}
+.role-block+.role-block{margin-top:18px}
+.cols.one{grid-template-columns:1fr}
+.cols.one .col-main ul{columns:3 260px}
+.cols.one .col-side{display:none}
+.certs{margin-top:22px;padding-top:16px;border-top:1px dashed var(--line)}
+.certs h3{margin:0 0 6px;font-size:1rem;color:var(--a);letter-spacing:.12em;text-transform:uppercase}
+.certs ul{columns:3 260px;column-gap:36px;margin:0;padding-left:1.1em}
+.certs li{break-inside:avoid;margin:.35em 0}
+.certs li::marker{color:var(--a)}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+/* --- Iconos de tecnologías --- */
+.ico{width:1em;height:1em;flex:none;fill:currentColor;vertical-align:-.15em}
+.sn{display:inline-flex;align-items:center;gap:.45em}
+.sn .ico{color:var(--a)}
+.ico-generic{opacity:.55}
+.tools li{display:inline-flex;align-items:center;gap:.4em}
+.tools .ico{color:var(--a)}
 /* --- Cómo está hecha --- */
 .build{padding:32px 0;border-top:1px solid var(--line2)}
 .build-text{columns:2 340px;column-gap:40px;color:var(--mut)}

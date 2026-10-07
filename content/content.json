@@ -23,8 +23,8 @@
    "EN": "Spin the disc or pick a sector"
   },
   "note": {
-   "ES": "Nivel básico, sin rol de seguridad dedicado",
-   "EN": "Basic level, no dedicated security role"
+   "ES": "Sin rol de seguridad dedicado",
+   "EN": "No dedicated security role"
   },
   "footer": {
    "ES": "Generado con Go · alojado en Cloudflare Pages",
@@ -122,8 +122,8 @@
      "EN": "DevSecOps"
     },
     "Note": {
-     "ES": "Nivel básico, sin rol de seguridad dedicado",
-     "EN": "Basic level, no dedicated security role"
+     "ES": "Sin rol de seguridad dedicado",
+     "EN": "No dedicated security role"
     },
     "Items": [
      {
@@ -282,23 +282,32 @@
     "EN": "Linux"
    },
    "Level": 90,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "linux"
+   ]
   },
   {
    "Name": {
     "ES": "Kubernetes",
     "EN": "Kubernetes"
    },
-   "Level": 80,
-   "Group": ""
+   "Level": 85,
+   "Group": "",
+   "Icons": [
+    "kubernetes"
+   ]
   },
   {
    "Name": {
     "ES": "Docker",
     "EN": "Docker"
    },
-   "Level": 85,
-   "Group": ""
+   "Level": 95,
+   "Group": "",
+   "Icons": [
+    "docker"
+   ]
   },
   {
    "Name": {
@@ -306,7 +315,10 @@
     "EN": "NGINX"
    },
    "Level": 85,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "nginx"
+   ]
   },
   {
    "Name": {
@@ -314,7 +326,10 @@
     "EN": "MySQL / NDB Cluster"
    },
    "Level": 85,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "mysql"
+   ]
   },
   {
    "Name": {
@@ -322,7 +337,10 @@
     "EN": "GitLab CI/CD"
    },
    "Level": 85,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "gitlab"
+   ]
   },
   {
    "Name": {
@@ -330,7 +348,10 @@
     "EN": "ArgoCD"
    },
    "Level": 70,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "argo"
+   ]
   },
   {
    "Name": {
@@ -338,7 +359,10 @@
     "EN": "Ansible"
    },
    "Level": 70,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "ansible"
+   ]
   },
   {
    "Name": {
@@ -346,7 +370,10 @@
     "EN": "Git"
    },
    "Level": 85,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "git"
+   ]
   },
   {
    "Name": {
@@ -354,7 +381,10 @@
     "EN": "Bash"
    },
    "Level": 80,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "gnubash"
+   ]
   },
   {
    "Name": {
@@ -362,7 +392,10 @@
     "EN": "Python"
    },
    "Level": 65,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "python"
+   ]
   },
   {
    "Name": {
@@ -370,7 +403,8 @@
     "EN": "AWS"
    },
    "Level": 65,
-   "Group": ""
+   "Group": "",
+   "Icons": []
   },
   {
    "Name": {
@@ -378,7 +412,10 @@
     "EN": "VMware / Proxmox"
    },
    "Level": 80,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "proxmox"
+   ]
   },
   {
    "Name": {
@@ -386,7 +423,8 @@
     "EN": "Networking"
    },
    "Level": 80,
-   "Group": ""
+   "Group": "",
+   "Icons": []
   },
   {
    "Name": {
@@ -394,7 +432,10 @@
     "EN": "Elastic Stack"
    },
    "Level": 75,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "elasticstack"
+   ]
   },
   {
    "Name": {
@@ -402,7 +443,11 @@
     "EN": "Prometheus / Grafana"
    },
    "Level": 70,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "prometheus",
+    "grafana"
+   ]
   },
   {
    "Name": {
@@ -410,7 +455,8 @@
     "EN": "Zabbix"
    },
    "Level": 70,
-   "Group": ""
+   "Group": "",
+   "Icons": []
   },
   {
    "Name": {
@@ -418,7 +464,10 @@
     "EN": "Sonatype Nexus"
    },
    "Level": 80,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "sonatype"
+   ]
   },
   {
    "Name": {
@@ -426,7 +475,10 @@
     "EN": "RabbitMQ"
    },
    "Level": 60,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "rabbitmq"
+   ]
   },
   {
    "Name": {
@@ -434,15 +486,19 @@
     "EN": "Ceph / LVM"
    },
    "Level": 60,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "ceph"
+   ]
   },
   {
    "Name": {
     "ES": "Windows Server",
     "EN": "Windows Server"
    },
-   "Level": 70,
-   "Group": ""
+   "Level": 85,
+   "Group": "",
+   "Icons": []
   },
   {
    "Name": {
@@ -450,7 +506,8 @@
     "EN": "Active Directory / M365"
    },
    "Level": 75,
-   "Group": ""
+   "Group": "",
+   "Icons": []
   },
   {
    "Name": {
@@ -458,7 +515,10 @@
     "EN": "Jira / Agile"
    },
    "Level": 85,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "jira"
+   ]
   },
   {
    "Name": {
@@ -466,7 +526,10 @@
     "EN": "Snyk"
    },
    "Level": 50,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "snyk"
+   ]
   },
   {
    "Name": {
@@ -474,7 +537,10 @@
     "EN": "SonarQube"
    },
    "Level": 70,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "sonar"
+   ]
   },
   {
    "Name": {
@@ -482,7 +548,8 @@
     "EN": "Phishing campaigns"
    },
    "Level": 60,
-   "Group": ""
+   "Group": "",
+   "Icons": []
   },
   {
    "Name": {
@@ -490,7 +557,10 @@
     "EN": "Cloudflare"
    },
    "Level": 50,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "cloudflare"
+   ]
   },
   {
    "Name": {
@@ -498,7 +568,10 @@
     "EN": "Terraform"
    },
    "Level": 50,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "terraform"
+   ]
   },
   {
    "Name": {
@@ -506,7 +579,10 @@
     "EN": "GitHub Actions"
    },
    "Level": 50,
-   "Group": ""
+   "Group": "",
+   "Icons": [
+    "githubactions"
+   ]
   }
  ],
  "Build": {
@@ -524,24 +600,83 @@
     "EN": "Infrastructure is code: Terraform creates the Cloudflare Pages project and keeps its state in HCP Terraform. GitHub Actions builds, runs a plan with a preview URL on every pull request, and applies and publishes with Wrangler on merge to main."
    },
    {
-    "ES": "Cabeceras de seguridad (CSP, HSTS, X-Frame-Options), credenciales solo como secretos de GitHub con permisos mínimos y coste de alojamiento cero.",
-    "EN": "Security headers (CSP, HSTS, X-Frame-Options), credentials kept only as least-privilege GitHub secrets, and zero hosting cost."
+    "ES": "Cabeceras de seguridad (CSP, HSTS, X-Frame-Options), credenciales guardadas fuera de la página con permisos mínimos y coste de alojamiento cero.",
+    "EN": "Security headers (CSP, HSTS, X-Frame-Options), credentials kept outside the site with least privilege, and zero hosting cost."
    }
   ],
   "Tools": [
-   "Go",
-   "html/template",
-   "JavaScript",
-   "SVG",
-   "CSS",
-   "JSON",
-   "Terraform",
-   "HCP Terraform",
-   "Cloudflare Pages",
-   "Wrangler",
-   "GitHub Actions",
-   "GitHub App",
-   "Git"
+   {
+    "Name": "Go",
+    "Icons": [
+     "go"
+    ]
+   },
+   {
+    "Name": "html/template",
+    "Icons": [
+     "go"
+    ]
+   },
+   {
+    "Name": "JavaScript",
+    "Icons": [
+     "javascript"
+    ]
+   },
+   {
+    "Name": "SVG",
+    "Icons": [
+     "svg"
+    ]
+   },
+   {
+    "Name": "CSS",
+    "Icons": [
+     "css"
+    ]
+   },
+   {
+    "Name": "JSON",
+    "Icons": [
+     "json"
+    ]
+   },
+   {
+    "Name": "Terraform",
+    "Icons": [
+     "terraform"
+    ]
+   },
+   {
+    "Name": "HCP Terraform",
+    "Icons": [
+     "hashicorp"
+    ]
+   },
+   {
+    "Name": "Cloudflare Pages",
+    "Icons": [
+     "cloudflarepages"
+    ]
+   },
+   {
+    "Name": "Wrangler",
+    "Icons": [
+     "cloudflareworkers"
+    ]
+   },
+   {
+    "Name": "GitHub Actions",
+    "Icons": [
+     "githubactions"
+    ]
+   },
+   {
+    "Name": "Git",
+    "Icons": [
+     "git"
+    ]
+   }
   ]
  }
 }
