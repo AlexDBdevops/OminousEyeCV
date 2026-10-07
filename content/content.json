@@ -90,8 +90,20 @@
        "EN": "Rollout of Claude as the company AI tool"
       },
       {
-       "ES": "Apoyo a la entrega ágil",
-       "EN": "Agile delivery support"
+       "ES": "Metodología Agile de desarrollo a testing, con soporte en preproducción y producción",
+       "EN": "Agile methodology from development to testing, with support in pre-production and production"
+      },
+      {
+       "ES": "Feedback a PMs y desarrolladores sobre nuevos despliegues, buscando incidencias e incompatibilidades entre fases",
+       "EN": "Feedback to PMs and developers on new deployments, hunting for issues and incompatibilities across phases"
+      },
+      {
+       "ES": "Coordinación con un equipo DevOps extranjero, repartiendo y priorizando tareas en Jira",
+       "EN": "Coordination with a foreign DevOps team, splitting and prioritising tasks in Jira"
+      },
+      {
+       "ES": "Mantenimiento, actualización y despliegue de software, probando nuevas tecnologías de forma continua",
+       "EN": "Maintaining, updating and deploying software while constantly testing new technologies"
       }
      ]
     }
@@ -197,8 +209,8 @@
        "EN": "Datacenter with 20+ servers and 10+ network devices, run first on my own and later alongside a colleague: repairs, new features and improvement studies, from hardware to the AWS cloud"
       },
       {
-       "ES": "25+ sobremesas y 20 portátiles: soporte, inventario y propuestas de compra",
-       "EN": "25+ desktops and 20 laptops: support, inventory and purchase proposals"
+       "ES": "25+ sobremesas y 20 portátiles de marcas y sistemas variados: soporte al equipo, inventario coordinado con Administración y propuestas de compra de hardware ajustadas a la empresa",
+       "EN": "25+ desktops and 20 laptops across brands and operating systems: team support, inventory coordinated with Administration and hardware purchase proposals tailored to the company"
       },
       {
        "ES": "Virtualización VMware / Proxmox, almacenamiento NAS/SAN, Active Directory y Microsoft 365",

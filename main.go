@@ -168,6 +168,9 @@ func main() {
 	}
 	sb.WriteString("}\n")
 	must(os.WriteFile("dist/theme.css", []byte(sb.String()), 0o644))
+	hd, err := fsys.ReadFile("static/headers.txt")
+	must(err)
+	must(os.WriteFile("dist/_headers", hd, 0o644)) // cabeceras de seguridad de Cloudflare Pages
 	for _, n := range []string{"style.css", "app.js"} {
 		d, err := fsys.ReadFile("static/" + n)
 		must(err)

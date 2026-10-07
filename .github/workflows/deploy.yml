@@ -1,31 +1,40 @@
 name: deploy
 on:
   push: { branches: [main] }
+  pull_request:
   workflow_dispatch:
-concurrency: deploy
-permissions: { id-token: write, contents: read }
+concurrency: deploy-${{ github.ref }}
+permissions: { contents: read, deployments: write, pull-requests: write }
+env:
+  PROJECT: omnimous-eye-cv
 jobs:
   deploy:
-    if: ${{ vars.AWS_APPLY_ROLE != '' }}   # no hace nada hasta completar el bootstrap de AWS
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with: { go-version: '1.24' }
-      - run: go run .                          # genera dist/ con el tema de content/theme.txt
-      - uses: hashicorp/setup-terraform@v3
-        with: { terraform_wrapper: false }
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ vars.AWS_APPLY_ROLE }}
-          aws-region: eu-west-1
-      - run: terraform -chdir=infra init -backend-config="bucket=${{ vars.STATE_BUCKET }}"
-      - run: terraform -chdir=infra apply -auto-approve -lock-timeout=60s
-      - name: Publicar sitio
+      - run: go vet ./... && go run .            # genera dist/ con el tema de content/theme.txt
+      - name: Comprobar credenciales
+        id: cf
         run: |
-          BUCKET=$(terraform -chdir=infra output -raw bucket)
-          DIST=$(terraform -chdir=infra output -raw distribution)
-          aws s3 sync dist/ "s3://$BUCKET/" --delete
-          aws cloudfront create-invalidation --distribution-id "$DIST" --paths "/*"
-          echo "URL: $(terraform -chdir=infra output -raw url)" >> "$GITHUB_STEP_SUMMARY"
+          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ] || [ -z "${{ vars.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "Faltan CLOUDFLARE_API_TOKEN o CLOUDFLARE_ACCOUNT_ID: solo se compila." >> "$GITHUB_STEP_SUMMARY"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else echo "ready=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Crear proyecto de Pages (solo la primera vez)
+        if: steps.cf.outputs.ready == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@3 pages project create "$PROJECT" --production-branch main || true
+      - name: Desplegar
+        if: steps.cf.outputs.ready == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          BRANCH="${{ github.head_ref || github.ref_name }}"
+          npx --yes wrangler@3 pages deploy dist --project-name "$PROJECT" --branch "$BRANCH" | tee out.txt
+          URL=$(grep -Eo 'https://[^ ]+\.pages\.dev' out.txt | tail -1)
+          echo "URL: $URL" >> "$GITHUB_STEP_SUMMARY"
