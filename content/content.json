@@ -1,0 +1,738 @@
+{
+ "Name": "Alejandro Díaz Benjumea",
+ "Email": "alejandro.diaz.benjumea@gmail.com",
+ "Title": {
+  "ES": "Infraestructura · DevOps",
+  "EN": "Infrastructure · DevOps"
+ },
+ "Intro": {
+  "ES": "Administro sistemas en producción desde 2021 y automatizo lo que se repite. Del rack al pipeline.",
+  "EN": "I've run production systems since 2021 and automate whatever repeats. From the rack to the pipeline."
+ },
+ "UI": {
+  "skills": {
+   "ES": "Competencias",
+   "EN": "Skills"
+  },
+  "contact": {
+   "ES": "Contacto",
+   "EN": "Contact"
+  },
+  "hint": {
+   "ES": "Arrastra el anillo o toca una sección",
+   "EN": "Drag the ring or tap a section"
+  },
+  "note": {
+   "ES": "Sin rol de seguridad dedicado",
+   "EN": "No dedicated security role"
+  },
+  "footer": {
+   "ES": "Generado con Go · alojado en Cloudflare Pages",
+   "EN": "Built with Go · hosted on Cloudflare Pages"
+  },
+  "certs": {
+   "ES": "Certificaciones",
+   "EN": "Certifications"
+  },
+  "experience": {
+   "ES": "Experiencia",
+   "EN": "Experience"
+  },
+  "build": {
+   "ES": "Cómo está hecha esta web",
+   "EN": "How this site is built"
+  },
+  "copy": {
+   "ES": "copiar",
+   "EN": "copy"
+  },
+  "copied": {
+   "ES": "copiado",
+   "EN": "copied"
+  }
+ },
+ "Sectors": [
+  {
+   "ID": "devops",
+   "Name": {
+    "ES": "DevOps",
+    "EN": "DevOps"
+   },
+   "Summary": {
+    "ES": "Las releases y los clústeres de Kentech, guardias incluidas.",
+    "EN": "Kentech's releases and clusters, on-call included."
+   },
+   "Roles": [
+    {
+     "Company": {
+      "ES": "Kentech S.L.U.",
+      "EN": "Kentech S.L.U."
+     },
+     "Title": {
+      "ES": "Administrador de Sistemas y DevOps",
+      "EN": "Sysadmin & DevOps"
+     },
+     "Period": {
+      "ES": "2021 – actualidad",
+      "EN": "2021 – present"
+     },
+     "Items": [
+      {
+       "ES": "Despliego releases, primero en desarrollo y ahora también en producción: las analizo y corrijo, paso los bugs a desarrollo y resuelvo con QA los fallos de infraestructura",
+       "EN": "I deploy releases, first to development and now to production too: I analyse and fix them, pass bugs to the developers and work with QA on infrastructure faults"
+      },
+      {
+       "ES": "De guardia para Kentech de forma continua. Incidentes típicos: caídas de clústeres Kubernetes y MySQL NDB y switches que fallan",
+       "EN": "On call for Kentech on an ongoing basis. Typical incidents: Kubernetes and MySQL NDB cluster crashes and failing switches"
+      },
+      {
+       "ES": "Migré MySQL de 5.x a 8.x",
+       "EN": "Migrated MySQL from 5.x to 8.x"
+      },
+      {
+       "ES": "Dirigí el paso del Rancher antiguo sobre Docker a clústeres Kubernetes actuales, en desarrollo y producción, y los mantengo",
+       "EN": "Led the move from legacy Docker-based Rancher to current Kubernetes clusters, in development and production, and keep them running"
+      },
+      {
+       "ES": "Automatizo con Bash, kapp, Argo CD, Ansible y GitLab CI/CD, y adapto charts de Helm cuando hace falta",
+       "EN": "I automate with Bash, kapp, Argo CD, Ansible and GitLab CI/CD, and adapt Helm charts when needed"
+      },
+      {
+       "ES": "Monté Argo CD y junté despliegues dispersos en un único flujo GitOps sobre GitLab",
+       "EN": "Set up Argo CD and pulled scattered deployments into one GitOps flow on GitLab"
+      },
+      {
+       "ES": "Introduje feature flags con Unleash para separar la release del despliegue",
+       "EN": "Introduced feature flags with Unleash so a release no longer means a deploy"
+      },
+      {
+       "ES": "Implanté Claude en la empresa y lo uso a diario para revisar código, diagnosticar, documentar y montar agentes",
+       "EN": "Rolled out Claude across the company; I use it daily for code review, diagnostics, documentation and agents"
+      },
+      {
+       "ES": "Acompaño el ciclo Agile de desarrollo a testing, y después preproducción y producción",
+       "EN": "Support the Agile cycle from development to testing, then pre-production and production"
+      },
+      {
+       "ES": "Doy feedback a PMs y desarrolladores sobre cada despliegue y busco incompatibilidades entre fases",
+       "EN": "Give PMs and developers feedback on each deployment and look for incompatibilities between phases"
+      },
+      {
+       "ES": "Reparto y priorizo tareas en Jira con un equipo DevOps de fuera de España",
+       "EN": "Split and prioritise work in Jira with a DevOps team abroad"
+      },
+      {
+       "ES": "Mantengo, actualizo y despliego el software de la empresa, y pruebo herramientas nuevas a medida que salen",
+       "EN": "Maintain, update and deploy the company's software, and try new tools as they appear"
+      }
+     ]
+    }
+   ],
+   "Sub": {
+    "Name": {
+     "ES": "DevSecOps",
+     "EN": "DevSecOps"
+    },
+    "Note": {
+     "ES": "Sin rol de seguridad dedicado",
+     "EN": "No dedicated security role"
+    },
+    "Items": [
+     {
+      "ES": "Desplegué Microsoft Defender ATP para vigilar endpoints y detectar amenazas",
+      "EN": "Rolled out Microsoft Defender ATP to watch endpoints and detect threats"
+     },
+     {
+      "ES": "Buenas prácticas en pipelines y accesos",
+      "EN": "Good practices for pipelines and access"
+     },
+     {
+      "ES": "Participé en las auditorías externas de seguridad de Kentech",
+      "EN": "Took part in Kentech's external security audits"
+     },
+     {
+      "ES": "Probé Snyk para encontrar vulnerabilidades en código y dependencias",
+      "EN": "Tried Snyk for vulnerabilities in code and dependencies"
+     },
+     {
+      "ES": "Uso SonarQube para seguir fallos de seguridad y bugs en el código",
+      "EN": "Use SonarQube to track security issues and bugs in the code"
+     },
+     {
+      "ES": "Preparé campañas internas de phishing para entrenar al personal",
+      "EN": "Ran internal phishing campaigns to train staff"
+     },
+     {
+      "ES": "He contenido muchas amenazas de distinta gravedad, a mano y con automatización",
+      "EN": "Contained many threats of different severity, by hand and with automation"
+     }
+    ]
+   },
+   "Certs": [
+    {
+     "ES": "Certificate of Completion: AI Fluency Framework & Foundations · Anthropic · jul 2026",
+     "EN": "Certificate of Completion: AI Fluency Framework & Foundations · Anthropic · Jul 2026"
+    },
+    {
+     "ES": "Certificate of Completion: Claude Code 101 · Anthropic · jul 2026",
+     "EN": "Certificate of Completion: Claude Code 101 · Anthropic · Jul 2026"
+    },
+    {
+     "ES": "Certificate of Completion: Claude 101 · Anthropic · jul 2026",
+     "EN": "Certificate of Completion: Claude 101 · Anthropic · Jul 2026"
+    },
+    {
+     "ES": "Elasticsearch Engineer (On-demand) · Elastic · ago 2025",
+     "EN": "Elasticsearch Engineer (On-demand) · Elastic · Aug 2025"
+    },
+    {
+     "ES": "Kubernetes Quick Start · A Cloud Guru · jun 2022",
+     "EN": "Kubernetes Quick Start · A Cloud Guru · Jun 2022"
+    },
+    {
+     "ES": "Source Control with Git · A Cloud Guru · feb 2022",
+     "EN": "Source Control with Git · A Cloud Guru · Feb 2022"
+    }
+   ]
+  },
+  {
+   "ID": "sysadmin",
+   "Name": {
+    "ES": "Sysadmin",
+    "EN": "Sysadmin"
+   },
+   "Summary": {
+    "ES": "Un datacenter de más de 20 servidores y todos los equipos de la oficina.",
+    "EN": "A datacenter of 20+ servers and every desktop and laptop in the office."
+   },
+   "Roles": [
+    {
+     "Company": {
+      "ES": "Kentech S.L.U.",
+      "EN": "Kentech S.L.U."
+     },
+     "Title": {
+      "ES": "Administrador de Sistemas y DevOps",
+      "EN": "Sysadmin & DevOps"
+     },
+     "Period": {
+      "ES": "Jul 2021 – actualidad",
+      "EN": "Jul 2021 – present"
+     },
+     "Items": [
+      {
+       "ES": "Llevé un datacenter de más de 20 servidores y 10 equipos de red, primero solo y después con un compañero: reparaciones, mejoras y nuevas funciones, del hardware a AWS",
+       "EN": "Ran a datacenter of 20+ servers and 10+ network devices, alone at first and later with a colleague: repairs, improvements and new features, from hardware to AWS"
+      },
+      {
+       "ES": "Copias de seguridad de los servidores en NAS y SAN con scripts de Bash",
+       "EN": "Backed up servers to NAS and SAN with Bash scripts"
+      },
+      {
+       "ES": "Me ocupé de más de 25 sobremesas y 20 portátiles de marcas y sistemas distintos: soporte, inventario con Administración y propuestas de compra",
+       "EN": "Looked after 25+ desktops and 20 laptops of mixed brands and systems: support, inventory with Administration and purchase proposals"
+      },
+      {
+       "ES": "Virtualización con VMware y Proxmox, almacenamiento NAS/SAN, Active Directory y Microsoft 365",
+       "EN": "VMware and Proxmox virtualisation, NAS/SAN storage, Active Directory and Microsoft 365"
+      },
+      {
+       "ES": "Documentación de la infraestructura siempre al día",
+       "EN": "Kept the infrastructure documentation up to date"
+      }
+     ]
+    },
+    {
+     "Company": {
+      "ES": "Subsea Mechatronics",
+      "EN": "Subsea Mechatronics"
+     },
+     "Title": {
+      "ES": "Prácticas de SysAdmin",
+      "EN": "SysAdmin Internship"
+     },
+     "Period": {
+      "ES": "Mar – Jun 2021",
+      "EN": "Mar – Jun 2021"
+     },
+     "Items": [
+      {
+       "ES": "Gestioné la infraestructura IT de la empresa",
+       "EN": "Managed the company's IT infrastructure"
+      },
+      {
+       "ES": "AWS para IoT y un servidor NAS para todo",
+       "EN": "AWS for IoT and an all-purpose NAS server"
+      },
+      {
+       "ES": "Desarrollo web en PHP, Python y C++",
+       "EN": "Web development in PHP, Python and C++"
+      }
+     ]
+    }
+   ],
+   "Certs": [
+    {
+     "ES": "CCNA Routing and Switching: Introducción a redes · Cisco · jun 2020",
+     "EN": "CCNA Routing and Switching: Introduction to Networks · Cisco · Jun 2020"
+    },
+    {
+     "ES": "Introduction to Ansible v2.7 · Linux Academy · sep 2021",
+     "EN": "Introduction to Ansible v2.7 · Linux Academy · Sep 2021"
+    },
+    {
+     "ES": "Learning Docker · LinkedIn · jul 2021",
+     "EN": "Learning Docker · LinkedIn · Jul 2021"
+    }
+   ]
+  }
+ ],
+ "Skills": [
+  {
+   "Name": {
+    "ES": "Linux",
+    "EN": "Linux"
+   },
+   "Level": 90,
+   "Icons": [
+    "linux"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "Bash",
+    "EN": "Bash"
+   },
+   "Level": 80,
+   "Icons": [
+    "gnubash"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "Python",
+    "EN": "Python"
+   },
+   "Level": 65,
+   "Icons": [
+    "python"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "Windows Server",
+    "EN": "Windows Server"
+   },
+   "Level": 85,
+   "Icons": [
+    "windows"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "Active Directory / M365",
+    "EN": "Active Directory / M365"
+   },
+   "Level": 75,
+   "Icons": [
+    "directory"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "VMware / Proxmox",
+    "EN": "VMware / Proxmox"
+   },
+   "Level": 80,
+   "Icons": [
+    "proxmox"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "Ceph / LVM",
+    "EN": "Ceph / LVM"
+   },
+   "Level": 60,
+   "Icons": [
+    "ceph"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "Redes",
+    "EN": "Networking"
+   },
+   "Level": 80,
+   "Icons": [
+    "network"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "NGINX",
+    "EN": "NGINX"
+   },
+   "Level": 85,
+   "Icons": [
+    "nginx"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "Zabbix",
+    "EN": "Zabbix"
+   },
+   "Level": 70,
+   "Icons": [
+    "monitor"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "Jira / Agile",
+    "EN": "Jira / Agile"
+   },
+   "Level": 85,
+   "Icons": [
+    "jira"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "Docker",
+    "EN": "Docker"
+   },
+   "Level": 95,
+   "Icons": [
+    "docker"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "Kubernetes",
+    "EN": "Kubernetes"
+   },
+   "Level": 85,
+   "Icons": [
+    "kubernetes"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "ArgoCD",
+    "EN": "ArgoCD"
+   },
+   "Level": 70,
+   "Icons": [
+    "argo"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "GitLab CI/CD",
+    "EN": "GitLab CI/CD"
+   },
+   "Level": 85,
+   "Icons": [
+    "gitlab"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "GitHub Actions",
+    "EN": "GitHub Actions"
+   },
+   "Level": 50,
+   "Icons": [
+    "githubactions"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "Git",
+    "EN": "Git"
+   },
+   "Level": 85,
+   "Icons": [
+    "git"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "Ansible",
+    "EN": "Ansible"
+   },
+   "Level": 70,
+   "Icons": [
+    "ansible"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "Terraform",
+    "EN": "Terraform"
+   },
+   "Level": 50,
+   "Icons": [
+    "terraform"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "Go",
+    "EN": "Go"
+   },
+   "Level": 50,
+   "Icons": [
+    "go"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "Claude Code",
+    "EN": "Claude Code"
+   },
+   "Level": 65,
+   "Icons": [
+    "claude"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "MySQL / NDB Cluster",
+    "EN": "MySQL / NDB Cluster"
+   },
+   "Level": 85,
+   "Icons": [
+    "mysql"
+   ],
+   "Col": 2
+  },
+  {
+   "Name": {
+    "ES": "RabbitMQ",
+    "EN": "RabbitMQ"
+   },
+   "Level": 60,
+   "Icons": [
+    "rabbitmq"
+   ],
+   "Col": 2
+  },
+  {
+   "Name": {
+    "ES": "Sonatype Nexus",
+    "EN": "Sonatype Nexus"
+   },
+   "Level": 80,
+   "Icons": [
+    "sonatype"
+   ],
+   "Col": 2
+  },
+  {
+   "Name": {
+    "ES": "Elastic Stack",
+    "EN": "Elastic Stack"
+   },
+   "Level": 75,
+   "Icons": [
+    "elasticstack"
+   ],
+   "Col": 2
+  },
+  {
+   "Name": {
+    "ES": "Prometheus / Grafana",
+    "EN": "Prometheus / Grafana"
+   },
+   "Level": 70,
+   "Icons": [
+    "prometheus",
+    "grafana"
+   ],
+   "Col": 2
+  },
+  {
+   "Name": {
+    "ES": "AWS",
+    "EN": "AWS"
+   },
+   "Level": 65,
+   "Icons": [
+    "aws"
+   ],
+   "Col": 2
+  },
+  {
+   "Name": {
+    "ES": "Cloudflare",
+    "EN": "Cloudflare"
+   },
+   "Level": 50,
+   "Icons": [
+    "cloudflare"
+   ],
+   "Col": 2
+  },
+  {
+   "Name": {
+    "ES": "SonarQube",
+    "EN": "SonarQube"
+   },
+   "Level": 70,
+   "Icons": [
+    "sonar"
+   ],
+   "Col": 2
+  },
+  {
+   "Name": {
+    "ES": "Snyk",
+    "EN": "Snyk"
+   },
+   "Level": 50,
+   "Icons": [
+    "snyk"
+   ],
+   "Col": 2
+  },
+  {
+   "Name": {
+    "ES": "Campañas de phishing",
+    "EN": "Phishing campaigns"
+   },
+   "Level": 60,
+   "Icons": [
+    "hook"
+   ],
+   "Col": 2
+  }
+ ],
+ "Build": {
+  "Text": [
+   {
+    "ES": "Esta página la genera un pequeño programa en Go (html/template y embed) a partir de un único JSON bilingüe. Ahí viven los textos, la experiencia, las certificaciones y los niveles; los colores salen de un tema. El código es abierto, con licencia MIT.",
+    "EN": "This page is generated by a small Go program (html/template and embed) from one bilingual JSON file. Text, experience, certifications and skill levels live there; colours come from a theme. The code is open source under the MIT licence."
+   },
+   {
+    "ES": "El ojo y el disco son SVG movidos con JavaScript sin librerías. El iris sigue al puntero y el disco gira para cambiar de sección.",
+    "EN": "The eye and the disc are SVG moved by plain JavaScript, no libraries. The iris follows the pointer and the disc turns to change section."
+   },
+   {
+    "ES": "Terraform crea el proyecto de Cloudflare Pages y guarda su estado en HCP Terraform. GitHub Actions revisa el formato y pasa los tests del generador antes de compilar; si algo falla, no se publica nada. En cada pull request lanza un plan con URL de vista previa y, al llegar a main, publica con Wrangler.",
+    "EN": "Terraform creates the Cloudflare Pages project and keeps its state in HCP Terraform. GitHub Actions checks formatting and runs the generator tests before building; if anything fails, nothing is published. Every pull request gets a plan and a preview URL, and Wrangler publishes once it reaches main."
+   },
+   {
+    "ES": "Esta web se ha desarrollado con la asistencia de Claude Code, que escribió buena parte del código bajo mi dirección y revisión.",
+    "EN": "This website was built with the assistance of Claude Code, which wrote much of the code under my direction and review."
+   },
+   {
+    "ES": "Cabeceras de seguridad (CSP, HSTS, X-Frame-Options), credenciales guardadas fuera de la página con permisos mínimos y coste de alojamiento cero.",
+    "EN": "Security headers (CSP, HSTS, X-Frame-Options), credentials kept outside the site with least privilege, and zero hosting cost."
+   },
+   {
+    "ES": "Se sirve desde la red global de Cloudflare Pages, con protección DDoS incluida, así que quien quiera intentar tumbarla está invitado a probar suerte: será un buen entrenamiento para los dos.",
+    "EN": "It is served from the global Cloudflare Pages network with DDoS protection built in, so anyone who wants to try taking it down is welcome to have a go: it will be good training for both of us."
+   }
+  ],
+  "Tools": [
+   {
+    "Name": "Go",
+    "Icons": [
+     "go"
+    ]
+   },
+   {
+    "Name": "html/template",
+    "Icons": [
+     "go"
+    ]
+   },
+   {
+    "Name": "JavaScript",
+    "Icons": [
+     "javascript"
+    ]
+   },
+   {
+    "Name": "SVG",
+    "Icons": [
+     "svg"
+    ]
+   },
+   {
+    "Name": "CSS",
+    "Icons": [
+     "css"
+    ]
+   },
+   {
+    "Name": "JSON",
+    "Icons": [
+     "json"
+    ]
+   },
+   {
+    "Name": "Terraform",
+    "Icons": [
+     "terraform"
+    ]
+   },
+   {
+    "Name": "Cloudflare Pages",
+    "Icons": [
+     "cloudflarepages"
+    ]
+   },
+   {
+    "Name": "Wrangler",
+    "Icons": [
+     "cloudflareworkers"
+    ]
+   },
+   {
+    "Name": "GitHub Actions",
+    "Icons": [
+     "githubactions"
+    ]
+   },
+   {
+    "Name": "Git",
+    "Icons": [
+     "git"
+    ]
+   },
+   {
+    "Name": "Claude Code",
+    "Icons": [
+     "claude"
+    ]
+   }
+  ]
+ },
+ "LinkedIn": "https://www.linkedin.com/in/alejandro-d%C3%ADaz-benjumea-b704251a6/",
+ "GitHub": "https://github.com/AlexDBdevops/OminousEyeCV"
+}
