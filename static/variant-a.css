@@ -1,0 +1,44 @@
+/* Variante A · "consola": tipografía con carácter, rótulos como comentarios de código,
+   barras segmentadas, grano sutil y pie con el build real. */
+@font-face{font-family:"Syne";src:url(fonts/syne.woff) format("woff");font-weight:400 800;font-display:swap}
+@font-face{font-family:"Plex Sans";src:url(fonts/plexsans.woff) format("woff");font-weight:100 700;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(fonts/plexmono-400.woff) format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(fonts/plexmono-500.woff) format("woff");font-weight:500;font-display:swap}
+.v-a{--display:"Syne",system-ui,sans-serif;--body:"Plex Sans",system-ui,sans-serif;--mono:"Plex Mono",ui-monospace,monospace}
+body.v-a{font-family:var(--body);font-size:16.5px}
+/* grano */
+.v-a::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.v-a .brand{font-family:var(--mono);letter-spacing:0;text-transform:none;font-size:.85rem}
+.v-a .brand .prompt{display:inline;color:var(--a)}
+.v-a .lang{font-family:var(--mono);border-radius:3px;letter-spacing:0}
+/* hero asimétrico: el ojo manda y desborda hacia la izquierda */
+@media(min-width:861px){.v-a .hero{grid-template-columns:minmax(340px,640px) minmax(0,1fr);gap:clamp(16px,3vw,48px)}.v-a .stage{margin-left:-3vw}}
+.v-a .panel h1{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,4.6vw,4.1rem);line-height:.95;letter-spacing:-.02em;overflow-wrap:anywhere}
+.v-a .role{font-family:var(--mono);letter-spacing:0;text-transform:lowercase;font-size:.95rem;color:var(--a3)}
+.v-a .role::before{content:"> "}
+.v-a .intro{font-size:1.08rem;max-width:38ch}
+.v-a .hint{font-family:var(--mono);letter-spacing:0;font-size:.75rem}
+.v-a .pill{font-family:var(--mono);border-radius:3px;font-size:.85rem}
+.v-a .pill::before{content:"./"; opacity:.6}
+/* rótulos como comentarios */
+.v-a h2{font-family:var(--mono);font-weight:500;letter-spacing:0;text-transform:lowercase;font-size:.95rem}
+.v-a h2::before{content:"// ";opacity:.55}
+.v-a .detail{border-radius:0;border-left-width:2px;background:linear-gradient(90deg,var(--panel),transparent 85%)}
+.v-a .detail h2{font-family:var(--display);font-weight:700;font-size:1.9rem;text-transform:none;color:var(--bone)}
+.v-a .detail h2::before{content:none}
+.v-a .sum{font-size:1.05rem}
+.v-a .period,.v-a .rt{font-family:var(--mono);font-size:.8rem}
+.v-a .sub h3,.v-a .certs h3{font-family:var(--mono);font-weight:500;letter-spacing:0;text-transform:lowercase;font-size:.85rem}
+.v-a .sub h3::before,.v-a .certs h3::before{content:"## ";opacity:.55}
+.v-a .badge{font-family:var(--mono);border-radius:0}
+/* barras segmentadas */
+.v-a .sh{font-size:.92rem}
+.v-a .sh b{font-family:var(--mono);font-size:.8rem}
+.v-a .bar{height:9px;border-radius:0;background:var(--track);
+  -webkit-mask:repeating-linear-gradient(90deg,#000 0 7px,transparent 7px 9px);mask:repeating-linear-gradient(90deg,#000 0 7px,transparent 7px 9px)}
+.v-a .bar i{background:var(--a)}
+.v-a .tools li{font-family:var(--mono);border-radius:3px;font-size:.78rem}
+.v-a .build-text{font-size:1rem}
+.v-a .mail{font-family:var(--mono);font-size:1.05rem}
+.v-a footer{font-family:var(--mono);font-size:.72rem;color:var(--mut)}

@@ -19,8 +19,8 @@
    "EN": "Contact"
   },
   "hint": {
-   "ES": "Gira el disco o pulsa un sector",
-   "EN": "Spin the disc or pick a sector"
+   "ES": "Arrastra el anillo o toca una sección",
+   "EN": "Drag the ring or tap a section"
   },
   "note": {
    "ES": "Sin rol de seguridad dedicado",
@@ -294,7 +294,7 @@
     "EN": "Linux"
    },
    "Level": 90,
-   "Group": "",
+   "Group": "systems",
    "Icons": [
     "linux"
    ]
@@ -305,7 +305,7 @@
     "EN": "Kubernetes"
    },
    "Level": 85,
-   "Group": "",
+   "Group": "containers",
    "Icons": [
     "kubernetes"
    ]
@@ -316,7 +316,7 @@
     "EN": "Docker"
    },
    "Level": 95,
-   "Group": "",
+   "Group": "containers",
    "Icons": [
     "docker"
    ]
@@ -327,7 +327,7 @@
     "EN": "NGINX"
    },
    "Level": 85,
-   "Group": "",
+   "Group": "systems",
    "Icons": [
     "nginx"
    ]
@@ -338,7 +338,7 @@
     "EN": "MySQL / NDB Cluster"
    },
    "Level": 85,
-   "Group": "",
+   "Group": "data",
    "Icons": [
     "mysql"
    ]
@@ -349,7 +349,7 @@
     "EN": "GitLab CI/CD"
    },
    "Level": 85,
-   "Group": "",
+   "Group": "automation",
    "Icons": [
     "gitlab"
    ]
@@ -360,7 +360,7 @@
     "EN": "ArgoCD"
    },
    "Level": 70,
-   "Group": "",
+   "Group": "containers",
    "Icons": [
     "argo"
    ]
@@ -371,7 +371,7 @@
     "EN": "Ansible"
    },
    "Level": 70,
-   "Group": "",
+   "Group": "automation",
    "Icons": [
     "ansible"
    ]
@@ -382,7 +382,7 @@
     "EN": "Git"
    },
    "Level": 85,
-   "Group": "",
+   "Group": "automation",
    "Icons": [
     "git"
    ]
@@ -393,7 +393,7 @@
     "EN": "Bash"
    },
    "Level": 80,
-   "Group": "",
+   "Group": "automation",
    "Icons": [
     "gnubash"
    ]
@@ -404,7 +404,7 @@
     "EN": "Python"
    },
    "Level": 65,
-   "Group": "",
+   "Group": "automation",
    "Icons": [
     "python"
    ]
@@ -415,7 +415,7 @@
     "EN": "AWS"
    },
    "Level": 65,
-   "Group": "",
+   "Group": "cloud",
    "Icons": []
   },
   {
@@ -424,7 +424,7 @@
     "EN": "VMware / Proxmox"
    },
    "Level": 80,
-   "Group": "",
+   "Group": "systems",
    "Icons": [
     "proxmox"
    ]
@@ -435,7 +435,7 @@
     "EN": "Networking"
    },
    "Level": 80,
-   "Group": "",
+   "Group": "systems",
    "Icons": []
   },
   {
@@ -444,7 +444,7 @@
     "EN": "Elastic Stack"
    },
    "Level": 75,
-   "Group": "",
+   "Group": "observability",
    "Icons": [
     "elasticstack"
    ]
@@ -455,7 +455,7 @@
     "EN": "Prometheus / Grafana"
    },
    "Level": 70,
-   "Group": "",
+   "Group": "observability",
    "Icons": [
     "prometheus",
     "grafana"
@@ -467,7 +467,7 @@
     "EN": "Zabbix"
    },
    "Level": 70,
-   "Group": "",
+   "Group": "observability",
    "Icons": []
   },
   {
@@ -476,7 +476,7 @@
     "EN": "Sonatype Nexus"
    },
    "Level": 80,
-   "Group": "",
+   "Group": "data",
    "Icons": [
     "sonatype"
    ]
@@ -487,7 +487,7 @@
     "EN": "RabbitMQ"
    },
    "Level": 60,
-   "Group": "",
+   "Group": "data",
    "Icons": [
     "rabbitmq"
    ]
@@ -498,7 +498,7 @@
     "EN": "Ceph / LVM"
    },
    "Level": 60,
-   "Group": "",
+   "Group": "systems",
    "Icons": [
     "ceph"
    ]
@@ -509,7 +509,7 @@
     "EN": "Windows Server"
    },
    "Level": 85,
-   "Group": "",
+   "Group": "systems",
    "Icons": []
   },
   {
@@ -518,7 +518,7 @@
     "EN": "Active Directory / M365"
    },
    "Level": 75,
-   "Group": "",
+   "Group": "systems",
    "Icons": []
   },
   {
@@ -527,7 +527,7 @@
     "EN": "Jira / Agile"
    },
    "Level": 85,
-   "Group": "",
+   "Group": "process",
    "Icons": [
     "jira"
    ]
@@ -538,7 +538,7 @@
     "EN": "Snyk"
    },
    "Level": 50,
-   "Group": "",
+   "Group": "security",
    "Icons": [
     "snyk"
    ]
@@ -549,7 +549,7 @@
     "EN": "SonarQube"
    },
    "Level": 70,
-   "Group": "",
+   "Group": "security",
    "Icons": [
     "sonar"
    ]
@@ -560,7 +560,7 @@
     "EN": "Phishing campaigns"
    },
    "Level": 60,
-   "Group": "",
+   "Group": "security",
    "Icons": []
   },
   {
@@ -569,7 +569,7 @@
     "EN": "Cloudflare"
    },
    "Level": 50,
-   "Group": "",
+   "Group": "cloud",
    "Icons": [
     "cloudflare"
    ]
@@ -580,7 +580,7 @@
     "EN": "Terraform"
    },
    "Level": 50,
-   "Group": "",
+   "Group": "automation",
    "Icons": [
     "terraform"
    ]
@@ -591,7 +591,7 @@
     "EN": "GitHub Actions"
    },
    "Level": 50,
-   "Group": "",
+   "Group": "automation",
    "Icons": [
     "githubactions"
    ]
@@ -688,5 +688,63 @@
     ]
    }
   ]
- }
+ },
+ "Groups": [
+  {
+   "Key": "containers",
+   "Name": {
+    "ES": "Contenedores y GitOps",
+    "EN": "Containers & GitOps"
+   }
+  },
+  {
+   "Key": "automation",
+   "Name": {
+    "ES": "CI/CD y automatización",
+    "EN": "CI/CD & automation"
+   }
+  },
+  {
+   "Key": "systems",
+   "Name": {
+    "ES": "Sistemas y redes",
+    "EN": "Systems & networking"
+   }
+  },
+  {
+   "Key": "data",
+   "Name": {
+    "ES": "Datos y mensajería",
+    "EN": "Data & messaging"
+   }
+  },
+  {
+   "Key": "observability",
+   "Name": {
+    "ES": "Observabilidad",
+    "EN": "Observability"
+   }
+  },
+  {
+   "Key": "cloud",
+   "Name": {
+    "ES": "Cloud",
+    "EN": "Cloud"
+   }
+  },
+  {
+   "Key": "security",
+   "Name": {
+    "ES": "Seguridad",
+    "EN": "Security"
+   }
+  },
+  {
+   "Key": "process",
+   "Name": {
+    "ES": "Proceso",
+    "EN": "Process"
+   }
+  }
+ ]
 }

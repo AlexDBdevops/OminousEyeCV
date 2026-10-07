@@ -1,0 +1,44 @@
+/* Variante B · "cuaderno de campo": serif suave para los titulares, experiencia como línea
+   de tiempo y competencias agrupadas por área con puntos en lugar de barras. */
+@font-face{font-family:"Fraunces";src:url(fonts/fraunces.woff) format("woff");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url(fonts/sourcesans3.woff) format("woff");font-weight:200 900;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url(fonts/jetbrainsmono.woff) format("woff");font-weight:100 800;font-display:swap}
+.v-b{--display:"Fraunces",Georgia,serif;--body:"Source Sans 3",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+body.v-b{font-family:var(--body);font-size:17px;background:radial-gradient(ellipse 80% 60% at 70% 10%,var(--bg2) 0,var(--bg) 65%)}
+.v-b .brand{font-family:var(--display);font-variation-settings:"SOFT" 100,"opsz" 14;letter-spacing:.02em;text-transform:none;font-size:1rem;color:var(--bone)}
+.v-b .lang{font-family:var(--mono);border-radius:6px}
+/* hero: nombre a la izquierda, ojo a la derecha */
+@media(min-width:861px){.v-b .hero{grid-template-columns:minmax(0,1fr) minmax(320px,560px)}.v-b .stage{order:2}.v-b .panel{order:1}}
+.v-b .panel h1{font-family:var(--display);font-weight:600;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144;font-size:clamp(2.8rem,6.4vw,5.4rem);line-height:.95;letter-spacing:-.01em}
+.v-b .role{font-family:var(--mono);letter-spacing:.04em;text-transform:none;font-size:.9rem;color:var(--a2)}
+.v-b .intro{font-family:var(--display);font-variation-settings:"SOFT" 100,"opsz" 24;font-size:1.25rem;line-height:1.45;color:var(--bone);opacity:.85;max-width:30ch}
+.v-b .hint{font-family:var(--mono);letter-spacing:0;font-size:.75rem}
+.v-b .pills{gap:20px}
+.v-b .pill{background:none;border:0;border-bottom:2px solid transparent;border-radius:0;padding:4px 0;font-size:1rem}
+.v-b .pill.on{background:none;color:var(--bone);border-bottom-color:var(--a2)}
+.v-b h2{font-family:var(--display);font-weight:600;font-variation-settings:"SOFT" 100,"opsz" 48;letter-spacing:0;text-transform:none;font-size:1.7rem;color:var(--bone)}
+/* experiencia: línea de tiempo */
+.v-b .detail{background:none;border:0;border-radius:0;padding:8px 0}
+.v-b .detail h2{font-size:2.2rem}
+.v-b .role-block{position:relative;padding-left:22px;border-left:1px solid var(--line)}
+.v-b .role-block::before{content:"";position:absolute;left:-5px;top:.45em;width:9px;height:9px;border-radius:50%;background:var(--a2)}
+.v-b .rh{flex-direction:column-reverse;align-items:flex-start;gap:0}
+.v-b .rh b{font-family:var(--display);font-weight:600;font-size:1.25rem}
+.v-b .period{font-family:var(--mono);font-size:.78rem;color:var(--a3)}
+.v-b .rt{font-family:var(--mono);font-size:.8rem}
+.v-b .sub h3,.v-b .certs h3{font-family:var(--display);font-weight:600;letter-spacing:0;text-transform:none;font-size:1.2rem;color:var(--bone)}
+.v-b .certs{border-top:1px solid var(--line)}
+.v-b .badge{font-family:var(--mono);border-style:solid;border-radius:999px;font-size:.75rem}
+/* competencias agrupadas con puntos */
+.v-b .skills .grid{display:none}
+.v-b .groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:28px 40px}
+.v-b .grp h3{font-family:var(--mono);font-weight:500;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--a2);margin:0 0 8px}
+.v-b .grp ul{list-style:none;margin:0;padding:0}
+.v-b .grp li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:5px 0;border-bottom:1px dotted var(--line)}
+.v-b .dots{display:inline-flex;gap:4px;flex:none}
+.v-b .dots i{width:7px;height:7px;border-radius:50%;border:1px solid var(--a);display:block}
+.v-b .dots i.on{background:var(--a)}
+.v-b .tools li{font-family:var(--mono);font-size:.78rem}
+.v-b .build-text{font-size:1.02rem}
+.v-b .mail{font-family:var(--display);font-size:clamp(1.05rem,4.6vw,1.5rem);overflow-wrap:anywhere;font-variation-settings:"SOFT" 100;border-bottom-color:var(--a2)}
+.v-b footer{font-family:var(--mono);font-size:.72rem}

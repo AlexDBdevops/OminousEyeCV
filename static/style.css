@@ -103,3 +103,6 @@ footer{text-align:center;color:#5a4a4a;font-size:.75rem;padding:32px 16px}
 .build-text p{margin:0 0 .8em;break-inside:avoid}
 .tools{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:12px 0 0}
 .tools li{border:1px solid var(--line);color:var(--bone);border-radius:999px;padding:3px 12px;font-size:.82rem}
+/* --- Elementos que activa cada variante --- */
+.groups,.brand .prompt{display:none}
+.build{opacity:.8}

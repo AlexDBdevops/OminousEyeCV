@@ -23,11 +23,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="theme.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="variant-{{.B.Variant}}.css">
 <script>try{var l=localStorage.getItem('lang')==='es'?'es':'en';document.documentElement.lang=l}catch(e){}</script>
 </head>
-<body>
+<body class="v-{{.B.Variant}}">
 <header class="top">
-  <div class="brand">{{.C.Name}}</div>
+  <div class="brand"><span class="prompt">alejandro@ops:~$ </span><span class="bname">{{.C.Name}}</span></div>
   <button id="lang" class="lang" aria-label="Language">
     <span data-lang="es">EN</span><span data-lang="en">ES</span>
   </button>
@@ -120,6 +121,11 @@
 
 <section class="skills">
   <h2>{{ui "skills"}}</h2>
+  <div class="groups">
+    {{range $g := .C.Groups}}<div class="grp"><h3>{{l $g.Name}}</h3><ul>
+      {{range $.C.Skills}}{{if eq .Group $g.Key}}<li><span class="sn">{{icons .Icons}}{{l .Name}}</span><span class="dots" aria-label="{{.Level}}%">{{dots .Level}}</span></li>{{end}}{{end}}
+    </ul></div>{{end}}
+  </div>
   <div class="grid">
     {{range .C.Skills}}
     <div class="skill"><div class="sh"><span class="sn">{{icons .Icons}}{{l .Name}}</span><b>{{.Level}}%</b></div>
@@ -138,7 +144,7 @@
   <a class="mail" href="mailto:{{.C.Email}}">{{.C.Email}}</a>
 </section>
 </main>
-<footer>{{ui "footer"}}</footer>
+<footer>{{ui "footer"}}<span class="build"> · build {{.B.SHA}} · {{.B.Date}}</span></footer>
 <script src="app.js"></script>
 </body>
 </html>

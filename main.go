@@ -7,15 +7,18 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
+	"io/fs"
 	"math"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"sort"
 	"strings"
+	"time"
 )
 
-//go:embed templates/*.tmpl static/* content/*.json content/themes/*.json content/theme.txt
+//go:embed templates/*.tmpl static/* content/*.json content/themes/*.json content/theme.txt content/variant.txt
 var fsys embed.FS
 
 type L struct{ ES, EN string }
@@ -59,6 +62,11 @@ type Content struct {
 	Sectors []Sector
 	Skills  []Skill
 	Build   Build
+	Groups  []Group
+}
+type Group struct {
+	Key  string
+	Name L
 }
 type Build struct {
 	Text  []L
@@ -69,7 +77,11 @@ type Tool struct {
 	Icons []string
 }
 type Spoke struct{ X1, Y1, X2, Y2 float64 }
+type BuildInfo struct {
+	SHA, Date, Variant string
+}
 type View struct {
+	B      BuildInfo
 	C      Content
 	Spokes []Spoke
 	Hex    string
@@ -115,6 +127,25 @@ func main() {
 		c.Sectors[i].Label = arc(252, a0+14, a0+span-14)
 	}
 	v := View{C: c}
+	// Variante de diseño (v2: a | b) y datos reales del build para el pie
+	variant := strings.TrimSpace(os.Getenv("VARIANT"))
+	if variant == "" {
+		vb, err := fsys.ReadFile("content/variant.txt")
+		must(err)
+		variant = strings.TrimSpace(string(vb))
+	}
+	sha := os.Getenv("GITHUB_SHA")
+	if sha == "" {
+		if out, err := exec.Command("git", "rev-parse", "HEAD").Output(); err == nil {
+			sha = strings.TrimSpace(string(out))
+		} else {
+			sha = "local"
+		}
+	}
+	if len(sha) > 7 {
+		sha = sha[:7]
+	}
+	v.B = BuildInfo{SHA: sha, Date: time.Now().UTC().Format("2006-01-02"), Variant: variant}
 	for i := 0; i < 24; i++ {
 		a := float64(i) * 15
 		x1, y1 := pt(34, a)
@@ -171,6 +202,18 @@ func main() {
 			return template.HTML(sb.String())
 		},
 		"es": func(x L) string { return x.ES },
+		"dots": func(level int) template.HTML {
+			n := (level + 10) / 20
+			var sb strings.Builder
+			for i := 0; i < 5; i++ {
+				if i < n {
+					sb.WriteString(`<i class="on"></i>`)
+				} else {
+					sb.WriteString(`<i></i>`)
+				}
+			}
+			return template.HTML(sb.String())
+		},
 	}
 	t, err := template.New("index.html.tmpl").Funcs(funcs).ParseFS(fsys, "templates/index.html.tmpl")
 	must(err)
@@ -213,7 +256,17 @@ func main() {
 	}
 	hd = []byte(strings.ReplaceAll(string(hd), "__SCRIPT_HASHES__", strings.Join(hashes, " ")))
 	must(os.WriteFile("dist/_headers", hd, 0o644)) // cabeceras de seguridad de Cloudflare Pages
-	for _, n := range []string{"style.css", "app.js", "favicon.svg", "favicon-32.png", "apple-touch-icon.png", "og.png"} {
+	// fuentes autoalojadas
+	must(os.MkdirAll("dist/fonts", 0o755))
+	must(fs.WalkDir(fsys, "static/fonts", func(p string, d fs.DirEntry, err error) error {
+		if err != nil || d.IsDir() {
+			return err
+		}
+		b, err := fsys.ReadFile(p)
+		must(err)
+		return os.WriteFile(filepath.Join("dist/fonts", d.Name()), b, 0o644)
+	}))
+	for _, n := range []string{"style.css", "app.js", "favicon.svg", "favicon-32.png", "apple-touch-icon.png", "og.png", "variant-" + variant + ".css"} {
 		d, err := fsys.ReadFile("static/" + n)
 		must(err)
 		must(os.WriteFile(filepath.Join("dist", n), d, 0o644))
