@@ -74,8 +74,8 @@
      },
      "Items": [
       {
-       "ES": "Despliegue de releases: análisis y corrección, reporte de bugs al equipo de desarrollo para su corrección y coordinación con QA para resolver posibles fallos de infraestructura",
-       "EN": "Release deployment: analysing and fixing releases, reporting bugs to the development team for correction and coordinating with QA to resolve potential infrastructure issues"
+       "ES": "Despliegue de releases, primero en desarrollo y después también en producción: análisis y corrección, reporte de bugs al equipo de desarrollo para su corrección y coordinación con QA para resolver posibles fallos de infraestructura",
+       "EN": "Release deployment, first in development and later in production too: analysing and fixing releases, reporting bugs to the development team for correction and coordinating with QA to resolve potential infrastructure issues"
       },
       {
        "ES": "Migración de MySQL 5.x a 8.x",
