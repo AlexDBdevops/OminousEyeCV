@@ -1,0 +1,90 @@
+# OmnimousEyeCV · Cómo funciona
+
+CV web de Alejandro Díaz Benjumea: **https://alejandro-diaz-benjumea.pages.dev**
+
+Generador estático en Go, publicado en Cloudflare Pages, con la infraestructura en Terraform (estado en HCP Terraform) y CI/CD en GitHub Actions. Coste de alojamiento: 0.
+
+## 1. Estructura del repositorio
+
+```
+content/content.json        ← todo el texto: experiencia, certificaciones, barras de nivel, "cómo está hecha"
+content/theme.txt           ← tema activo (cyan o red)
+content/themes/*.json       ← colores de cada tema
+templates/index.html.tmpl   ← estructura HTML de la página
+static/style.css            ← diseño
+static/app.js               ← ojo, disco, botón ES/EN, barras animadas
+static/headers.txt          ← cabeceras de seguridad (plantilla de _headers)
+static/icons/*.svg          ← iconos de tecnologías (Simple Icons, CC0)
+main.go                     ← generador: lo junta todo y produce dist/
+infra/main.tf               ← Terraform: proyecto de Cloudflare Pages
+.github/workflows/deploy.yml← CI/CD
+.github/dependabot.yml      ← actualizaciones automáticas de dependencias
+```
+
+El contenido está separado del diseño: para cambiar un texto o un porcentaje solo se toca `content.json`; para cambiar el color, una palabra en `theme.txt`.
+
+## 2. El generador (`main.go`)
+
+`go run .` hace lo siguiente:
+
+1. Lee `content.json`, con cada texto en español e inglés.
+2. Calcula la geometría del disco: un sector por sección (ahora dos de 180°), los arcos para el texto curvado, las marcas del borde y los radios del iris.
+3. Rellena la plantilla HTML. Cada texto se escribe dos veces (`data-lang="es"` y `data-lang="en"`) y los iconos SVG se insertan en línea.
+4. Escribe en `dist/`: `index.html`, `style.css`, `app.js`, `theme.css` (colores del tema elegido) y `_headers` (seguridad).
+5. Calcula el hash SHA-256 del script en línea del HTML y lo añade a la Content-Security-Policy, de modo que el navegador solo ejecuta ese script y ninguno inyectado.
+
+El resultado es una web estática: archivos fijos, sin servidor ni base de datos.
+
+## 3. En el navegador (`app.js`)
+
+- **Idioma:** el HTML trae los dos idiomas y el CSS oculta uno según `<html lang>`. Por defecto, inglés; el botón cambia y el navegador lo recuerda.
+- **Ojo:** el movimiento del ratón o un toque fija una posición objetivo para el iris; en cada fotograma el iris avanza un 16 % hacia ella (movimiento suave). El párpado recorta el iris. Parpadeo cada 6 s con CSS. Con "reducir movimiento" activado, el iris sigue al puntero sin interpolación.
+- **Disco:** pulsar un sector, un botón o arrastrar el anillo lo gira por el camino más corto hasta dejar arriba la sección elegida y muestra su bloque de experiencia.
+- **Barras:** se rellenan con animación al entrar en pantalla.
+
+## 4. Infraestructura (`infra/main.tf`)
+
+Terraform gestiona el proyecto de Cloudflare Pages `alejandro-diaz-benjumea` (que da el dominio `.pages.dev`). El estado se guarda en HCP Terraform, workspace `omnimous-eye-cv`, en modo de ejecución **Local**: Terraform se ejecuta en GitHub Actions y HCP solo guarda y bloquea el estado. Cambiar el nombre del proyecto en Terraform sustituye el proyecto (borra el antiguo y crea el nuevo).
+
+**Terraform vs HCP Terraform:** Terraform es la herramienta que compara el código con lo que existe en Cloudflare y aplica los cambios. HCP Terraform es el servicio que guarda el archivo de estado de forma remota, lo bloquea durante cada ejecución y conserva su historial.
+
+## 5. CI/CD (`.github/workflows/deploy.yml`)
+
+Se lanza con un push a `main`, al abrir un pull request o a mano (Actions → deploy → Run workflow):
+
+1. **Checkout y Go.**
+2. **Compilar:** `go vet` y `go run .` generan `dist/`. Si falla, se para y la web no cambia.
+3. **Comprobar credenciales:** si falta algún secreto, solo compila.
+4. **Terraform init + fmt + validate.**
+5. **Pull request:** `terraform plan` (muestra qué cambiaría, sin tocar nada). **main:** `terraform apply`.
+6. **Wrangler** (CLI de Cloudflare) sube `dist/` al proyecto de Pages: a producción en `main` y a una URL de vista previa propia de la rama en los pull requests.
+
+Configuración en GitHub (Settings → Secrets and variables → Actions):
+
+| Tipo | Nombre | Para qué |
+|---|---|---|
+| Secreto | `CLOUDFLARE_API_TOKEN` | Token con permiso solo de Cloudflare Pages: Edit |
+| Secreto | `TF_API_TOKEN` | Token de HCP Terraform para el estado |
+| Variable | `CLOUDFLARE_ACCOUNT_ID` | ID de la cuenta de Cloudflare |
+| Variable | `TF_CLOUD_ORGANIZATION` | Organización de HCP Terraform |
+
+## 6. Seguridad
+
+- Cabeceras: CSP sin `unsafe-inline` para scripts (hash calculado en el build), HSTS, `X-Frame-Options: DENY`, COOP/CORP, `Permissions-Policy` (sin cámara, micrófono, ubicación ni pagos), `nosniff`, `no-referrer`.
+- Workflow: acciones fijadas por SHA, `GITHUB_TOKEN` de solo lectura, checkout sin credenciales persistidas y tiempo límite.
+- Credenciales fuera del código, con permisos mínimos.
+- Denegación de servicio: Cloudflare filtra los ataques DDoS en todos los planes y el tráfico estático no se cobra, así que un ataque no genera coste.
+
+## 7. Dependabot
+
+Servicio integrado de GitHub configurado en `.github/dependabot.yml`. Cada mes revisa si hay versiones nuevas de las acciones del workflow y del proveedor de Terraform y, si las hay, abre un pull request con la actualización. Ese pull request ejecuta el workflow (compilación, `terraform plan` y vista previa), así que se puede comprobar que todo sigue funcionando antes de fusionarlo. No fusiona nada por sí solo.
+
+## 8. Cómo hacer cambios
+
+- **Rápido:** editar `content/content.json` en GitHub y hacer commit en `main`; en un minuto está publicado.
+- **Con revisión:** rama → pull request → revisar el plan y la URL de vista previa → fusionar.
+- **Local:** `go run .` genera `dist/`; `THEME=red go run .` prueba otro tema.
+
+## 9. Fuera del repositorio
+
+Los CVs en PDF se generan aparte (HTML impreso a PDF con Chromium) y aún no forman parte del repositorio ni del pipeline.
