@@ -65,6 +65,6 @@ jobs:
           # www.<project>.pages.dev is treated as a branch alias; deploy a tiny "www" branch that only redirects
           PROJECT=$(terraform -chdir=infra output -raw project_name)
           mkdir -p www
-          echo "/* https://$PROJECT.pages.dev/:splat 301" > www/_redirects
+          printf '/ https://%s.pages.dev/ 301\n/* https://%s.pages.dev/:splat 301\n' "$PROJECT" "$PROJECT" > www/_redirects
           printf '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=https://%s.pages.dev/"><title>Redirecting</title><a href="https://%s.pages.dev/">%s.pages.dev</a>\n' "$PROJECT" "$PROJECT" "$PROJECT" > www/index.html
           npx --yes wrangler@3 pages deploy www --project-name "$PROJECT" --branch www
