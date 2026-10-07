@@ -59,3 +59,12 @@ jobs:
           BRANCH="${{ github.head_ref || github.ref_name }}"
           npx --yes wrangler@3 pages deploy dist --project-name "$PROJECT" --branch "$BRANCH" | tee out.txt
           echo "URL: $(grep -Eo 'https://[^ ]+\.pages\.dev' out.txt | tail -1)" >> "$GITHUB_STEP_SUMMARY"
+      - name: Redirect www to the main address (main)
+        if: steps.cf.outputs.ready == 'true' && github.ref == 'refs/heads/main'
+        run: |
+          # www.<project>.pages.dev is treated as a branch alias; deploy a tiny "www" branch that only redirects
+          PROJECT=$(terraform -chdir=infra output -raw project_name)
+          mkdir -p www
+          echo "/* https://$PROJECT.pages.dev/:splat 301" > www/_redirects
+          printf '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=https://%s.pages.dev/"><title>Redirecting</title><a href="https://%s.pages.dev/">%s.pages.dev</a>\n' "$PROJECT" "$PROJECT" "$PROJECT" > www/index.html
+          npx --yes wrangler@3 pages deploy www --project-name "$PROJECT" --branch www
