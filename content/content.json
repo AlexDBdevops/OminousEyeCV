@@ -418,6 +418,18 @@
   },
   {
    "Name": {
+    "ES": "Jira / Agile",
+    "EN": "Jira / Agile"
+   },
+   "Level": 85,
+   "Group": "process",
+   "Icons": [
+    "jira"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
     "ES": "Docker",
     "EN": "Docker"
    },
@@ -533,18 +545,6 @@
    "Group": "automation",
    "Icons": [
     "claude"
-   ],
-   "Col": 1
-  },
-  {
-   "Name": {
-    "ES": "Jira / Agile",
-    "EN": "Jira / Agile"
-   },
-   "Level": 85,
-   "Group": "process",
-   "Icons": [
-    "jira"
    ],
    "Col": 1
   },
