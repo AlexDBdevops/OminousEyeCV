@@ -6,7 +6,7 @@ on:
 concurrency: deploy-${{ github.ref }}
 permissions: { contents: read, deployments: write }
 env:
-  PROJECT: omnimous-eye-cv
+  PROJECT: devops-alejandro-diaz-benjumea
   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
   CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
   TF_VAR_cloudflare_account_id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}

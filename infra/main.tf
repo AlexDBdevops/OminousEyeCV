@@ -22,7 +22,7 @@ variable "cloudflare_account_id" {
 
 variable "project_name" {
   type    = string
-  default = "omnimous-eye-cv"
+  default = "devops-alejandro-diaz-benjumea"
 }
 
 # Proyecto de Pages en modo "direct upload": GitHub Actions compila con Go y sube dist/.
