@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{.C.Name}} · CV</title>
+<meta name="description" content="{{en .C.Intro}}">
+<link rel="canonical" href="https://alejandro-diaz-benjumea.pages.dev/">
+<meta name="theme-color" content="#07060d">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alejandro-diaz-benjumea.pages.dev/">
+<meta property="og:title" content="{{.C.Name}} · Sysadmin & DevOps">
+<meta property="og:description" content="{{en .C.Intro}}">
+<meta property="og:image" content="https://alejandro-diaz-benjumea.pages.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{.C.Name}}: animated eye and experience disc">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="variant-{{.B.Variant}}.css">
+<script>var d=document.documentElement;try{var l=localStorage.getItem('lang')==='es'?'es':'en';d.lang=l}catch(e){}var b=1;try{b=!sessionStorage.getItem('booted')}catch(e){}if(b)d.classList.add('boot')</script>
+</head>
+<body class="v-{{.B.Variant}}">
+<header class="top">
+  <div class="brand"><span class="prompt">alejandro@ops:~$ </span><span class="bootcmd">./AlexDBdevopsCV.sh</span><button type="button" class="bootenter" hidden>↵ Enter</button><span class="bootlog" aria-live="polite"></span></div>
+  <button id="lang" class="lang bt" aria-label="Language">
+    <span data-lang="es">EN</span><span data-lang="en">ES</span>
+  </button>
+</header>
+
+<main>
+<section class="hero">
+  <div class="stage bt">
+  <svg id="art" viewBox="0 0 600 600" role="img" aria-label="Eye and disc">
+    <defs>
+      <radialGradient id="irisg" cx="50%" cy="50%" r="50%">
+        <stop offset="0" style="stop-color:var(--i0)"/><stop offset=".3" style="stop-color:var(--i1)"/>
+        <stop offset=".75" style="stop-color:var(--i2)"/><stop offset="1" style="stop-color:var(--i3)"/>
+      </radialGradient>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" style="stop-color:var(--a)" stop-opacity=".3"/><stop offset="1" style="stop-color:var(--a)" stop-opacity="0"/>
+      </radialGradient>
+      <clipPath id="lidclip"><path d="M110 300 Q300 150 490 300 Q300 450 110 300 Z"/></clipPath>
+    </defs>
+    <circle cx="300" cy="300" r="298" fill="url(#glow)"/>
+
+    <g id="disc">
+      <circle cx="300" cy="300" r="295" class="rim"/>
+      {{range .Disc.Ticks}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="tick"/>{{end}}
+      {{range .C.Sectors}}
+      <g class="sector" data-i="{{.Index}}" tabindex="0" role="button" aria-label="{{en .Name}}">
+        <path d="{{.Path}}" class="seg"/>
+        <path id="lp{{.Index}}" d="{{.Label}}" fill="none"/>
+        <text class="seglabel"><textPath href="#lp{{.Index}}" startOffset="50%" text-anchor="middle">{{en .Name}}</textPath></text>
+      </g>{{end}}
+      {{range .Disc.Bounds}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="bound"/>{{end}}
+    </g>
+    <path d="M300 14 L311 -6 L289 -6 Z" class="marker"/>
+    <circle cx="300" cy="300" r="200" class="inner"/>
+
+    <g id="eyeball">
+      <path d="M110 300 Q300 150 490 300 Q300 450 110 300 Z" class="sclera"/>
+      <g clip-path="url(#lidclip)">
+        <g id="iris">
+          <circle cx="300" cy="300" r="82" fill="url(#irisg)"/>
+          <circle cx="300" cy="300" r="70" class="ring"/>
+          <circle cx="300" cy="300" r="50" class="ring"/>
+          {{range .Disc.Spokes}}<line x1="{{printf "%.2f" .X1}}" y1="{{printf "%.2f" .Y1}}" x2="{{printf "%.2f" .X2}}" y2="{{printf "%.2f" .Y2}}" class="spoke"/>{{end}}
+          <polygon points="{{.Disc.Hex}}" class="hex"/>
+          <circle cx="300" cy="300" r="26" fill="#000"/>
+          <circle cx="291" cy="291" r="6" fill="#ffe9e6" opacity=".85"/>
+        </g>
+      </g>
+      <path d="M110 300 Q300 150 490 300 Q300 450 110 300 Z" class="lid"/>
+      <path d="M110 300 Q300 120 490 300" class="brow"/>
+      <path d="M110 300 Q300 480 490 300" class="brow"/>
+    </g>
+  </svg>
+  <p class="hint">{{ui "hint"}}</p>
+  </div>
+
+  <div class="panel">
+    <h1 class="bt">{{.C.Name}}</h1>
+    <p class="role bt">{{l .C.Title}}</p>
+    <div class="echo" aria-hidden="true">
+      <div class="cmdline bt"><span class="prompt">alejandro@ops:~$</span> echo "<span class="typed" data-lang="es">\: I E N V E N | DOS</span><span class="typed" data-lang="en">\/\/ E L C O M E</span>"</div>
+      <div class="banner bt" data-lang="es">{{banner "BIENVENIDOS"}}</div><div class="banner bt" data-lang="en">{{banner "WELCOME"}}</div>
+    </div>
+    <p class="intro bt">{{l .C.Intro}}</p>
+
+    <nav class="pills bt" aria-label="Sections">
+      {{range .C.Sectors}}<button class="pill" data-i="{{.Index}}">{{l .Name}}</button>{{end}}
+    </nav>
+
+
+  </div>
+</section>
+
+<section class="experience bt" aria-label="Experience">
+    {{range .C.Sectors}}
+    <article class="detail" data-i="{{.Index}}" id="d-{{.ID}}">
+      <header><h2>{{l .Name}}</h2></header>
+      <p class="sum">{{l .Summary}}</p>
+      <div class="cols{{if not .Sub}} one{{end}}">
+      <div class="col-main">
+      {{range .Roles}}<div class="role-block">
+        <div class="rh"><b>{{l .Company}}</b><span class="period">{{l .Period}}</span></div>
+        <div class="rt">{{l .Title}}</div>
+        <ul>{{range .Items}}<li>{{l .}}</li>{{end}}</ul></div>{{end}}
+      </div>
+      <div class="col-side">
+      {{with .Sub}}<div class="sub"><h3>{{l .Name}}</h3><p class="badge">{{l .Note}}</p>
+      <ul>{{range .Items}}<li>{{l .}}</li>{{end}}</ul></div>{{end}}
+            </div>
+      </div>
+      {{if .Certs}}<div class="certs"><h3>{{ui "certs"}}</h3><ul>{{range .Certs}}<li>{{l .}}</li>{{end}}</ul></div>{{end}}
+    </article>{{end}}
+</section>
+
+<section class="skills bt">
+  <h2>{{ui "skills"}}</h2>
+  <div class="grid skill-cols">
+    {{range $c := cols}}<div class="scol">
+    {{range $.C.Skills}}{{if eq .Col $c}}<div class="skill"><div class="sh"><span class="sn">{{icons .Icons}}{{l .Name}}</span><b>{{.Level}}%</b></div>
+      <div class="bar"><i style="--w:{{.Level}}%"></i></div></div>{{end}}{{end}}
+    </div>{{end}}
+  </div>
+</section>
+
+<section class="build bt">
+  <h2>{{ui "build"}}</h2>
+  <div class="build-text">{{range .C.Build.Text}}<p>{{l .}}</p>{{end}}</div>
+  <ul class="tools">{{range .C.Build.Tools}}<li>{{icons .Icons}}{{.Name}}</li>{{end}}</ul>
+</section>
+
+<section class="contact bt">
+  <h2>{{ui "contact"}}</h2>
+  <ul class="contact-list">
+    <li><span class="ck">mail</span>
+      <a class="mail" href="mailto:{{.C.Email}}"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>{{.C.Email}}</a>
+      <button type="button" class="copy" data-copy="{{.C.Email}}">{{ui "copy"}}</button></li>
+    {{if .C.LinkedIn}}<li><span class="ck">linkedin</span>
+      <a class="li" href="{{.C.LinkedIn}}" target="_blank" rel="noopener noreferrer">{{icons (slice1 "linkedin")}}{{.C.Name}} <span class="arr" aria-hidden="true">↗</span></a></li>{{end}}
+    {{if .C.GitHub}}<li><span class="ck">github</span>
+      <a class="gh" href="{{.C.GitHub}}" target="_blank" rel="noopener noreferrer">{{icons (slice1 "github")}}AlexDBdevops/OminousEyeCV <span class="arr" aria-hidden="true">↗</span></a></li>{{end}}
+  </ul>
+</section>
+</main>
+<footer class="bt">{{ui "footer"}}<span class="build"> · build {{.B.SHA}} · {{.B.Date}}</span></footer>
+<script src="app.js"></script>
+</body>
+</html>
