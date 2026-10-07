@@ -88,6 +88,10 @@
   <div class="panel">
     <h1>{{.C.Name}}</h1>
     <p class="role">{{l .C.Title}}</p>
+    <div class="echo" aria-hidden="true">
+      <div class="cmdline"><span class="prompt">alejandro@ops:~$</span> echo "<span data-lang="es">BIENVENIDOS</span><span data-lang="en">WELCOME</span>"</div>
+      <pre class="banner" data-lang="es">{{banner "BIENVENIDOS"}}</pre><pre class="banner" data-lang="en">{{banner "WELCOME"}}</pre>
+    </div>
     <p class="intro">{{l .C.Intro}}</p>
 
     <nav class="pills" aria-label="Sections">

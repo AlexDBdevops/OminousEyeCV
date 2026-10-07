@@ -13,8 +13,8 @@ body.v-a{font-family:var(--body);font-size:16.5px}
 .v-a .brand .prompt{display:inline;color:var(--a)}
 .v-a .lang{font-family:var(--mono);border-radius:3px;letter-spacing:0}
 /* hero asimétrico: el ojo manda y desborda hacia la izquierda */
-@media(min-width:861px){.v-a .hero{grid-template-columns:minmax(340px,640px) minmax(0,1fr);gap:clamp(16px,3vw,48px)}.v-a .stage{margin-left:-3vw}}
-.v-a .panel h1{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,4.6vw,4.1rem);line-height:.95;letter-spacing:-.02em;overflow-wrap:anywhere}
+@media(min-width:861px){.v-a .hero{grid-template-columns:minmax(320px,560px) minmax(0,1fr);gap:clamp(16px,3vw,48px)}.v-a .stage{margin-left:-3vw}}
+.v-a .panel h1{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,3.7vw,3.7rem);line-height:.95;letter-spacing:-.02em}
 .v-a .role{font-family:var(--mono);letter-spacing:0;text-transform:lowercase;font-size:.95rem;color:var(--a3)}
 .v-a .role::before{content:"> "}
 .v-a .intro{font-size:1.08rem;max-width:38ch}
@@ -42,3 +42,13 @@ body.v-a{font-family:var(--body);font-size:16.5px}
 .v-a .build-text{font-size:1rem}
 .v-a .mail{font-family:var(--mono);font-size:1.05rem}
 .v-a footer{font-family:var(--mono);font-size:.72rem;color:var(--mut)}
+
+/* segunda línea de consola: echo con cartel de bienvenida */
+.v-a .echo{display:block;margin:14px 0 6px;font-family:var(--mono)}
+.v-a .cmdline{font-size:.85rem;color:var(--bone);opacity:.9}
+.v-a .cmdline .prompt{color:var(--a)}
+.v-a .banner{margin:8px 0 0;color:var(--a3);line-height:1.05;letter-spacing:0;white-space:pre;overflow:hidden;
+  font-family:var(--mono);font-size:clamp(5px,calc((100vw - 40px) / 42),10px);text-shadow:0 0 8px color-mix(in srgb,var(--a3) 45%,transparent)}
+@media(min-width:861px){.v-a .banner{font-size:clamp(6px,0.75vw,10.5px)}}
+.v-a .banner[data-lang]{display:none}
+html[lang="es"] .v-a .banner[data-lang="es"],html[lang="en"] .v-a .banner[data-lang="en"]{display:block}

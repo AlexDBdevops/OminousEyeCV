@@ -116,7 +116,11 @@ func must(err error) {
 
 func main() {
 	var c Content
-	b, err := fsys.ReadFile("content/content.json")
+	cf := os.Getenv("CONTENT")
+	if cf == "" {
+		cf = "content.json"
+	}
+	b, err := fsys.ReadFile("content/" + cf)
 	must(err)
 	must(json.Unmarshal(b, &c))
 	for i := range c.Sectors {
@@ -201,7 +205,8 @@ func main() {
 			}
 			return template.HTML(sb.String())
 		},
-		"es": func(x L) string { return x.ES },
+		"es":     func(x L) string { return x.ES },
+		"banner": banner,
 		"dots": func(level int) template.HTML {
 			n := (level + 10) / 20
 			var sb strings.Builder

@@ -106,3 +106,5 @@ footer{text-align:center;color:#5a4a4a;font-size:.75rem;padding:32px 16px}
 /* --- Elementos que activa cada variante --- */
 .groups,.brand .prompt{display:none}
 .build{opacity:.8}
+
+.echo{display:none}
