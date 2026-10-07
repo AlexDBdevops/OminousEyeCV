@@ -79,4 +79,39 @@ var sk=document.querySelector('.skills');
 if('IntersectionObserver' in window){
   new IntersectionObserver(function(en,o){if(en[0].isIntersecting){sk.classList.add('vis');o.disconnect()}},{threshold:.2}).observe(sk);
 }else sk.classList.add('vis');
+
+// Arranque: escribe el comando y va mostrando el CV por partes (solo una vez por sesión)
+(function(){
+  var html=document.documentElement;
+  if(!html.classList.contains('boot'))return;
+  if(!document.body.classList.contains('v-a')){html.classList.remove('boot');return}
+  var cmd=document.querySelector('.bootcmd'),log=document.querySelector('.bootlog'),
+      items=[].slice.call(document.querySelectorAll('.bt')),typed=[].slice.call(document.querySelectorAll('.cmdline .typed')),
+      full=cmd.textContent,t0=performance.now(),timers=[],done=false;
+  cmd.textContent='';typed.forEach(function(s){s.dataset.full=s.textContent;s.textContent=''});
+  function at(ms,fn){timers.push(setTimeout(fn,ms))}
+  function show(sel){items.filter(function(e){return e.matches(sel)}).forEach(function(e){e.classList.add('in')})}
+  function finish(){
+    if(done)return;done=true;timers.forEach(clearTimeout);
+    cmd.textContent=full;typed.forEach(function(s){s.textContent=s.dataset.full});
+    items.forEach(function(e){e.classList.add('in')});
+    log.textContent='done '+((performance.now()-t0)/1000).toFixed(1)+'s';
+    setTimeout(function(){html.classList.remove('boot');log.textContent=''},2200);
+    try{sessionStorage.setItem('booted','1')}catch(e){}
+    removeEventListener('keydown',finish);removeEventListener('pointerdown',finish);
+  }
+  addEventListener('keydown',finish);addEventListener('pointerdown',finish);
+  var t=350;
+  for(var i=1;i<=full.length;i++){(function(n){at(t+n*55,function(){cmd.textContent=full.slice(0,n)})})(i)}
+  t+=full.length*55+380;
+  var steps=[
+    [0,'.stage','rendering eye.svg'],[350,'h1','loading profile'],[480,'.role',''],[650,'.cmdline',''],
+    [1250,'.banner','echo'],[1550,'.intro',''],[1700,'.pills, .lang','building sections'],
+    [1950,'.experience','experience (es/en)'],[2250,'.skills','skills'],[2550,'.build','how it was built'],
+    [2750,'.contact, footer','']];
+  steps.forEach(function(s){at(t+s[0],function(){show(s[1]);if(s[2])log.textContent='> '+s[2]+'…'})});
+  // el comando echo se escribe tras aparecer
+  typed.forEach(function(s){var f=s.dataset.full;for(var k=1;k<=f.length;k++){(function(n){at(t+700+n*32,function(){s.textContent=f.slice(0,n)})})(k)}});
+  at(t+3000,finish);
+})();
 })();

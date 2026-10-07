@@ -24,19 +24,19 @@
 <link rel="stylesheet" href="theme.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="variant-{{.B.Variant}}.css">
-<script>try{var l=localStorage.getItem('lang')==='es'?'es':'en';document.documentElement.lang=l}catch(e){}</script>
+<script>var d=document.documentElement;try{var l=localStorage.getItem('lang')==='es'?'es':'en';d.lang=l}catch(e){}try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!sessionStorage.getItem('booted'))d.classList.add('boot')}catch(e){}</script>
 </head>
 <body class="v-{{.B.Variant}}">
 <header class="top">
-  <div class="brand"><span class="prompt">alejandro@ops:~$ </span><span class="bname">{{.C.Name}}</span></div>
-  <button id="lang" class="lang" aria-label="Language">
+  <div class="brand"><span class="prompt">alejandro@ops:~$ </span><span class="bootcmd">./AlexDBdevopsCV.sh</span><span class="bname">{{.C.Name}}</span><span class="bootlog" aria-live="polite"></span></div>
+  <button id="lang" class="lang bt" aria-label="Language">
     <span data-lang="es">EN</span><span data-lang="en">ES</span>
   </button>
 </header>
 
 <main>
 <section class="hero">
-  <div class="stage">
+  <div class="stage bt">
   <svg id="art" viewBox="0 0 600 600" role="img" aria-label="Eye and disc">
     <defs>
       <radialGradient id="irisg" cx="50%" cy="50%" r="50%">
@@ -86,15 +86,15 @@
   </div>
 
   <div class="panel">
-    <h1>{{.C.Name}}</h1>
-    <p class="role">{{l .C.Title}}</p>
+    <h1 class="bt">{{.C.Name}}</h1>
+    <p class="role bt">{{l .C.Title}}</p>
     <div class="echo" aria-hidden="true">
-      <div class="cmdline"><span class="prompt">alejandro@ops:~$</span> echo "<span data-lang="es">\: I E N V E N | DOS</span><span data-lang="en">WELCOME</span>"</div>
-      <pre class="banner" data-lang="es">{{banner "BIENVENIDOS"}}</pre><pre class="banner" data-lang="en">{{banner "WELCOME"}}</pre>
+      <div class="cmdline bt"><span class="prompt">alejandro@ops:~$</span> echo "<span class="typed" data-lang="es">\: I E N V E N | DOS</span><span class="typed" data-lang="en">\/\/ E L C O M E</span>"</div>
+      <pre class="banner bt" data-lang="es">{{banner "BIENVENIDOS"}}</pre><pre class="banner bt" data-lang="en">{{banner "WELCOME"}}</pre>
     </div>
-    <p class="intro">{{l .C.Intro}}</p>
+    <p class="intro bt">{{l .C.Intro}}</p>
 
-    <nav class="pills" aria-label="Sections">
+    <nav class="pills bt" aria-label="Sections">
       {{range .C.Sectors}}<button class="pill" data-i="{{.Index}}">{{l .Name}}</button>{{end}}
     </nav>
 
@@ -102,7 +102,7 @@
   </div>
 </section>
 
-<section class="experience" aria-label="Experience">
+<section class="experience bt" aria-label="Experience">
     {{range .C.Sectors}}
     <article class="detail" data-i="{{.Index}}" id="d-{{.ID}}">
       <header><h2>{{l .Name}}</h2></header>
@@ -123,7 +123,7 @@
     </article>{{end}}
 </section>
 
-<section class="skills">
+<section class="skills bt">
   <h2>{{ui "skills"}}</h2>
   <div class="groups">
     {{range $g := .C.Groups}}<div class="grp"><h3>{{l $g.Name}}</h3><ul>
@@ -137,18 +137,18 @@
   </div>
 </section>
 
-<section class="build">
+<section class="build bt">
   <h2>{{ui "build"}}</h2>
   <div class="build-text">{{range .C.Build.Text}}<p>{{l .}}</p>{{end}}</div>
   <ul class="tools">{{range .C.Build.Tools}}<li>{{icons .Icons}}{{.Name}}</li>{{end}}</ul>
 </section>
 
-<section class="contact">
+<section class="contact bt">
   <h2>{{ui "contact"}}</h2>
   <a class="mail" href="mailto:{{.C.Email}}">{{.C.Email}}</a>
 </section>
 </main>
-<footer>{{ui "footer"}}<span class="build"> · build {{.B.SHA}} · {{.B.Date}}</span></footer>
+<footer class="bt">{{ui "footer"}}<span class="build"> · build {{.B.SHA}} · {{.B.Date}}</span></footer>
 <script src="app.js"></script>
 </body>
 </html>

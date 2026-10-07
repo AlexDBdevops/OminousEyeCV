@@ -12,9 +12,9 @@ body.v-a{font-family:var(--body);font-size:16.5px}
 .v-a .brand{font-family:var(--mono);letter-spacing:0;text-transform:none;font-size:.85rem}
 .v-a .brand .prompt{display:inline;color:var(--a)}
 .v-a .brand .bname{display:none}
-.v-a .brand::after{content:"";display:inline-block;width:.55em;height:1em;margin-left:.2em;vertical-align:-.15em;background:var(--a);animation:caret 1.1s steps(1) infinite}
+.v-a .brand .bootcmd::after{content:"";display:inline-block;width:.55em;height:1em;margin-left:.2em;vertical-align:-.15em;background:var(--a);animation:caret 1.1s steps(1) infinite}
 @keyframes caret{50%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.v-a .brand::after{animation:none}}
+@media(prefers-reduced-motion:reduce){.v-a .brand .bootcmd::after{animation:none}}
 .v-a .lang{font-family:var(--mono);border-radius:3px;letter-spacing:0}
 /* hero asimétrico: el ojo manda y desborda hacia la izquierda */
 @media(min-width:861px){.v-a .hero{grid-template-columns:minmax(320px,560px) minmax(0,1fr);gap:clamp(16px,3vw,48px)}.v-a .stage{margin-left:-3vw}}
@@ -60,3 +60,15 @@ html[lang="es"] .v-a .banner[data-lang="es"],html[lang="en"] .v-a .banner[data-l
 /* versión con competencias agrupadas: fluyen por columnas, cada tema queda junto */
 .v-a .grid.flow-cols{display:block;columns:3 260px;column-gap:32px}
 .v-a .grid.flow-cols .skill{break-inside:avoid;margin-bottom:14px}
+
+/* --- Arranque: se escribe ./AlexDBdevopsCV.sh y el CV se va generando --- */
+.v-a .brand .bootcmd{display:inline;color:var(--bone)}
+.v-a .brand .bootlog{display:inline;color:var(--mut);margin-left:1.2em}
+.v-a .brand .bootlog:empty{display:none}
+html.boot .v-a .bt{opacity:0;transform:translateY(10px);animation:boot-failsafe 0s 7s forwards}
+html.boot .v-a .bt.in{opacity:1;transform:none;animation:none;transition:opacity .45s ease,transform .45s ease}
+html.boot .v-a .stage.bt{transform:scale(.96)}
+html.boot .v-a .stage.bt.in{transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+html.boot .v-a .stage.bt.in #eyeball{animation:eye-open .9s .15s both}
+@keyframes eye-open{0%{transform:scaleY(.04)}60%{transform:scaleY(1.05)}100%{transform:scaleY(1)}}
+@keyframes boot-failsafe{to{opacity:1;transform:none}}
