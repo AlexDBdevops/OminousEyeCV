@@ -89,6 +89,11 @@ if('IntersectionObserver' in window){
       items=[].slice.call(document.querySelectorAll('.bt')),typed=[].slice.call(document.querySelectorAll('.cmdline .typed')),
       full=cmd.textContent,t0,timers=[],state='typing',autoTimer;
   cmd.textContent='';typed.forEach(function(s){s.dataset.full=s.textContent;s.textContent=''});
+  // While the boot runs the page must stay at the prompt: undo any scroll the browser restores on
+  // reload; a user scrolling by wheel or touch skips the boot instead (see the listeners below)
+  function pin(){if(state!=='done'&&window.scrollY>0)window.scrollTo(0,0)}
+  window.scrollTo(0,0);window.addEventListener('scroll',pin);
+  ['wheel','touchmove'].forEach(function(ev){window.addEventListener(ev,function(){if(state!=='done')finish()},{passive:true,once:true})});
   function at(ms,fn){timers.push(setTimeout(fn,ms))}
   function show(sel){items.filter(function(e){return e.matches(sel)}).forEach(function(e){e.classList.add('in')})}
   function finish(){
