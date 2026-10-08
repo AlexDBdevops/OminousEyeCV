@@ -65,7 +65,7 @@ infra/                   Terraform (Cloudflare Pages project)
 tools/                   single-file build and asset rendering
 ```
 
-More detail (in Spanish) in [ARCHITECTURE.md](ARCHITECTURE.md).
+More detail (in Spanish) in [ARCHITECTURE.md](ARCHITECTURE.md); release notes in [CHANGELOG.md](CHANGELOG.md).
 
 ## Credits
 
