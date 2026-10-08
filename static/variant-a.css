@@ -87,15 +87,5 @@ html.boot .v-a .stage.bt.in #eyeball{animation:eye-open .9s .15s both}
 .v-a .copy{font-family:var(--mono)}
 @media(max-width:560px){.v-a .contact-list{padding:14px 14px}.v-a .contact-list li{grid-template-columns:1fr auto;gap:6px 10px}.v-a .contact-list .ck{grid-column:1/-1}.v-a .contact-list a{font-size:.8rem}}
 
-.v-a .grid.skill-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 32px;align-items:start}
+.v-a .grid.skill-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 32px;align-items:start}
 .v-a .scol{display:grid;gap:14px}
-/* skills: wider gap and a divider between the three columns; stacked below 900px */
-@media(min-width:900px){
-  .v-a .grid.skill-cols{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;align-items:stretch}
-  .v-a .scol{align-content:start}
-  .v-a .scol{padding:0 32px}
-  .v-a .scol:first-child{padding-left:0}
-  .v-a .scol:last-child{padding-right:0}
-  .v-a .scol+.scol{border-left:1px solid var(--line)}
-}
-@media(max-width:899px){.v-a .grid.skill-cols{grid-template-columns:1fr;row-gap:16px}.v-a .scol+.scol{border-top:1px solid var(--line);padding-top:16px}}
