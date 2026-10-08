@@ -25,6 +25,7 @@ flowchart LR
 
 - **Pull request:** tests, build, `terraform plan` and a preview deploy on its own `*.pages.dev` URL.
 - **Merge to `main`:** `terraform apply` and production deploy.
+- **Cleanup:** after each deploy (and when a PR closes) old previews and all but the last 3 production deployments are deleted (`tools/cleanup-deployments.sh`).
 - **Releases:** bump `VERSION` on `main` and the `tag` workflow creates the git tag (v1, v2, v2.1…).
 
 ## Stack and why

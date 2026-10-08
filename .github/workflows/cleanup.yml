@@ -1,0 +1,40 @@
+name: cleanup
+# Removes old Cloudflare Pages deployments: after every deploy run, when a pull request
+# closes, or by hand. Previews of branches with an open pull request are kept.
+on:
+  workflow_run:
+    workflows: [deploy]
+    types: [completed]
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: List only, do not delete
+        type: boolean
+        default: false
+concurrency: cleanup
+permissions: { contents: read, pull-requests: read }
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: { persist-credentials: false }
+      - name: Delete stale deployments
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "No Cloudflare credentials: nothing to clean." >> "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          # Project name comes from the Terraform default so there is a single source of truth
+          PAGES_PROJECT=$(awk '/variable "project_name"/{f=1} f&&/default/{gsub(/[" ]/,"",$3); print $3; exit}' infra/main.tf)
+          # Keep the www redirect and every branch with an open pull request
+          OPEN=$(gh pr list -R "$GITHUB_REPOSITORY" --state open --json headRefName --jq '.[].headRefName' | tr '\n' ' ')
+          export PAGES_PROJECT KEEP_BRANCHES="www $OPEN"
+          tools/cleanup-deployments.sh | tee -a "$GITHUB_STEP_SUMMARY"

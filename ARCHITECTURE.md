@@ -77,6 +77,7 @@ Se lanza con un push a `main`, al abrir un pull request o a mano (Actions → de
 6. **Pull request:** `terraform plan` (muestra qué cambiaría, sin tocar nada). **main:** `terraform apply`.
 7. **Wrangler** (CLI de Cloudflare) sube `dist/` al proyecto de Pages: a producción en `main` y a una URL de vista previa propia de la rama en los pull requests.
 8. **Redirección `www`:** en `main` se despliega también una rama `www` que solo contiene un `_redirects` con un 301 a la dirección principal, porque en `pages.dev` el prefijo `www.` se interpreta como nombre de rama.
+9. **Limpieza (`cleanup.yml`):** tras cada despliegue, al cerrar un pull request o a mano, `tools/cleanup-deployments.sh` borra con la API de Cloudflare los despliegues que sobran: deja los 3 últimos de producción (para poder volver atrás), el último de `www` y el de cada rama con pull request abierto. Las vistas previas de pruebas ya cerradas desaparecen solas.
 
 Versionado: los hitos se marcan cambiando `VERSION` en `main`; el workflow `tag` crea la etiqueta. Cualquier push a `main` despliega, haya o no etiqueta nueva.
 
