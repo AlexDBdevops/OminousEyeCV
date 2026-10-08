@@ -117,3 +117,19 @@ footer{text-align:center;color:#5a4a4a;font-size:.75rem;padding:32px 16px}
 .contact-list .li{font-size:1.05rem}
 .copy{font:inherit;font-size:.75rem;color:var(--mut);background:none;border:1px solid var(--line);border-radius:3px;padding:2px 8px;cursor:pointer}
 .copy:hover{color:var(--a);border-color:var(--a)}
+/* --- Single-role sectors with a side block: header rows line up across both columns (subgrid) --- */
+@media(min-width:861px){
+  .cols:not(.one):has(.role-block:only-child){grid-template-rows:auto auto auto;row-gap:6px;margin-top:22px}
+  .cols:not(.one):has(.role-block:only-child)>.col-main,
+  .cols:not(.one):has(.role-block:only-child)>.col-side{display:grid;grid-row:span 3;grid-template-rows:subgrid;align-content:start}
+  .cols:not(.one) .role-block:only-child,.cols:not(.one) .col-side .sub{display:contents}
+  .cols:not(.one) .col-side .badge{justify-self:start;align-self:start;margin:0}
+  .cols:not(.one) .col-side .sub h3{margin:0}
+  .cols:not(.one) .col-main ul,.cols:not(.one) .col-side ul{margin:10px 0 0}
+  /* dividers between columns so the text does not run together */
+  .col-side{border-left:1px solid var(--line);padding-left:28px;margin-left:-12px}
+}
+.col-main ul,.certs ul{column-rule:1px solid var(--line)}
+/* same spacing at the top of every column so the bullets start level */
+.col-main li,.col-side li,.certs li{margin:0 0 .55em}
+@media(max-width:860px){.col-side{border-top:1px solid var(--line);padding-top:16px}}
