@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="theme.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="variant-{{.B.Variant}}.css">
-<script>var d=document.documentElement;try{var l=localStorage.getItem('lang')==='es'?'es':'en';d.lang=l}catch(e){}var b=1;try{b=!sessionStorage.getItem('booted')}catch(e){}if(b)d.classList.add('boot')</script>
+<script>var d=document.documentElement;try{var l=localStorage.getItem('lang')==='es'?'es':'en';d.lang=l}catch(e){}var b=1;try{b=!sessionStorage.getItem('booted')}catch(e){}if(b)d.classList.add('boot');try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}</script>
 </head>
 <body class="v-{{.B.Variant}}">
 <header class="top">

@@ -131,3 +131,12 @@ if('IntersectionObserver' in window){
   });
 });
 })();
+
+// A reload (or coming back to the tab from the browser cache) starts at the top, at the prompt,
+// instead of where the page was left; links to a section (#...) keep their position
+(function(){
+  function top(){ if(!location.hash) window.scrollTo(0,0) }
+  top();
+  window.addEventListener('load',top);
+  window.addEventListener('pageshow',function(e){ if(e.persisted) top() });
+})();
