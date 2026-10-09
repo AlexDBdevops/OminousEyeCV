@@ -1,12 +1,11 @@
 name: cleanup
-# Removes old Cloudflare Pages deployments: after every deploy run, when a pull request
-# closes, or by hand. Previews of branches with an open pull request are kept.
+# Removes old Cloudflare Pages deployments: after every deploy run, when a branch is deleted,
+# or by hand. The preview of every branch that still exists is kept.
 on:
   workflow_run:
     workflows: [deploy]
     types: [completed]
-  pull_request:
-    types: [closed]
+  delete:
   workflow_dispatch:
     inputs:
       dry_run:
@@ -14,7 +13,7 @@ on:
         type: boolean
         default: false
 concurrency: cleanup
-permissions: { contents: read, pull-requests: read }
+permissions: { contents: read }
 jobs:
   cleanup:
     runs-on: ubuntu-latest
@@ -34,7 +33,7 @@ jobs:
           fi
           # Project name comes from the Terraform default so there is a single source of truth
           PAGES_PROJECT=$(awk '/variable "project_name"/{f=1} f&&/default/{gsub(/[" ]/,"",$3); print $3; exit}' infra/main.tf)
-          # Keep the www redirect and every branch with an open pull request
-          OPEN=$(gh pr list -R "$GITHUB_REPOSITORY" --state open --json headRefName --jq '.[].headRefName' | tr '\n' ' ')
-          export PAGES_PROJECT KEEP_BRANCHES="www $OPEN"
+          # Keep the www redirect and the preview of every branch that still exists in the repo
+          BRANCHES=$(gh api "repos/$GITHUB_REPOSITORY/branches" --paginate --jq '.[].name' | tr '\n' ' ')
+          export PAGES_PROJECT KEEP_BRANCHES="www $BRANCHES"
           tools/cleanup-deployments.sh | tee -a "$GITHUB_STEP_SUMMARY"

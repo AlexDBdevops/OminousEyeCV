@@ -1,7 +1,7 @@
 name: deploy
+# main publishes to production; any other branch gets its own preview URL, no pull request needed
 on:
-  push: { branches: [main] }
-  pull_request:
+  push: { branches: ['**'] }
   workflow_dispatch:
 concurrency: deploy-${{ github.ref }}
 # Permisos mínimos del GITHUB_TOKEN: solo lectura del código
@@ -46,11 +46,11 @@ jobs:
           terraform -chdir=infra init -input=false
           terraform -chdir=infra fmt -check
           terraform -chdir=infra validate
-      - name: Terraform plan (pull request)
-        if: steps.cf.outputs.ready == 'true' && github.event_name == 'pull_request'
+      - name: Terraform plan (preview branches)
+        if: steps.cf.outputs.ready == 'true' && github.ref != 'refs/heads/main'
         run: terraform -chdir=infra plan -input=false -lock-timeout=60s
       - name: Terraform apply (main)
-        if: steps.cf.outputs.ready == 'true' && github.event_name != 'pull_request'
+        if: steps.cf.outputs.ready == 'true' && github.ref == 'refs/heads/main'
         run: terraform -chdir=infra apply -input=false -auto-approve -lock-timeout=60s
       - name: Desplegar en Cloudflare Pages
         if: steps.cf.outputs.ready == 'true'

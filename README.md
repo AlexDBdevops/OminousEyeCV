@@ -13,19 +13,19 @@ A bilingual (EN/ES) static site generated with Go, deployed to Cloudflare Pages 
 
 ```mermaid
 flowchart LR
-    dev[push / pull request] --> gha[GitHub Actions]
+    dev[git push] --> gha[GitHub Actions]
     gha --> q[gofmt · go vet · go test]
     q --> build[go run . → dist/]
     build --> tf[Terraform<br/>state in HCP Terraform]
     tf --> wr[Wrangler]
     wr --> cf[(Cloudflare Pages)]
     cf -->|main| prod[production]
-    cf -->|PR| prev[preview URL per branch]
+    cf -->|other branch| prev[preview URL per branch]
 ```
 
-- **Pull request:** tests, build, `terraform plan` and a preview deploy on its own `*.pages.dev` URL.
+- **Any other branch:** tests, build, `terraform plan` and a preview deploy on its own `<branch>.alejandro-diaz-benjumea.pages.dev` URL, no pull request needed.
 - **Merge to `main`:** `terraform apply` and production deploy.
-- **Cleanup:** after each deploy (and when a PR closes) old previews and all but the last 3 production deployments are deleted (`tools/cleanup-deployments.sh`).
+- **Cleanup:** after each deploy (and when a branch is deleted) previews of deleted branches and all but the last 3 production deployments are deleted (`tools/cleanup-deployments.sh`).
 - **Releases:** bump `VERSION` on `main` and the `tag` workflow creates the git tag (v1, v2, v2.1…).
 
 ## Stack and why
