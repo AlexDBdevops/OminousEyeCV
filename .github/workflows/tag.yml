@@ -1,7 +1,7 @@
 name: tag
-# Crea la etiqueta de versión (v1, v2…) cuando cambia el archivo VERSION en main
-# Runs on every push to main (not only when VERSION changes) so a force push also gets its tag;
-# if the tag already exists it does nothing
+# Crea la etiqueta de versión (v3, v3.1…) a partir del archivo VERSION. Se ejecuta en cada push a
+# main, no solo cuando cambia VERSION, para que un push forzado también quede etiquetado; si la
+# etiqueta ya existe, no hace nada.
 on:
   push:
     branches: [main]
