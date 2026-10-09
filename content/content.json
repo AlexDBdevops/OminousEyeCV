@@ -338,6 +338,17 @@
   },
   {
    "Name": {
+    "ES": "macOS (endpoints y servidores)",
+    "EN": "macOS (endpoints & servers)"
+   },
+   "Level": 80,
+   "Icons": [
+    "apple"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
     "ES": "Active Directory / M365",
     "EN": "Active Directory / M365"
    },

@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.2
+
+- macOS (endpoints and servers) added to the skills (80 %), with the Apple icon.
+
 ## v3.1
 
 - Jenkins added to the skills (60 %) and to the DevOps experience: deployed and maintained as a CI server.
