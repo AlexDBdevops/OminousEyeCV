@@ -1,9 +1,11 @@
 name: tag
 # Crea la etiqueta de versión (v1, v2…) cuando cambia el archivo VERSION en main
+# Runs on every push to main (not only when VERSION changes) so a force push also gets its tag;
+# if the tag already exists it does nothing
 on:
   push:
     branches: [main]
-    paths: [VERSION]
+  workflow_dispatch:
 permissions: { contents: write }
 jobs:
   tag:
