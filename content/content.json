@@ -98,6 +98,10 @@
        "EN": "I automate with Bash, kapp, Argo CD, Ansible and GitLab CI/CD, and adapt Helm charts when needed"
       },
       {
+       "ES": "Desplegué Jenkins como servidor de integración continua y me encargué de mantenerlo",
+       "EN": "Deployed Jenkins as a continuous integration server and looked after it from then on"
+      },
+      {
        "ES": "Monté Argo CD y junté despliegues dispersos en un único flujo GitOps sobre GitLab",
        "EN": "Set up Argo CD and pulled scattered deployments into one GitOps flow on GitLab"
       },
@@ -450,6 +454,17 @@
    "Level": 85,
    "Icons": [
     "gitlab"
+   ],
+   "Col": 1
+  },
+  {
+   "Name": {
+    "ES": "Jenkins",
+    "EN": "Jenkins"
+   },
+   "Level": 60,
+   "Icons": [
+    "jenkins"
    ],
    "Col": 1
   },

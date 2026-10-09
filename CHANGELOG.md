@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1
+
+- Jenkins added to the skills (60 %) and to the DevOps experience: deployed and maintained as a CI server.
+
 ## v3.0.1 · bugfix
 
 - **Reload left the page scrolled down during the boot.** After scrolling and reloading without cache in a new session, the browser restored the old scroll position while the simulated `./AlexDBdevopsCV.sh` ran at the top, so the visitor saw an empty page that looked like it was still loading. The page now starts at the prompt, stays there while the boot runs, and scrolling with the wheel or by touch skips the boot. Before / after: [docs/bugfix-reload-scroll.mp4](docs/bugfix-reload-scroll.mp4).
