@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.2
+
+- macOS (endpoints and servers) added to the skills (75 %), with the Apple icon.
+- Windows Server renamed to Windows (endpoints and servers) in the skills.
+
 ## v3.1
 
 - Jenkins added to the skills (60 %) and to the DevOps experience: deployed and maintained as a CI server.

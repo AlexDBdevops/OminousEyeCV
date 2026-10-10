@@ -327,12 +327,23 @@
   },
   {
    "Name": {
-    "ES": "Windows Server",
-    "EN": "Windows Server"
+    "ES": "Windows (endpoints y servidores)",
+    "EN": "Windows (endpoints & servers)"
    },
    "Level": 85,
    "Icons": [
     "windows"
+   ],
+   "Col": 0
+  },
+  {
+   "Name": {
+    "ES": "macOS (endpoints y servidores)",
+    "EN": "macOS (endpoints & servers)"
+   },
+   "Level": 75,
+   "Icons": [
+    "apple"
    ],
    "Col": 0
   },
