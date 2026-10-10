@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.2.1
+
+- README: the flow diagram now shows the branch preview and the review before merging; small changes bump the last digit of the version.
+
 ## v3.2
 
 - macOS (endpoints and servers) added to the skills (75 %), with the Apple icon.

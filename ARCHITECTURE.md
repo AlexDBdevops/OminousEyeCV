@@ -27,7 +27,7 @@ generator_test.go           ← tests del generador (go test ./...)
 tools/build_single.sh       ← HTML autocontenido para vistas previas
 tools/render-assets.js      ← og.png y favicons
 docs/                       ← GIF y captura del README
-VERSION                     ← versión publicada (v1, v2…)
+VERSION                     ← versión publicada (v3, v3.1, v3.1.1…)
 LICENSE                     ← MIT (fuentes OFL, iconos CC0/MIT)
 infra/main.tf               ← Terraform: proyecto de Cloudflare Pages
 .github/workflows/deploy.yml← CI/CD
@@ -79,7 +79,7 @@ Se lanza con cualquier push (a `main` o a otra rama) o a mano (Actions → deplo
 8. **Redirección `www`:** en `main` se despliega también una rama `www` que solo contiene un `_redirects` con un 301 a la dirección principal, porque en `pages.dev` el prefijo `www.` se interpreta como nombre de rama.
 9. **Limpieza (`cleanup.yml`):** tras cada despliegue, al borrar una rama o a mano, `tools/cleanup-deployments.sh` borra con la API de Cloudflare los despliegues que sobran: deja los 3 últimos de producción (para poder volver atrás), el último de `www` y el de cada rama que siga existiendo. Al borrar la rama de una prueba, su vista previa desaparece sola.
 
-Versionado: los hitos se marcan cambiando `VERSION` en `main`; el workflow `tag` crea la etiqueta. Cualquier push a `main` despliega, haya o no etiqueta nueva.
+Versionado: los hitos se marcan cambiando `VERSION` en `main`; el workflow `tag` crea la etiqueta. Los cambios pequeños (una skill, un nivel, una frase) suben el último dígito (v3.2 → v3.2.1); los más grandes, el del medio (v3.2 → v3.3). Cualquier push a `main` despliega, haya o no etiqueta nueva.
 
 Configuración en GitHub (Settings → Secrets and variables → Actions):
 
