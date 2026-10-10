@@ -24,9 +24,10 @@ flowchart LR
 
 - **Any other branch:** tests, build, `terraform plan` and a preview deploy on its own `<branch>.alejandro-diaz-benjumea.pages.dev` URL, no pull request needed.
 - **Merge to `main`:** `terraform apply` and production deploy.
+- **Docs-only changes** (README, docs, changelog, `VERSION`, the local helpers in `tools/`, the tag and cleanup workflows) are tested but never deployed, and they don't bump the version.
 - **Cleanup:** after each deploy (and when a branch is deleted) previews of deleted branches and all but the last 3 production deployments are deleted (`tools/cleanup-deployments.sh`).
 - **Review:** I check the preview before merging, so nothing reaches `main` unseen.
-- **Releases:** bump `VERSION` on `main` and the `tag` workflow creates the git tag. Small changes (a skill, a level, a wording) bump the last digit (v3.2 → v3.2.1); bigger ones bump the middle one (v3.2 → v3.3).
+- **Releases:** bump `VERSION` on `main` and the `tag` workflow creates the git tag. Small changes (a skill, a level, a wording) bump the last digit (v3.2 → v3.2.1); bigger ones bump the middle one (v3.2 → v3.3). Only changes to the site get a version.
 
 ## Stack and why
 
@@ -36,9 +37,9 @@ flowchart LR
 | **Cloudflare Pages** | Free static hosting with global CDN and DDoS protection included; static traffic is never billed. Chosen over AWS (S3 + CloudFront) for guaranteed zero cost. |
 | **Terraform** + **HCP Terraform** | The Pages project is infrastructure as code; remote state with locking and history. |
 | **GitHub Actions** | CI/CD with actions pinned by SHA, read-only token and no persisted credentials. |
-| **Dependabot** | Monthly PRs for action and provider updates, validated by the same pipeline. |
+| **Dependabot** | Monthly PRs for actions, the Terraform provider, Wrangler and the CI security tools, only for versions out for at least 7 days, validated by the same pipeline. |
 
-Security: strict Content-Security-Policy (inline scripts allowed only by SHA-256 hash computed at build time), HSTS, `X-Frame-Options: DENY`, COOP/CORP, Permissions-Policy, self-hosted fonts and inline icons, so the page makes no third-party requests. Credentials live outside the repo with minimum permissions.
+Security: strict Content-Security-Policy (inline scripts allowed only by SHA-256 hash computed at build time), HSTS, `X-Frame-Options: DENY`, COOP/CORP, Permissions-Policy, self-hosted fonts and inline icons, so the page makes no third-party requests. Credentials live outside the repo with minimum permissions. Every tool the pipeline runs is pinned to an exact, checksummed version (`tools/deploy`, `tools/ci`), and every push runs [zizmor](https://docs.zizmor.sh) on the workflows and `govulncheck` on the generator.
 
 ## Run locally
 
@@ -62,7 +63,7 @@ content.go  disc.go  render.go  headers.go  banner.go   generator pieces
 generator_test.go        tests
 infra/                   Terraform (Cloudflare Pages project)
 .github/workflows/       deploy (CI/CD) and tag (releases)
-tools/                   single-file build and asset rendering
+tools/                   single-file build, asset rendering, pinned Wrangler (deploy/) and CI security tools (ci/)
 ```
 
 More detail (in Spanish) in [ARCHITECTURE.md](ARCHITECTURE.md); release notes in [CHANGELOG.md](CHANGELOG.md).

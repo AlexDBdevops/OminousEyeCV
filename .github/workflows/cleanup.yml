@@ -1,10 +1,10 @@
 name: cleanup
-# Removes old Cloudflare Pages deployments: after every deploy run, when a branch is deleted,
-# or by hand. The preview of every branch that still exists is kept.
+# Removes old Cloudflare Pages deployments: at the end of every deploy run (called from deploy.yml),
+# when a branch is deleted, or by hand. The preview of every branch that still exists is kept.
 on:
-  workflow_run:
-    workflows: [deploy]
-    types: [completed]
+  workflow_call:
+    secrets:
+      CLOUDFLARE_API_TOKEN: { required: false }
   delete:
   workflow_dispatch:
     inputs:
@@ -24,9 +24,10 @@ jobs:
       DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Check out code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with: { persist-credentials: false }
-      - name: Delete stale deployments
+      - name: Prune stale deployments
         run: |
           if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
             echo "No Cloudflare credentials: nothing to clean." >> "$GITHUB_STEP_SUMMARY"; exit 0

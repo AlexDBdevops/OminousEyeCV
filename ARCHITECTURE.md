@@ -26,6 +26,8 @@ banner.go                   ← cartel BIENVENIDOS / WELCOME en SVG de píxeles
 generator_test.go           ← tests del generador (go test ./...)
 tools/build_single.sh       ← HTML autocontenido para vistas previas
 tools/render-assets.js      ← og.png y favicons
+tools/deploy/               ← Wrangler fijado a una versión exacta (package.json + package-lock.json)
+tools/ci/                   ← zizmor (requirements.txt con hashes) y govulncheck (go.mod) fijados
 docs/                       ← GIF y captura del README
 VERSION                     ← versión publicada (v3, v3.1, v3.1.1…)
 LICENSE                     ← MIT (fuentes OFL, iconos CC0/MIT)
@@ -71,15 +73,16 @@ Se lanza con cualquier push (a `main` o a otra rama) o a mano (Actions → deplo
 
 1. **Checkout y Go.**
 2. **Calidad:** `gofmt` (formato), `go vet` y `go test`. Si algo falla, se para y la web no cambia.
+   **Seguridad:** `zizmor` revisa los workflows (inyecciones, permisos, acciones sin fijar) y `govulncheck` busca vulnerabilidades conocidas que afecten al generador. Las dos herramientas tienen la versión y los hashes fijados en `tools/ci`.
 3. **Compilar:** `go run .` genera `dist/`.
 4. **Comprobar credenciales:** si falta algún secreto, solo compila.
 5. **Terraform init + fmt + validate.**
 6. **Otras ramas:** `terraform plan` (muestra qué cambiaría, sin tocar nada). **main:** `terraform apply`.
 7. **Wrangler** (CLI de Cloudflare) sube `dist/` al proyecto de Pages: a producción en `main` y, en cualquier otra rama, a una URL de vista previa propia (`<rama>.alejandro-diaz-benjumea.pages.dev`). No hace falta abrir un pull request.
 8. **Redirección `www`:** en `main` se despliega también una rama `www` que solo contiene un `_redirects` con un 301 a la dirección principal, porque en `pages.dev` el prefijo `www.` se interpreta como nombre de rama.
-9. **Limpieza (`cleanup.yml`):** tras cada despliegue, al borrar una rama o a mano, `tools/cleanup-deployments.sh` borra con la API de Cloudflare los despliegues que sobran: deja los 3 últimos de producción (para poder volver atrás), el último de `www` y el de cada rama que siga existiendo. Al borrar la rama de una prueba, su vista previa desaparece sola.
+9. **Limpieza (`cleanup.yml`, llamado como último job de `deploy.yml`):** tras cada despliegue, al borrar una rama o a mano, `tools/cleanup-deployments.sh` borra con la API de Cloudflare los despliegues que sobran: deja los 3 últimos de producción (para poder volver atrás), el último de `www` y el de cada rama que siga existiendo. Al borrar la rama de una prueba, su vista previa desaparece sola.
 
-Versionado: los hitos se marcan cambiando `VERSION` en `main`; el workflow `tag` crea la etiqueta. Los cambios pequeños (una skill, un nivel, una frase) suben el último dígito (v3.2 → v3.2.1); los más grandes, el del medio (v3.2 → v3.3). Cualquier push a `main` despliega, haya o no etiqueta nueva.
+Versionado: los hitos se marcan cambiando `VERSION` en `main`; el workflow `tag` crea la etiqueta. Los cambios pequeños (una skill, un nivel, una frase) suben el último dígito (v3.2 → v3.2.1); los más grandes, el del medio (v3.2 → v3.3). Solo llevan versión los cambios en la web. Un push a `main` despliega si toca algo de la web o de su infraestructura; si solo cambian documentación, changelog, `VERSION`, `tools/` o los workflows `tag` y `cleanup`, se ejecutan los tests pero no se despliega (paso «Detect site changes» de `deploy.yml`).
 
 Configuración en GitHub (Settings → Secrets and variables → Actions):
 
@@ -99,5 +102,5 @@ Configuración en GitHub (Settings → Secrets and variables → Actions):
 
 ## 7. Dependabot
 
-Servicio integrado de GitHub configurado en `.github/dependabot.yml`. Cada mes revisa si hay versiones nuevas de las acciones del workflow y del proveedor de Terraform y, si las hay, abre un pull request con la actualización. Su rama ejecuta el workflow (formato, tests y compilación; GitHub no da los secretos a Dependabot, así que sin despliegue), así que se puede comprobar que todo sigue funcionando antes de fusionarlo. No fusiona nada por sí solo.
+Servicio integrado de GitHub configurado en `.github/dependabot.yml`. Cada mes revisa si hay versiones nuevas de las acciones del workflow, del proveedor de Terraform, de Wrangler (`tools/deploy`) y de zizmor y govulncheck (`tools/ci`), con un `cooldown` de 7 días: no propone una versión hasta que lleva una semana publicada, para no coger una recién comprometida antes de que se detecte. Si las hay, si las hay, abre un pull request con la actualización. Su rama ejecuta el workflow (formato, tests y compilación; GitHub no da los secretos a Dependabot, así que sin despliegue), así que se puede comprobar que todo sigue funcionando antes de fusionarlo. No fusiona nada por sí solo.
 

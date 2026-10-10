@@ -20,46 +20,81 @@ jobs:
     timeout-minutes: 15
     steps:
       # Acciones fijadas por SHA (v7.0.1, v7.0.0, v4.0.1); Dependabot las mantiene al día
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with: { persist-credentials: false }
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
-        with: { go-version: '1.24', cache: false }
-      - name: Format, vet and test
+      - name: Check out code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: { persist-credentials: false, fetch-depth: 0 }
+      - name: Detect site changes
+        id: site
+        env: { BEFORE: "${{ github.event.before }}" }
+        run: |
+          # Solo se despliega si el push toca algo que acaba en la web o en su infraestructura.
+          # La documentación, el changelog, VERSION, las utilidades de tools/ y los workflows tag y cleanup no cambian
+          # nada publicado. tools/deploy (Wrangler) sí cuenta: una versión nueva se prueba desplegando.
+          # Los tests se ejecutan igualmente, así que el check deploy sale en verde y se puede fusionar.
+          deploy=true
+          if [ "$GITHUB_EVENT_NAME" = push ]; then
+            if [ -n "${BEFORE//0/}" ] && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then base=$BEFORE
+            else base=$(git merge-base origin/main HEAD 2>/dev/null || true); fi
+            if [ -n "$base" ] && [ "$base" != "$(git rev-parse HEAD)" ]; then
+              site=$(git diff --name-only "$base" HEAD | grep -Ev '^(README\.md|ARCHITECTURE\.md|CHANGELOG\.md|LICENSE|VERSION|\.gitignore|docs/|tools/(ci/|build_single\.sh|render-assets\.js|cleanup-deployments\.sh)|\.github/dependabot\.yml|\.github/workflows/(tag|cleanup)\.yml)' || true)
+              [ -n "$site" ] || deploy=false
+            fi
+          fi
+          echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
+          [ "$deploy" = true ] || echo "Solo cambian archivos que no son la web: se comprueba pero no se despliega." >> "$GITHUB_STEP_SUMMARY"
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        with: { go-version: '1.26.9', cache: false }   # versión exacta: govulncheck avisa cuando haga falta subirla
+      - name: Lint and test
         run: |
           test -z "$(gofmt -l .)" || { gofmt -l .; echo "gofmt: files need formatting"; exit 1; }
           go vet ./...
           go test ./...
-      - run: go run .            # genera dist/ con el tema de content/theme.txt
-      - name: Comprobar credenciales
-        id: cf
+      - name: Audit workflows and dependencies
+        env: { GH_TOKEN: "${{ github.token }}" }
         run: |
-          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ] || [ -z "$TF_TOKEN_app_terraform_io" ] || [ -z "$TF_CLOUD_ORGANIZATION" ]; then
+          # Versiones fijadas en tools/ci (requirements.txt con hashes, go.mod/go.sum); Dependabot propone las nuevas
+          python3 -m pip install --quiet --require-hashes --no-deps -r tools/ci/requirements.txt
+          zizmor .github/workflows/
+          go -C tools/ci tool govulncheck -C "$GITHUB_WORKSPACE" ./...
+      - name: Build site
+        run: go run .            # genera dist/ con el tema de content/theme.txt
+      - name: Check deploy credentials
+        id: cf
+        env: { SITE: "${{ steps.site.outputs.deploy }}" }
+        run: |
+          if [ "$SITE" != true ]; then echo "ready=false" >> "$GITHUB_OUTPUT"
+          elif [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ] || [ -z "$TF_TOKEN_app_terraform_io" ] || [ -z "$TF_CLOUD_ORGANIZATION" ]; then
             echo "Faltan credenciales de Cloudflare o HCP Terraform: solo se compila." >> "$GITHUB_STEP_SUMMARY"
             echo "ready=false" >> "$GITHUB_OUTPUT"
           else echo "ready=true" >> "$GITHUB_OUTPUT"; fi
-      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e
         if: steps.cf.outputs.ready == 'true'
         with: { terraform_wrapper: false }
-      - name: Terraform init + fmt + validate
+      - name: Validate infrastructure
         if: steps.cf.outputs.ready == 'true'
         run: |
           terraform -chdir=infra init -input=false
           terraform -chdir=infra fmt -check
           terraform -chdir=infra validate
-      - name: Terraform plan (preview branches)
+      - name: Plan infrastructure (preview)
         if: steps.cf.outputs.ready == 'true' && github.ref != 'refs/heads/main'
         run: terraform -chdir=infra plan -input=false -lock-timeout=60s
-      - name: Terraform apply (main)
+      - name: Apply infrastructure (production)
         if: steps.cf.outputs.ready == 'true' && github.ref == 'refs/heads/main'
         run: terraform -chdir=infra apply -input=false -auto-approve -lock-timeout=60s
-      - name: Desplegar en Cloudflare Pages
+      - name: Install pinned Wrangler
         if: steps.cf.outputs.ready == 'true'
+        run: npm ci --prefix tools/deploy --no-audit --no-fund
+      - name: Deploy to Cloudflare Pages
+        if: steps.cf.outputs.ready == 'true'
+        env: { BRANCH: "${{ github.ref_name }}" }
         run: |
           PROJECT=$(terraform -chdir=infra output -raw project_name)
-          BRANCH="${{ github.head_ref || github.ref_name }}"
-          npx --yes wrangler@3 pages deploy dist --project-name "$PROJECT" --branch "$BRANCH" | tee out.txt
+          tools/deploy/node_modules/.bin/wrangler pages deploy dist --project-name "$PROJECT" --branch "$BRANCH" | tee out.txt
           echo "URL: $(grep -Eo 'https://[^ ]+\.pages\.dev' out.txt | tail -1)" >> "$GITHUB_STEP_SUMMARY"
-      - name: Redirect www to the main address (main)
+      - name: Redirect www (production)
         if: steps.cf.outputs.ready == 'true' && github.ref == 'refs/heads/main'
         run: |
           # www.<project>.pages.dev is treated as a branch alias; deploy a tiny "www" branch that only redirects
@@ -67,4 +102,10 @@ jobs:
           mkdir -p www
           printf '/ https://%s.pages.dev/ 301\n/* https://%s.pages.dev/:splat 301\n' "$PROJECT" "$PROJECT" > www/_redirects
           printf '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=https://%s.pages.dev/"><title>Redirecting</title><a href="https://%s.pages.dev/">%s.pages.dev</a>\n' "$PROJECT" "$PROJECT" "$PROJECT" > www/index.html
-          npx --yes wrangler@3 pages deploy www --project-name "$PROJECT" --branch www
+          tools/deploy/node_modules/.bin/wrangler pages deploy www --project-name "$PROJECT" --branch www
+  # Limpieza de despliegues viejos al terminar, con o sin éxito (antes era un workflow_run, que zizmor marca como inseguro)
+  cleanup:
+    needs: deploy
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/cleanup.yml  # zizmor: ignore[self-repository] la sintaxis local clásica, más legible
+    secrets: { CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}" }
