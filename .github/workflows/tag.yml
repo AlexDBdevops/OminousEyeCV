@@ -1,5 +1,5 @@
 name: tag
-# Crea la etiqueta de versión (v3, v3.1…) a partir del archivo VERSION. Se ejecuta en cada push a
+# Crea la etiqueta de versión (v3, v3.1, v3.1.1…) a partir del archivo VERSION. Se ejecuta en cada push a
 # main, no solo cuando cambia VERSION, para que un push forzado también quede etiquetado; si la
 # etiqueta ya existe, no hace nada.
 on:

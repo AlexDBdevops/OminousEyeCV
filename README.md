@@ -13,20 +13,20 @@ A bilingual (EN/ES) static site generated with Go, deployed to Cloudflare Pages 
 
 ```mermaid
 flowchart LR
-    dev[git push] --> gha[GitHub Actions]
-    gha --> q[gofmt · go vet · go test]
-    q --> build[go run . → dist/]
-    build --> tf[Terraform<br/>state in HCP Terraform]
-    tf --> wr[Wrangler]
-    wr --> cf[(Cloudflare Pages)]
-    cf -->|main| prod[production]
-    cf -->|other branch| prev[preview URL per branch]
+    push[git push<br/>to a branch] --> ci[GitHub Actions<br/>gofmt · go vet · go test<br/>go run . → dist/<br/>terraform plan · Wrangler]
+    ci --> prev[(preview<br/>branch.alejandro-diaz-benjumea.pages.dev)]
+    prev --> review{review}
+    review -->|changes| push
+    review -->|approved| merge[merge to main]
+    merge --> cd[GitHub Actions<br/>same checks<br/>terraform apply · Wrangler]
+    cd --> prod[(production<br/>alejandro-diaz-benjumea.pages.dev)]
 ```
 
 - **Any other branch:** tests, build, `terraform plan` and a preview deploy on its own `<branch>.alejandro-diaz-benjumea.pages.dev` URL, no pull request needed.
 - **Merge to `main`:** `terraform apply` and production deploy.
 - **Cleanup:** after each deploy (and when a branch is deleted) previews of deleted branches and all but the last 3 production deployments are deleted (`tools/cleanup-deployments.sh`).
-- **Releases:** bump `VERSION` on `main` and the `tag` workflow creates the git tag (v1, v2, v2.1…).
+- **Review:** I check the preview before merging, so nothing reaches `main` unseen.
+- **Releases:** bump `VERSION` on `main` and the `tag` workflow creates the git tag. Small changes (a skill, a level, a wording) bump the last digit (v3.2 → v3.2.1); bigger ones bump the middle one (v3.2 → v3.3).
 
 ## Stack and why
 
