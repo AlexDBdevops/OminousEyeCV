@@ -42,7 +42,7 @@ jobs:
           echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
           [ "$deploy" = true ] || echo "Solo cambian archivos que no son la web: se comprueba pero no se despliega." >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
-        with: { go-version: '1.26', cache: false }
+        with: { go-version: '1.26.9', cache: false }   # versión exacta: govulncheck avisa cuando haga falta subirla
       - name: Format, vet and test
         run: |
           test -z "$(gofmt -l .)" || { gofmt -l .; echo "gofmt: files need formatting"; exit 1; }
