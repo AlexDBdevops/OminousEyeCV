@@ -20,9 +20,10 @@ jobs:
     timeout-minutes: 15
     steps:
       # Acciones fijadas por SHA (v7.0.1, v7.0.0, v4.0.1); Dependabot las mantiene al día
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Check out code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with: { persist-credentials: false, fetch-depth: 0 }
-      - name: ¿Cambia la web?
+      - name: Detect site changes
         id: site
         env: { BEFORE: "${{ github.event.before }}" }
         run: |
@@ -41,22 +42,24 @@ jobs:
           fi
           echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
           [ "$deploy" = true ] || echo "Solo cambian archivos que no son la web: se comprueba pero no se despliega." >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
         with: { go-version: '1.26.9', cache: false }   # versión exacta: govulncheck avisa cuando haga falta subirla
-      - name: Format, vet and test
+      - name: Lint and test
         run: |
           test -z "$(gofmt -l .)" || { gofmt -l .; echo "gofmt: files need formatting"; exit 1; }
           go vet ./...
           go test ./...
-      - name: Security checks (zizmor, govulncheck)
+      - name: Audit workflows and dependencies
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           # Versiones fijadas en tools/ci (requirements.txt con hashes, go.mod/go.sum); Dependabot propone las nuevas
           python3 -m pip install --quiet --require-hashes --no-deps -r tools/ci/requirements.txt
           zizmor .github/workflows/
           go -C tools/ci tool govulncheck -C "$GITHUB_WORKSPACE" ./...
-      - run: go run .            # genera dist/ con el tema de content/theme.txt
-      - name: Comprobar credenciales
+      - name: Build site
+        run: go run .            # genera dist/ con el tema de content/theme.txt
+      - name: Check deploy credentials
         id: cf
         env: { SITE: "${{ steps.site.outputs.deploy }}" }
         run: |
@@ -65,32 +68,33 @@ jobs:
             echo "Faltan credenciales de Cloudflare o HCP Terraform: solo se compila." >> "$GITHUB_STEP_SUMMARY"
             echo "ready=false" >> "$GITHUB_OUTPUT"
           else echo "ready=true" >> "$GITHUB_OUTPUT"; fi
-      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e
         if: steps.cf.outputs.ready == 'true'
         with: { terraform_wrapper: false }
-      - name: Terraform init + fmt + validate
+      - name: Validate infrastructure
         if: steps.cf.outputs.ready == 'true'
         run: |
           terraform -chdir=infra init -input=false
           terraform -chdir=infra fmt -check
           terraform -chdir=infra validate
-      - name: Terraform plan (preview branches)
+      - name: Plan infrastructure (preview)
         if: steps.cf.outputs.ready == 'true' && github.ref != 'refs/heads/main'
         run: terraform -chdir=infra plan -input=false -lock-timeout=60s
-      - name: Terraform apply (main)
+      - name: Apply infrastructure (production)
         if: steps.cf.outputs.ready == 'true' && github.ref == 'refs/heads/main'
         run: terraform -chdir=infra apply -input=false -auto-approve -lock-timeout=60s
-      - name: Instalar Wrangler (versión fijada en tools/deploy)
+      - name: Install pinned Wrangler
         if: steps.cf.outputs.ready == 'true'
         run: npm ci --prefix tools/deploy --no-audit --no-fund
-      - name: Desplegar en Cloudflare Pages
+      - name: Deploy to Cloudflare Pages
         if: steps.cf.outputs.ready == 'true'
         env: { BRANCH: "${{ github.ref_name }}" }
         run: |
           PROJECT=$(terraform -chdir=infra output -raw project_name)
           tools/deploy/node_modules/.bin/wrangler pages deploy dist --project-name "$PROJECT" --branch "$BRANCH" | tee out.txt
           echo "URL: $(grep -Eo 'https://[^ ]+\.pages\.dev' out.txt | tail -1)" >> "$GITHUB_STEP_SUMMARY"
-      - name: Redirect www to the main address (main)
+      - name: Redirect www (production)
         if: steps.cf.outputs.ready == 'true' && github.ref == 'refs/heads/main'
         run: |
           # www.<project>.pages.dev is treated as a branch alias; deploy a tiny "www" branch that only redirects
