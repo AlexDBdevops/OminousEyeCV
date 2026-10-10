@@ -3,3 +3,4 @@ dist/
 single*.html
 .terraform/
 *.tfstate*
+node_modules/

@@ -1,8 +1,24 @@
 version: 2
+# Cada mes, PRs con versiones nuevas de todo lo que usa el despliegue. cooldown: solo versiones publicadas
+# hace al menos 7 días, para no coger una recién comprometida antes de que se detecte.
 updates:
   - package-ecosystem: github-actions
     directory: /
     schedule: { interval: monthly }
+    cooldown: { default-days: 7 }
   - package-ecosystem: terraform
     directory: /infra
     schedule: { interval: monthly }
+    cooldown: { default-days: 7 }
+  - package-ecosystem: npm          # Wrangler
+    directory: /tools/deploy
+    schedule: { interval: monthly }
+    cooldown: { default-days: 7 }
+  - package-ecosystem: pip          # zizmor
+    directory: /tools/ci
+    schedule: { interval: monthly }
+    cooldown: { default-days: 7 }
+  - package-ecosystem: gomod        # govulncheck
+    directory: /tools/ci
+    schedule: { interval: monthly }
+    cooldown: { default-days: 7 }

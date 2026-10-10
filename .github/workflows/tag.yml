@@ -13,8 +13,9 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with: { fetch-depth: 0 }
+        with: { fetch-depth: 0, persist-credentials: false }
       - name: Crear etiqueta
+        env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           V=$(tr -d '[:space:]' < VERSION)
           if git rev-parse -q --verify "refs/tags/$V" >/dev/null; then
@@ -23,5 +24,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git tag -a "$V" -m "Versión $V del CV web"
-          git push origin "$V"
+          # El token solo se usa en este push; no queda guardado en el checkout
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "$V"
           echo "Etiqueta $V creada en $(git rev-parse --short HEAD)" >> "$GITHUB_STEP_SUMMARY"
