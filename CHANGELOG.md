@@ -2,7 +2,8 @@
 
 ## v3.2
 
-- macOS (endpoints and servers) added to the skills (80 %), with the Apple icon.
+- macOS (endpoints and servers) added to the skills (75 %), with the Apple icon.
+- Windows Server renamed to Windows (endpoints and servers) in the skills.
 
 ## v3.1
 
