@@ -241,6 +241,10 @@
        "EN": "VMware and Proxmox virtualisation, NAS/SAN storage, Active Directory and Microsoft 365"
       },
       {
+       "ES": "Mantenimiento de AWS, tanto en desarrollo como en producción",
+       "EN": "AWS maintenance in both development and production"
+      },
+      {
        "ES": "Documentación de la infraestructura siempre al día",
        "EN": "Kept the infrastructure documentation up to date"
       }

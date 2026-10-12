@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.2.2
+
+- Sysadmin experience: AWS maintenance in both development and production.
+
 ## v3.2.1
 
 - README: the flow diagram now shows the branch preview and the review before merging; small changes bump the last digit of the version.
