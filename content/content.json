@@ -34,6 +34,10 @@
    "ES": "Certificaciones",
    "EN": "Certifications"
   },
+  "education": {
+   "ES": "Formación",
+   "EN": "Education"
+  },
   "experience": {
    "ES": "Experiencia",
    "EN": "Experience"
@@ -197,6 +201,12 @@
      "ES": "Source Control with Git · A Cloud Guru · feb 2022",
      "EN": "Source Control with Git · A Cloud Guru · Feb 2022"
     }
+   ],
+   "Education": [
+    {
+     "ES": "Técnico Superior en Administración de Sistemas Informáticos en Red (ASIR) · IES Roque Amagro · sep 2019 – jun 2021",
+     "EN": "Higher Degree in Computer Systems and Network Administration (ASIR) · IES Roque Amagro · Sep 2019 – Jun 2021"
+    }
    ]
   },
   {
@@ -291,6 +301,12 @@
     {
      "ES": "Learning Docker · LinkedIn · jul 2021",
      "EN": "Learning Docker · LinkedIn · Jul 2021"
+    }
+   ],
+   "Education": [
+    {
+     "ES": "Técnico Superior en Administración de Sistemas Informáticos en Red (ASIR) · IES Roque Amagro · sep 2019 – jun 2021",
+     "EN": "Higher Degree in Computer Systems and Network Administration (ASIR) · IES Roque Amagro · Sep 2019 – Jun 2021"
     }
    ]
   }

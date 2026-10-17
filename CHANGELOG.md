@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.3
+
+- New Education block under the certifications in DevOps and Sysadmin, with ASIR (IES Roque Amagro, 2019–2021).
+
 ## v3.2.2
 
 - Sysadmin experience: AWS maintenance in both development and production.

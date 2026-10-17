@@ -24,12 +24,13 @@ type Content struct {
 
 // Sector is one slice of the experience disc (DevOps, Sysadmin…).
 type Sector struct {
-	ID      string
-	Name    L
-	Summary L
-	Roles   []Role
-	Certs   []L
-	Sub     *Sub
+	ID        string
+	Name      L
+	Summary   L
+	Roles     []Role
+	Certs     []L
+	Education []L
+	Sub       *Sub
 	// Filled in by the generator, not by the JSON.
 	Path  string
 	Label string
