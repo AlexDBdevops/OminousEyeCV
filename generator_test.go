@@ -137,7 +137,7 @@ func TestRenderIndex(t *testing.T) {
 		t.Fatal(err)
 	}
 	page := b.String()
-	for _, want := range []string{"./AlexDBdevopsCV.sh", c.Email, "build test", `id="art"`} {
+	for _, want := range []string{"./AlexDBdevopsCV.sh", c.Email, "build test", `id="art"`, `<meta name="darkreader-lock">`} {
 		if !strings.Contains(page, want) {
 			t.Errorf("rendered page lacks %q", want)
 		}

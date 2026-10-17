@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.3.1
+
+- With Dark Reader on, the eye and the disc no longer turn grey: the page asks the extension to leave its own colours alone.
+
 ## v3.3
 
 - New Education block under the certifications in DevOps and Sysadmin, with ASIR (IES Roque Amagro, 2019–2021).
