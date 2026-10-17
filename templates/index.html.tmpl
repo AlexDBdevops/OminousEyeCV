@@ -120,6 +120,7 @@
             </div>
       </div>
       {{if .Certs}}<div class="certs"><h3>{{ui "certs"}}</h3><ul>{{range .Certs}}<li>{{l .}}</li>{{end}}</ul></div>{{end}}
+      {{if .Education}}<div class="certs edu"><h3>{{ui "education"}}</h3><ul>{{range .Education}}<li>{{l .}}</li>{{end}}</ul></div>{{end}}
     </article>{{end}}
 </section>
 

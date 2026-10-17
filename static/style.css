@@ -89,6 +89,7 @@ footer{text-align:center;color:#5a4a4a;font-size:.75rem;padding:32px 16px}
 .certs ul{columns:3 260px;column-gap:36px;margin:0;padding-left:1.1em}
 .certs li{break-inside:avoid;margin:.35em 0}
 .certs li::marker{color:var(--a)}
+.certs.edu ul{columns:auto}
 @media(max-width:860px){.cols{grid-template-columns:1fr}}
 /* --- Iconos de tecnologías --- */
 .ico{width:1em;height:1em;flex:none;fill:currentColor;vertical-align:-.15em}
